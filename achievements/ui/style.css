@@ -34,7 +34,7 @@ body { font-family: Text; color: var(--text); }
 .line { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .caps { font-family: Caps; text-transform: uppercase; }
 .caps-light { font-family: CapsLight; text-transform: uppercase; }
-.tags { font-family: Tags; text-transform: uppercase; color: var(--muted); font-size: var(--label-size); }
+.tags { font-family: Tags; text-transform: uppercase; color: var(--muted); font-size: var(--tag-size); }
 
 /* Line drawings and icons are white artwork tinted with a theme color */
 .art {

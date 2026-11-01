@@ -89,9 +89,10 @@ function applyColors(system) {
 
 function applySizes() {
   const f = S.fontSizes;
-  const help = Number(f.helpSize) * 0.62;
+  // The footer of a 4:3 screen has no room for the larger prompts of some font sizes
+  const help = Number(aspectRatio() === '4:3' ? f.helpSizeNarrow : f.helpSize) * 0.62;
   setVars({
-    'caps-size': vh(f.capsSize), 'label-size': vh(f.labelSize), 'value-size': vh(f.valueSize),
+    'caps-size': vh(f.capsSize), 'label-size': vh(f.labelSize), 'tag-size': vh(f.tagSize), 'value-size': vh(f.valueSize),
     'desc-size': vh(f.descSize), 'game-title-size': vh(f.gameTitleSize), 'tile-text': vh(f.gridTextSize),
     'help-size': vh(help), 'help-icon': vh(help * 1.25), 'help-spacing': vw(0.017), 'help-icon-spacing': vw(0.0055),
     'tile-radius': vw(0.0025), 'badge-gap': vw(0.0055), 'tab-gap': vw(0.018), 'list-size': vh(f.listSize),
@@ -209,18 +210,18 @@ function scroller(box) {
   };
 }
 
+// At the right margin of the header line. ES-DE puts the clock there, or beside the system
+// status when that moves up, which the page does not show
 function corner(parent, layout) {
   return place(el('div', 'line corner', parent),
-    { pos: layout.clock.pos, size: [0.3, S.fontSizes.capsSize * 2] }, { line: true, origin: [1, 0.5] });
+    { pos: [layout.systemStatus.pos[0], layout.clock.pos[1]], size: [0.3, S.fontSizes.capsSize * 2] },
+    { line: true, origin: [1, 0.5] });
 }
 
-// The tag at the right end of the caption line, where the theme shows file tags and
-// stars; the tag font draws each bracketed word as an outlined tag
+// The tags beneath the caption, where the theme shows the file tags; the tag font draws
+// each bracketed word as an outlined tag
 function tag(parent, layout) {
-  const tags = layout.fileTags;
-  const right = layout.rating ? layout.rating.pos[0] : tags.pos[0];
-  const e = place(el('div', 'line tags', parent), { ...tags, pos: [right, tags.pos[1]] }, { line: true });
-  e.style.textAlign = 'right';
+  const e = place(el('div', 'line tags', parent), layout.fileTags, { line: true });
   return words => { e.textContent = words.filter(Boolean).map(w => `(${w})`).join(' '); };
 }
 

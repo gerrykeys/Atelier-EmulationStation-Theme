@@ -50,11 +50,13 @@
         <gridBand>none</gridBand>
     </variables>
 
-    <!-- Font sizes are em heights relative to the screen height -->
+    <!-- Font sizes are em heights relative to the screen height. The narrow help size is
+         the one of 4:3 screens, whose footer has no room for larger prompts -->
     <fontSize name="medium">
         <variables>
             <capsSize>0.019</capsSize>
             <helpSize>0.026</helpSize>
+            <helpSizeNarrow>0.026</helpSizeNarrow>
             <sysTitleSize>0.085</sysTitleSize>
             <sysTitleSizeNarrow>0.075</sysTitleSizeNarrow>
             <sysDescSize>0.025</sysDescSize>
@@ -65,6 +67,7 @@
             <gameTitleSize>0.058</gameTitleSize>
             <typoTitleSize>0.085</typoTitleSize>
             <labelSize>0.0158</labelSize>
+            <tagSize>0.0158</tagSize>
             <valueSize>0.0245</valueSize>
             <descSize>0.024</descSize>
             <galleryTitleSize>0.058</galleryTitleSize>
@@ -78,6 +81,7 @@
         <variables>
             <capsSize>0.022</capsSize>
             <helpSize>0.03</helpSize>
+            <helpSizeNarrow>0.03</helpSizeNarrow>
             <sysTitleSize>0.097</sysTitleSize>
             <sysTitleSizeNarrow>0.086</sysTitleSizeNarrow>
             <sysDescSize>0.029</sysDescSize>
@@ -88,6 +92,7 @@
             <gameTitleSize>0.066</gameTitleSize>
             <typoTitleSize>0.097</typoTitleSize>
             <labelSize>0.018</labelSize>
+            <tagSize>0.018</tagSize>
             <valueSize>0.028</valueSize>
             <descSize>0.028</descSize>
             <galleryTitleSize>0.066</galleryTitleSize>
@@ -101,6 +106,7 @@
         <variables>
             <capsSize>0.0165</capsSize>
             <helpSize>0.023</helpSize>
+            <helpSizeNarrow>0.023</helpSizeNarrow>
             <sysTitleSize>0.075</sysTitleSize>
             <sysTitleSizeNarrow>0.066</sysTitleSizeNarrow>
             <sysDescSize>0.0225</sysDescSize>
@@ -111,6 +117,7 @@
             <gameTitleSize>0.052</gameTitleSize>
             <typoTitleSize>0.075</typoTitleSize>
             <labelSize>0.0145</labelSize>
+            <tagSize>0.0145</tagSize>
             <valueSize>0.022</valueSize>
             <descSize>0.0215</descSize>
             <galleryTitleSize>0.052</galleryTitleSize>
@@ -120,6 +127,35 @@
             <collectionTitleSize>0.03</collectionTitleSize>
         </variables>
     </fontSize>
+    <!-- For small screens held in the hand, such as a 4" handheld: the small capitals
+         (clock, system status, header, genre, game count), the file tags, the help
+         prompts and the list grow, everything else stays as in large. The fact labels
+         and values sit in narrow columns where larger text would be cut off -->
+    <fontSize name="x-large">
+        <variables>
+            <capsSize>0.027</capsSize>
+            <helpSize>0.034</helpSize>
+            <helpSizeNarrow>0.03</helpSizeNarrow>
+            <sysTitleSize>0.097</sysTitleSize>
+            <sysTitleSizeNarrow>0.086</sysTitleSizeNarrow>
+            <sysDescSize>0.029</sysDescSize>
+            <listSize>0.035</listSize>
+            <listSpacing>1.7</listSpacing>
+            <selectorH>0.0228</selectorH>
+            <selectorY>0.0149</selectorY>
+            <gameTitleSize>0.066</gameTitleSize>
+            <typoTitleSize>0.097</typoTitleSize>
+            <labelSize>0.018</labelSize>
+            <tagSize>0.022</tagSize>
+            <valueSize>0.028</valueSize>
+            <descSize>0.028</descSize>
+            <galleryTitleSize>0.066</galleryTitleSize>
+            <coverTextSize>0.032</coverTextSize>
+            <gridTextSize>0.022</gridTextSize>
+            <collectionGridTextSize>0.058</collectionGridTextSize>
+            <collectionTitleSize>0.04</collectionTitleSize>
+        </variables>
+    </fontSize>
 
     <variant name="all">
         <include>./layout/common.xml</include>
@@ -127,14 +163,16 @@
         <include>./layout/sounds.xml</include>
         <include>./layout/collections.xml</include>
     </variant>
-    <variant name="index, indexStill, typographic">
+    <!-- The compact Index variants are the Index without the large title, see the
+         aspect ratio files -->
+    <variant name="index, indexStill, indexCompact, indexCompactStill, typographic">
         <include>./layout/gamelist-list.xml</include>
         <include>./layout/gamelist-details.xml</include>
     </variant>
-    <variant name="index">
+    <variant name="index, indexCompact">
         <include>./layout/gamelist-media-video.xml</include>
     </variant>
-    <variant name="indexStill">
+    <variant name="indexStill, indexCompactStill">
         <include>./layout/gamelist-media-still.xml</include>
     </variant>
     <variant name="typographic">

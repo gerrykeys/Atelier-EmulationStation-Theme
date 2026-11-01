@@ -133,7 +133,7 @@
             <metadata>physicalName</metadata>
             <metadataElement>true</metadataElement>
             <fontPath>${fontTags}</fontPath>
-            <fontSize>${labelSize}</fontSize>
+            <fontSize>${tagSize}</fontSize>
             <color>${mutedColor}</color>
             <letterCase>uppercase</letterCase>
             <horizontalAlignment>center</horizontalAlignment>

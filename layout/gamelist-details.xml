@@ -67,15 +67,16 @@
         </rating>
         <!-- Tags from the file name, such as region, languages and revision. The tag font
              hides the title and draws every bracketed part as an outlined tag, so a file
-             without any shows nothing -->
+             without any shows nothing. They get a line of their own beneath the genre,
+             as both can be long -->
         <text name="fileTags">
             <metadata>physicalName</metadata>
             <metadataElement>true</metadataElement>
             <fontPath>${fontTags}</fontPath>
-            <fontSize>${labelSize}</fontSize>
+            <fontSize>${tagSize}</fontSize>
             <color>${mutedColor}</color>
             <letterCase>uppercase</letterCase>
-            <horizontalAlignment>right</horizontalAlignment>
+            <horizontalAlignment>left</horizontalAlignment>
             <verticalAlignment>center</verticalAlignment>
             <zIndex>40</zIndex>
         </text>

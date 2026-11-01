@@ -8,16 +8,29 @@
 -->
 
 <theme>
+    <!-- At the extra large font size the help prompts need the whole footer, so the
+         system status moves up to the header line, with the clock to its left -->
+    <variables>
+        <statusPos>0.93 0.93</statusPos>
+        <clockPos>0.93 0.085</clockPos>
+    </variables>
+    <fontSize name="x-large">
+        <variables>
+            <statusPos>0.93 0.085</statusPos>
+            <clockPos>0.82 0.085</clockPos>
+        </variables>
+    </fontSize>
+
     <variant name="all">
         <view name="system, gamelist">
             <helpsystem name="help">
                 <pos>0.07 0.93</pos>
             </helpsystem>
             <systemstatus name="systemStatus">
-                <pos>0.93 0.93</pos>
+                <pos>${statusPos}</pos>
             </systemstatus>
             <clock name="clock">
-                <pos>0.93 0.085</pos>
+                <pos>${clockPos}</pos>
             </clock>
         </view>
 
@@ -75,7 +88,7 @@
         </view>
     </variant>
 
-    <variant name="index, indexStill, typographic">
+    <variant name="index, indexStill, indexCompact, indexCompactStill, typographic">
         <view name="gamelist">
             <text name="header">
                 <pos>0.118 0.085</pos>
@@ -109,7 +122,7 @@
         </view>
     </variant>
 
-    <variant name="index, indexStill">
+    <variant name="index, indexStill, indexCompact, indexCompactStill">
         <view name="gamelist">
             <image name="mediaAmbient">
                 <pos>0.4725 0.4035</pos>
@@ -134,29 +147,29 @@
             </text>
 
             <text name="gameTitle">
-                <pos>0.645 0.395</pos>
+                <pos>0.645 0.365</pos>
                 <origin>0 1</origin>
-                <size>0.285 0.3</size>
+                <size>0.285 0.27</size>
             </text>
             <image name="captionRule">
-                <pos>0.6455 0.43</pos>
+                <pos>0.6455 0.4</pos>
                 <origin>0 0.5</origin>
                 <size>0.014 0.0016</size>
             </image>
             <text name="genre">
-                <pos>0.6655 0.43</pos>
+                <pos>0.6655 0.4</pos>
                 <origin>0 0.5</origin>
                 <size>0.19 0.04</size>
             </text>
             <rating name="rating">
-                <pos>0.93 0.43</pos>
+                <pos>0.93 0.4</pos>
                 <origin>1 0.5</origin>
                 <size>0 0.021</size>
             </rating>
             <text name="fileTags">
-                <pos>0.876 0.43</pos>
-                <origin>1 0.5</origin>
-                <size>0.2 0.04</size>
+                <pos>0.6655 0.437</pos>
+                <origin>0 0.5</origin>
+                <size>0.2645 0.04</size>
             </text>
 
             <text name="labelReleased">
@@ -251,7 +264,7 @@
         </view>
     </variant>
 
-    <variant name="index">
+    <variant name="index, indexCompact">
         <view name="gamelist">
             <image name="videoStill">
                 <pos>0.4725 0.4035</pos>
@@ -267,7 +280,7 @@
         </view>
     </variant>
 
-    <variant name="indexStill">
+    <variant name="indexStill, indexCompactStill">
         <view name="gamelist">
             <image name="gameImage">
                 <pos>0.4725 0.4035</pos>
@@ -277,32 +290,121 @@
         </view>
     </variant>
 
+    <!-- Compact Index: the Index without the large title, which the list already shows.
+         The details column starts at the first row of the list with the caption and the
+         facts, and the description follows them down the column, ten lines instead of
+         four. The play statistics and the badges take its place beneath the media card -->
+    <variant name="indexCompact, indexCompactStill">
+        <view name="gamelist">
+            <text name="gameTitle">
+                <visible>false</visible>
+            </text>
+            <image name="captionRule">
+                <pos>0.6455 0.195</pos>
+            </image>
+            <text name="genre">
+                <pos>0.6655 0.195</pos>
+            </text>
+            <rating name="rating">
+                <pos>0.93 0.195</pos>
+            </rating>
+            <text name="fileTags">
+                <pos>0.6655 0.232</pos>
+            </text>
+
+            <text name="labelReleased">
+                <pos>0.645 0.285</pos>
+            </text>
+            <datetime name="releaseDate">
+                <pos>0.645 0.318</pos>
+            </datetime>
+            <text name="labelPlayers">
+                <pos>0.7875 0.285</pos>
+            </text>
+            <text name="players">
+                <pos>0.7875 0.318</pos>
+            </text>
+            <text name="labelDeveloper">
+                <pos>0.645 0.375</pos>
+            </text>
+            <text name="developer">
+                <pos>0.645 0.408</pos>
+            </text>
+            <text name="labelPublisher">
+                <pos>0.7875 0.375</pos>
+            </text>
+            <text name="publisher">
+                <pos>0.7875 0.408</pos>
+            </text>
+            <text name="description">
+                <pos>0.645 0.46</pos>
+                <size>0.285 0.385</size>
+            </text>
+
+            <image name="statsRule">
+                <visible>false</visible>
+            </image>
+            <text name="labelLastPlayed">
+                <pos>0.345 0.695</pos>
+                <size>0.085 0.03</size>
+            </text>
+            <datetime name="lastPlayed">
+                <pos>0.345 0.728</pos>
+                <size>0.085 0.04</size>
+            </datetime>
+            <text name="labelPlayCount">
+                <pos>0.43 0.695</pos>
+                <size>0.085 0.03</size>
+            </text>
+            <text name="playCount">
+                <pos>0.43 0.728</pos>
+                <size>0.085 0.04</size>
+            </text>
+            <text name="labelPlayTime">
+                <pos>0.515 0.695</pos>
+                <size>0.085 0.03</size>
+            </text>
+            <text name="playTime">
+                <pos>0.515 0.728</pos>
+                <size>0.085 0.04</size>
+            </text>
+            <badges name="badges">
+                <pos>0.345 0.8</pos>
+                <size>0.255 0.034</size>
+            </badges>
+            <!-- Achievement progress, at the right end of the badges row -->
+            <image name="raProgress">
+                <pos>0.6 0.8</pos>
+            </image>
+        </view>
+    </variant>
+
     <variant name="typographic">
         <view name="gamelist">
             <text name="gameTitle">
-                <pos>0.385 0.43</pos>
+                <pos>0.385 0.4</pos>
                 <origin>0 1</origin>
                 <size>0.53 0.27</size>
             </text>
             <image name="captionRule">
-                <pos>0.3855 0.472</pos>
+                <pos>0.3855 0.442</pos>
                 <origin>0 0.5</origin>
                 <size>0.014 0.0016</size>
             </image>
             <text name="genre">
-                <pos>0.4055 0.472</pos>
+                <pos>0.4055 0.442</pos>
                 <origin>0 0.5</origin>
                 <size>0.3 0.04</size>
             </text>
             <rating name="rating">
-                <pos>0.93 0.472</pos>
+                <pos>0.93 0.442</pos>
                 <origin>1 0.5</origin>
                 <size>0 0.021</size>
             </rating>
             <text name="fileTags">
-                <pos>0.876 0.472</pos>
-                <origin>1 0.5</origin>
-                <size>0.3 0.04</size>
+                <pos>0.4055 0.479</pos>
+                <origin>0 0.5</origin>
+                <size>0.5245 0.04</size>
             </text>
 
             <text name="labelReleased">
@@ -514,32 +616,32 @@
             </grid>
 
             <text name="gameTitle">
-                <pos>0.61 0.295</pos>
+                <pos>0.61 0.265</pos>
                 <origin>0 1</origin>
                 <size>0.32 0.15</size>
             </text>
             <image name="captionRule">
-                <pos>0.6105 0.33</pos>
+                <pos>0.6105 0.3</pos>
                 <origin>0 0.5</origin>
                 <size>0.014 0.0016</size>
             </image>
             <text name="genre">
-                <pos>0.6305 0.33</pos>
+                <pos>0.6305 0.3</pos>
                 <origin>0 0.5</origin>
                 <size>0.224 0.04</size>
             </text>
             <rating name="rating">
-                <pos>0.93 0.33</pos>
+                <pos>0.93 0.3</pos>
                 <origin>1 0.5</origin>
                 <size>0 0.021</size>
             </rating>
             <text name="fileTags">
-                <pos>0.876 0.33</pos>
-                <origin>1 0.5</origin>
-                <size>0.22 0.04</size>
+                <pos>0.6305 0.337</pos>
+                <origin>0 0.5</origin>
+                <size>0.2995 0.04</size>
             </text>
             <text name="description">
-                <pos>0.61 0.365</pos>
+                <pos>0.61 0.372</pos>
                 <origin>0 0</origin>
                 <size>0.32 0.115</size>
             </text>

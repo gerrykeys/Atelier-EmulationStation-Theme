@@ -12,7 +12,7 @@ It comes with a few companions too: collections that sort your games by the year
 
 ## Highlights
 
-- **Five layouts:** Index, with or without videos, Typographic, Gallery and Grid, each drawn by hand for 21:9, 16:9, 16:10 and 4:3
+- **Five layouts:** Index, with or without videos and in a compact form, Typographic, Gallery and Grid, each drawn by hand for 21:9, 16:9, 16:10 and 4:3
 - **Eight color schemes:** Noir, Ivory, Midnight and OLED, each also in an *atmosphere* version that takes on the color of the console
 - **File name tags:** region, languages and revision, read straight from your ROM file names and shown as small tags, with nothing to scrape
 - **Year collections:** one collection per release year, the games grouped by platform, with covers that name their console like the spine of a box
@@ -41,6 +41,8 @@ Five ways to browse your games, all sharing the same calm grid. Pick one under *
 ![Index layout: the game list on the left, the media card with the game video in the middle, release facts and play statistics on the right](screenshots/index.gif)
 
 The classic: your game list beside a rounded media card lit by a soft glow, where the screenshot gently gives way to the game video, with the facts and your play statistics alongside. *Index, no videos* keeps the still image, if you prefer a quieter screen.
+
+Do you read the descriptions? *Index, compact* leaves out the large title, which the list beside it already shows, moves everything else up and gives the description the room: six lines instead of two on a 16:9 screen. It also comes without videos.
 
 ### Typographic
 
@@ -81,9 +83,9 @@ Each scheme also comes in an *atmosphere* version, for evenings when you want a 
 
 ## File name tags
 
-![The title of Super Metroid, with the tags JAPAN, USA, EN and JA beside its rating](screenshots/file-tags.png)
+![The title of Super Metroid, with the tags JAPAN, USA, EN and JA beneath its genre](screenshots/file-tags.png)
 
-ROM sets keep useful details in brackets in the file name: region, languages, revision, disc, dump flags. Atelier shows each of them as a small tag beside the rating, so `Super Metroid (Japan, USA) (En,Ja).sfc` reads JAPAN · USA · EN · JA. Parts in parentheses get rounded tags, parts in square brackets such as `[!]` square ones, and a file without any shows nothing. There is nothing to scrape or set up.
+ROM sets keep useful details in brackets in the file name: region, languages, revision, disc, dump flags. Atelier shows each of them as a small tag on a line of their own beneath the genre, so `Super Metroid (Japan, USA) (En,Ja).sfc` reads JAPAN · USA · EN · JA. Parts in parentheses get rounded tags, parts in square brackets such as `[!]` square ones, and a file without any shows nothing. There is nothing to scrape or set up.
 
 How does a theme pull that off? ES-DE only hands it the file name as a whole, so the tags are drawn by a font of their own. Every character in it is an empty glyph by default, and contextual substitutions, which ES-DE applies while laying out the text, make a bracket start a tag, keep the characters after it visible and split the tag at each comma.
 
@@ -214,6 +216,8 @@ Whatever you play on, from an ultrawide monitor to an old 4:3 television, Atelie
 
 Three font sizes, from the top: **medium**, **large**, for a television seen from the sofa, and **small**, for a monitor at arm's length. Pick one under *UI settings → Theme font size*.
 
+A fourth, **extra large**, is for small screens held in the hand, such as a 4" handheld. It enlarges what is smallest elsewhere: the clock, the system status, the header, the genre, the game count, the file tags and the help prompts, and a little the game list. The rest stays as in *large*, as the facts sit in narrow columns where larger text would be cut short. The help prompts then take the whole footer, so the system status moves up beside the clock.
+
 ## Languages
 
 ![The system view in Italian, Japanese, German and Spanish](screenshots/languages.png)
@@ -231,9 +235,9 @@ Everything below is in ES-DE's *UI settings* menu.
 | Setting | Choices |
 | :-- | :-- |
 | Theme | Atelier |
-| Theme variant | Index · Index, no videos · Typographic · Gallery · Grid |
+| Theme variant | Index · Index, no videos · Index, compact · Index, compact, no videos · Typographic · Gallery · Grid |
 | Theme color scheme | Noir · Ivory · Midnight · OLED, each also as *· atmosphere* |
-| Theme font size | Medium · Large · Small |
+| Theme font size | Medium · Large · Small · Extra large |
 | Theme aspect ratio | Automatic · 21:9 · 16:9 · 16:10 · 4:3 |
 | Theme transitions | Soft (default) · Slide · Instant |
 | Theme language | Automatic, or any of the 23 languages |
@@ -253,7 +257,7 @@ To uninstall, first run **Remove year collections.cmd** if you used the year col
 ## Tips
 
 - **Scrape screenshots and covers.** They bring the Index, Gallery and Grid layouts to life: videos fade in over the screenshot when you pause on a game, and fanart feeds the atmosphere schemes. Screenshots are preferred over miximages, as they sit more calmly in the frame.
-- **On a television,** choose the *large* font size.
+- **On a television,** choose the *large* font size; **on a small handheld,** *extra large*, with the compact Index for longer descriptions.
 - **For OLED screens,** the *OLED* scheme keeps the page truly black.
 - **Keep the file names of your ROM sets.** The tags come straight from them: `(USA, Europe)`, `(Rev 1)`, `(Disc 2)`.
 - **After scraping new games,** run *Update year collections.cmd* again, so they get their year and their platform band.

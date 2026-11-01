@@ -101,6 +101,14 @@ function elements(file, variantNames, vars) {
   return out;
 }
 
+// The variables an aspect ratio file defines for itself, such as where the clock goes,
+// with those of the font size over them
+function ownVariables(file, fontSizeName) {
+  const doc = parse(read(file)).children[0];
+  const sized = doc.children.find(c => c.tag === 'fontSize' && list(c.attrs.name).includes(fontSizeName));
+  return { ...variables(doc), ...variables(sized) };
+}
+
 const RATIOS = { '21:9': ['ar-21-9', '21-9'], '16:9': ['ar-16-9', '16-9'], '4:3': ['ar-4-3', '4-3'] };
 
 // The Index layout for the game list and the Grid layout, with its square covers, for
@@ -110,9 +118,10 @@ function layouts(fontSizeName) {
   const out = {};
   for (const [ratio, [file, grid]] of Object.entries(RATIOS)) {
     const at = `layout/${file}.xml`;
+    const own = { ...vars, ...ownVariables(at, fontSizeName) };
     out[ratio] = {
-      games: elements(at, ['all', 'index', 'indexStill'], vars),
-      achievements: { ...elements(at, ['all', 'grid'], vars), ...elements(`layout/grid/${grid}-square.xml`, [], vars) },
+      games: elements(at, ['all', 'index', 'indexStill'], own),
+      achievements: { ...elements(at, ['all', 'grid'], own), ...elements(`layout/grid/${grid}-square.xml`, [], vars) },
     };
   }
   return out;
