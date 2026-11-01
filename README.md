@@ -1,6 +1,20 @@
 # Atelier for ES-DE
 
-![Atelier's system view: line drawings of the controllers slide past while the system name and its history fade in beneath](screenshots/systems.gif)
+<p align="center">
+  <img src="screenshots/systems.gif" alt="Atelier's system view: line drawings of the controllers slide past while the system name and its history fade in beneath" />
+</p>
+
+<p align="center">
+  <br/>
+  <strong>❤️ Support this project</strong>
+  <br/><br/>
+  If you enjoy this project, consider supporting its development with a donation.
+  <br/><br/>
+  <a href="https://paypal.me/TuoUsername">
+    <img src="https://img.shields.io/badge/Donate%20with-PayPal-0070BA?style=for-the-badge&logo=paypal&logoColor=white" height="50" />
+  </a>
+  <br/><br/>
+</p>
 
 **A quiet, modern theme for [ES-DE](https://es-de.org).** Atelier treats your game library the way a good book treats its pages: generous margins, careful type, and nothing on screen that doesn't need to be there. Systems are introduced by fine line drawings of their controllers, game lists read like the index of a book, and a single warm accent marks whatever deserves your attention. Everything is set in Google Sans Flex, with tracked capitals for the small labels.
 
@@ -264,3 +278,15 @@ To uninstall, first run **Remove year collections.cmd** if you used the year col
 The typefaces, controller drawings and system texts are credited in [CREDITS.md](CREDITS.md). Atelier is released under the [MIT license](LICENSE).
 
 The screenshots show box art and game screenshots from the [libretro thumbnail collection](https://github.com/libretro-thumbnails/libretro-thumbnails), and videos and fanart scraped from [ScreenScraper](https://www.screenscraper.fr). The RetroAchievements screenshots show achievement data and badges from [RetroAchievements](https://retroachievements.org). The games and their artwork belong to their respective owners.
+
+<p align="center">
+  <br/>
+  <strong>❤️ Support this project</strong>
+  <br/><br/>
+  If you enjoy this project, consider supporting its development with a donation.
+  <br/><br/>
+  <a href="https://paypal.me/TuoUsername">
+    <img src="https://img.shields.io/badge/Donate%20with-PayPal-0070BA?style=for-the-badge&logo=paypal&logoColor=white" height="50" />
+  </a>
+  <br/><br/>
+</p>
