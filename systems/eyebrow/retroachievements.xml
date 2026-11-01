@@ -1,0 +1,6 @@
+<theme>
+    <variables>
+        <atelierEyebrow>${systemHardwareType}</atelierEyebrow>
+        <gameCountVisible>false</gameCountVisible>
+    </variables>
+</theme>

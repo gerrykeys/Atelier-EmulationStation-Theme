@@ -1,0 +1,13 @@
+<theme>
+    <variables>
+        <atelierEyebrow>${systemHardwareType}</atelierEyebrow>
+        <regularHeaderVisible>false</regularHeaderVisible>
+        <collectionHeaderVisible>true</collectionHeaderVisible>
+        <tileFont>${fontDisplay}</tileFont>
+        <gridTextSize>${collectionGridTextSize}</gridTextSize>
+        <coverTextSize>${collectionGridTextSize}</coverTextSize>
+        <videoAudio>false</videoAudio>
+        <tileImageType>miximage, cover</tileImageType>
+        <gridBand>collections</gridBand>
+    </variables>
+</theme>

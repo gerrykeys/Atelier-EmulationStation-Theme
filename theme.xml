@@ -1,0 +1,162 @@
+<!--
+    Atelier for ES-DE (atelier-es-de)
+    License: MIT (theme configuration and original artwork), see LICENSE and CREDITS.md
+
+    Parsing order matters here: the metadata files must be included before the
+    eyebrow files, which compose their caption from the (possibly localized) metadata
+    variables at definition time.
+-->
+
+<theme>
+    <include>./layout/defaults.xml</include>
+    <include>./systems/metadata/_default.xml</include>
+    <include>./systems/metadata/${system.theme}.xml</include>
+    <include>./systems/eyebrow/${system.theme}.xml</include>
+    <include>./layout/colors.xml</include>
+    <include>./layout/languages.xml</include>
+    <!-- Whether the achievement progress images are shown, see achievements/progress.js -->
+    <include>./achievements/progress.xml</include>
+
+    <!-- Paths are relative to the layout files, which is where every element is defined -->
+    <variables>
+        <fontDisplay>./../core/fonts/GoogleSansFlex-DisplayLight.ttf</fontDisplay>
+        <fontDisplayRegular>./../core/fonts/GoogleSansFlex-DisplayRegular.ttf</fontDisplayRegular>
+        <fontText>./../core/fonts/GoogleSansFlex-Regular.ttf</fontText>
+        <fontCaps>./../core/fonts/AtelierCaps-Medium.ttf</fontCaps>
+        <fontCapsLight>./../core/fonts/AtelierCaps-Regular.ttf</fontCapsLight>
+        <!-- Shows only the bracketed parts of a file name, as tags: see tools/build-tag-font.js -->
+        <fontTags>./../core/fonts/AtelierTags.otf</fontTags>
+        <!-- Titles on Grid and Gallery tiles; the Collections system uses the light display face, larger -->
+        <tileFont>${fontDisplayRegular}</tileFont>
+
+        <pixel>./../core/images/pixel.png</pixel>
+        <artPath>./../systems/controllers/${system.theme}.svg</artPath>
+        <artFallback>./../systems/controllers/custom-collections.svg</artFallback>
+        <!-- The system carousel's drawing: systems that share theirs with others get a
+             copy naming the model, set by systems/eyebrow (see tools/build-model-tags.js) -->
+        <systemArt>${artPath}</systemArt>
+        <!-- Swapped by systems/eyebrow/custom-collections.xml, see layout/collections.xml -->
+        <regularHeaderVisible>true</regularHeaderVisible>
+        <collectionHeaderVisible>false</collectionHeaderVisible>
+        <!-- Off for RetroAchievements, whose only entry opens the achievements app -->
+        <gameCountVisible>true</gameCountVisible>
+        <!-- Off in the Collections system, where the year list would play a random game -->
+        <videoAudio>true</videoAudio>
+        <!-- Grid and Gallery tiles. The Collections system shows the covers with a platform
+             banner first, which scripts/platform-banners.js stores as miximages -->
+        <tileImageType>cover</tileImageType>
+        <!-- Behind every grid tile: nothing, or in the Collections system the band in the
+             surface color that the platform name of those covers stands on -->
+        <gridBand>none</gridBand>
+    </variables>
+
+    <!-- Font sizes are em heights relative to the screen height -->
+    <fontSize name="medium">
+        <variables>
+            <capsSize>0.019</capsSize>
+            <helpSize>0.026</helpSize>
+            <sysTitleSize>0.085</sysTitleSize>
+            <sysTitleSizeNarrow>0.075</sysTitleSizeNarrow>
+            <sysDescSize>0.025</sysDescSize>
+            <listSize>0.027</listSize>
+            <listSpacing>1.9</listSpacing>
+            <selectorH>0.0176</selectorH>
+            <selectorY>0.0115</selectorY>
+            <gameTitleSize>0.058</gameTitleSize>
+            <typoTitleSize>0.085</typoTitleSize>
+            <labelSize>0.0158</labelSize>
+            <valueSize>0.0245</valueSize>
+            <descSize>0.024</descSize>
+            <galleryTitleSize>0.058</galleryTitleSize>
+            <coverTextSize>0.028</coverTextSize>
+            <gridTextSize>0.016</gridTextSize>
+            <collectionGridTextSize>0.05</collectionGridTextSize>
+            <collectionTitleSize>0.034</collectionTitleSize>
+        </variables>
+    </fontSize>
+    <fontSize name="large">
+        <variables>
+            <capsSize>0.022</capsSize>
+            <helpSize>0.03</helpSize>
+            <sysTitleSize>0.097</sysTitleSize>
+            <sysTitleSizeNarrow>0.086</sysTitleSizeNarrow>
+            <sysDescSize>0.029</sysDescSize>
+            <listSize>0.032</listSize>
+            <listSpacing>1.75</listSpacing>
+            <selectorH>0.0208</selectorH>
+            <selectorY>0.0136</selectorY>
+            <gameTitleSize>0.066</gameTitleSize>
+            <typoTitleSize>0.097</typoTitleSize>
+            <labelSize>0.018</labelSize>
+            <valueSize>0.028</valueSize>
+            <descSize>0.028</descSize>
+            <galleryTitleSize>0.066</galleryTitleSize>
+            <coverTextSize>0.032</coverTextSize>
+            <gridTextSize>0.019</gridTextSize>
+            <collectionGridTextSize>0.058</collectionGridTextSize>
+            <collectionTitleSize>0.04</collectionTitleSize>
+        </variables>
+    </fontSize>
+    <fontSize name="small">
+        <variables>
+            <capsSize>0.0165</capsSize>
+            <helpSize>0.023</helpSize>
+            <sysTitleSize>0.075</sysTitleSize>
+            <sysTitleSizeNarrow>0.066</sysTitleSizeNarrow>
+            <sysDescSize>0.0225</sysDescSize>
+            <listSize>0.0235</listSize>
+            <listSpacing>2</listSpacing>
+            <selectorH>0.0153</selectorH>
+            <selectorY>0.01</selectorY>
+            <gameTitleSize>0.052</gameTitleSize>
+            <typoTitleSize>0.075</typoTitleSize>
+            <labelSize>0.0145</labelSize>
+            <valueSize>0.022</valueSize>
+            <descSize>0.0215</descSize>
+            <galleryTitleSize>0.052</galleryTitleSize>
+            <coverTextSize>0.025</coverTextSize>
+            <gridTextSize>0.014</gridTextSize>
+            <collectionGridTextSize>0.044</collectionGridTextSize>
+            <collectionTitleSize>0.03</collectionTitleSize>
+        </variables>
+    </fontSize>
+
+    <variant name="all">
+        <include>./layout/common.xml</include>
+        <include>./layout/system.xml</include>
+        <include>./layout/sounds.xml</include>
+        <include>./layout/collections.xml</include>
+    </variant>
+    <variant name="index, indexStill, typographic">
+        <include>./layout/gamelist-list.xml</include>
+        <include>./layout/gamelist-details.xml</include>
+    </variant>
+    <variant name="index">
+        <include>./layout/gamelist-media-video.xml</include>
+    </variant>
+    <variant name="indexStill">
+        <include>./layout/gamelist-media-still.xml</include>
+    </variant>
+    <variant name="typographic">
+        <include>./layout/gamelist-typographic.xml</include>
+    </variant>
+    <variant name="gallery">
+        <include>./layout/gamelist-gallery.xml</include>
+    </variant>
+    <variant name="grid">
+        <include>./layout/gamelist-details.xml</include>
+        <include>./layout/gamelist-media-video.xml</include>
+        <include>./layout/gamelist-grid.xml</include>
+    </variant>
+
+    <!-- All positions and sizes live in the aspect ratio files -->
+    <aspectRatio name="21:9">
+        <include>./layout/ar-21-9.xml</include>
+    </aspectRatio>
+    <aspectRatio name="16:9, 16:10">
+        <include>./layout/ar-16-9.xml</include>
+    </aspectRatio>
+    <aspectRatio name="4:3">
+        <include>./layout/ar-4-3.xml</include>
+    </aspectRatio>
+</theme>

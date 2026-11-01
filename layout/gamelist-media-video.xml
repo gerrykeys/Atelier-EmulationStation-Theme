@@ -1,0 +1,36 @@
+<!--
+    Index variant: game video, preceded by a still image.
+
+    The media fills the rounded card edge to edge (cropSize), so screenshots and videos
+    of any shape share the same footprint. Covers are left out as cropping them to the
+    card would cut them badly; games with only a cover show the placeholder drawing.
+    Miximages are left out too, as they hold the covers with a platform banner that the
+    year collection scripts make for the Collections system.
+
+    When ES-DE starts a video it stops drawing the still image and fades the video in
+    from transparency. The videoStill element keeps the screenshot underneath so that
+    moment becomes a crossfade instead of a brief gap.
+-->
+
+<theme>
+    <view name="gamelist">
+        <image name="videoStill">
+            <origin>0.5 0.5</origin>
+            <imageType>screenshot, titlescreen</imageType>
+            <scrollFadeIn>true</scrollFadeIn>
+            <interpolation>nearest</interpolation>
+            <zIndex>29</zIndex>
+        </image>
+        <video name="gameVideo">
+            <origin>0.5 0.5</origin>
+            <imageType>screenshot, titlescreen</imageType>
+            <delay>1.6</delay>
+            <fadeInType>transparent</fadeInType>
+            <fadeInTime>1.1</fadeInTime>
+            <scrollFadeIn>true</scrollFadeIn>
+            <interpolation>nearest</interpolation>
+            <audio>${videoAudio}</audio>
+            <zIndex>30</zIndex>
+        </video>
+    </view>
+</theme>

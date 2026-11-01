@@ -1,0 +1,106 @@
+<!--
+    System view: a carousel of line drawings with the selected system large in the
+    middle and its neighbours smaller and dimmed on either side, the name and caption
+    set centered beneath it.
+
+    The carousel spans the whole screen and paints the page background itself, so
+    with fade transitions only the text fades while the drawings keep sliding and the
+    page never dips to black.
+-->
+
+<theme>
+    <view name="system">
+        <image name="background">
+            <visible>false</visible>
+        </image>
+
+        <carousel name="systemCarousel">
+            <type>horizontal</type>
+            <pos>0 0</pos>
+            <size>1 1</size>
+            <origin>0 0</origin>
+            <staticImage>${systemArt}</staticImage>
+            <defaultImage>${artFallback}</defaultImage>
+            <itemVerticalAlignment>center</itemVerticalAlignment>
+            <imageFit>contain</imageFit>
+            <imageInterpolation>linear</imageInterpolation>
+            <imageColor>${artColor}</imageColor>
+            <unfocusedItemOpacity>0.28</unfocusedItemOpacity>
+            <fastScrolling>true</fastScrolling>
+            <color>${bgColor}</color>
+            <fontPath>${fontDisplay}</fontPath>
+            <textColor>${titleColor}</textColor>
+            <letterCaseAutoCollections>capitalize</letterCaseAutoCollections>
+            <fadeAbovePrimary>true</fadeAbovePrimary>
+            <zIndex>20</zIndex>
+        </carousel>
+
+        <!-- Atmosphere color schemes: a soft light of the system color around the
+             selected drawing. It sits above the carousel, which paints the background,
+             so it fades with the text when moving between systems. -->
+        <image name="roomLight">
+            <path>./../core/images/ambient-room.png</path>
+            <origin>0.5 0.5</origin>
+            <color>${roomLightColor}</color>
+            <interpolation>linear</interpolation>
+            <visible>${roomLightVisible}</visible>
+            <zIndex>21</zIndex>
+        </image>
+
+        <text name="systemTitle, autoCollectionTitle, customCollectionTitle">
+            <fontPath>${fontDisplay}</fontPath>
+            <fontSize>${sysTitleSize}</fontSize>
+            <color>${titleColor}</color>
+            <horizontalAlignment>center</horizontalAlignment>
+            <verticalAlignment>bottom</verticalAlignment>
+            <lineSpacing>1.12</lineSpacing>
+            <zIndex>40</zIndex>
+        </text>
+        <text name="systemTitle">
+            <text>${system.fullName.noCollections}</text>
+        </text>
+        <text name="autoCollectionTitle">
+            <text>${system.fullName.autoCollections}</text>
+            <letterCase>capitalize</letterCase>
+        </text>
+        <text name="customCollectionTitle">
+            <text>${system.fullName.customCollections}</text>
+        </text>
+
+        <text name="caption">
+            <text>${atelierEyebrow}</text>
+            <fontPath>${fontCaps}</fontPath>
+            <fontSize>${capsSize}</fontSize>
+            <color>${accentColor}</color>
+            <letterCase>uppercase</letterCase>
+            <horizontalAlignment>center</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <zIndex>40</zIndex>
+        </text>
+        <text name="description">
+            <text>${systemDescription}</text>
+            <container>true</container>
+            <containerType>vertical</containerType>
+            <containerStartDelay>6</containerStartDelay>
+            <containerScrollSpeed>0.7</containerScrollSpeed>
+            <containerResetDelay>8</containerResetDelay>
+            <fontPath>${fontText}</fontPath>
+            <fontSize>${sysDescSize}</fontSize>
+            <color>${textColor}</color>
+            <lineSpacing>1.55</lineSpacing>
+            <horizontalAlignment>center</horizontalAlignment>
+            <zIndex>40</zIndex>
+        </text>
+        <text name="gameCount">
+            <systemdata>gamecountGames</systemdata>
+            <visible>${gameCountVisible}</visible>
+            <fontPath>${fontCapsLight}</fontPath>
+            <fontSize>${capsSize}</fontSize>
+            <color>${mutedColor}</color>
+            <letterCase>uppercase</letterCase>
+            <horizontalAlignment>center</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <zIndex>40</zIndex>
+        </text>
+    </view>
+</theme>

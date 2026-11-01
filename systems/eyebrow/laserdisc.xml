@@ -1,0 +1,6 @@
+<theme>
+    <variables>
+        <atelierEyebrow>${systemHardwareType}</atelierEyebrow>
+        <systemArt>./../systems/controllers-tagged/laserdisc.svg</systemArt>
+    </variables>
+</theme>

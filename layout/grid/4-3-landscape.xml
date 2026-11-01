@@ -1,0 +1,12 @@
+<!-- Grid geometry: 4-3, landscape covers, 2 columns by 3 rows -->
+
+<theme>
+    <view name="gamelist">
+        <grid name="gamelistGrid">
+            <pos>0.039 0.154</pos>
+            <origin>0 0</origin>
+            <size>0.383 0.575</size>
+            <itemSize>0.191 0.191</itemSize>
+        </grid>
+    </view>
+</theme>

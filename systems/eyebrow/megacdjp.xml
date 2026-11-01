@@ -1,0 +1,6 @@
+<theme>
+    <variables>
+        <atelierEyebrow>${systemManufacturer}  ·  ${systemReleaseYear}  ·  ${systemHardwareType}</atelierEyebrow>
+        <systemArt>./../systems/controllers-tagged/megacdjp.svg</systemArt>
+    </variables>
+</theme>

@@ -1,0 +1,629 @@
+<!--
+    Layout for 21:9 displays (for example 2560x1080, 3440x1440).
+
+    Grid: outer margin 0.07, header at 0.085, content from 0.175 to 0.845, footer at 0.93.
+    Index columns: list 0.07-0.305, media 0.345-0.6, details 0.645-0.93.
+    Grid variant: covers 0.07-0.565, then title, description and the media card
+    (0.51-0.82) with the facts beside it in the 0.61-0.93 column.
+-->
+
+<theme>
+    <variant name="all">
+        <view name="system, gamelist">
+            <helpsystem name="help">
+                <pos>0.07 0.93</pos>
+            </helpsystem>
+            <systemstatus name="systemStatus">
+                <pos>0.93 0.93</pos>
+            </systemstatus>
+            <clock name="clock">
+                <pos>0.93 0.085</pos>
+            </clock>
+        </view>
+
+        <view name="system">
+            <carousel name="systemCarousel">
+                <itemSize>0.17 0.24</itemSize>
+                <itemScale>1.75</itemScale>
+                <maxItemCount>3.7</maxItemCount>
+                <selectedItemMargins>0.05 0.05</selectedItemMargins>
+                <verticalOffset>-0.17</verticalOffset>
+            </carousel>
+            <image name="roomLight">
+                <pos>0.5 0.33</pos>
+                <size>0.62 0.95</size>
+            </image>
+            <text name="systemTitle, autoCollectionTitle, customCollectionTitle">
+                <pos>0.5 0.65</pos>
+                <origin>0.5 1</origin>
+                <size>0.8 0.2</size>
+            </text>
+            <text name="caption">
+                <pos>0.5 0.69</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.8 0.04</size>
+            </text>
+            <text name="description">
+                <pos>0.5 0.727</pos>
+                <origin>0.5 0</origin>
+                <size>0.44 0.095</size>
+            </text>
+            <text name="gameCount">
+                <pos>0.5 0.856</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.4 0.04</size>
+            </text>
+        </view>
+        <!-- Custom collection header, see collections.xml -->
+        <view name="gamelist">
+            <text name="collectionTitle">
+                <pos>0.118 0.085</pos>
+                <origin>0 0.5</origin>
+                <size>0.6 0.06</size>
+            </text>
+            <text name="collectionPlatform">
+                <pos>0.118 0.128</pos>
+                <origin>0 0.5</origin>
+                <size>0.6 0.03</size>
+            </text>
+            <text name="collectionNumeral">
+                <pos>0.93 0.86</pos>
+                <origin>1 1</origin>
+                <size>0.6 0.55</size>
+                <fontSize>0.43</fontSize>
+            </text>
+        </view>
+    </variant>
+
+    <variant name="index, indexStill, typographic">
+        <view name="gamelist">
+            <text name="header">
+                <pos>0.118 0.085</pos>
+                <origin>0 0.5</origin>
+                <size>0.55 0.04</size>
+            </text>
+            <image name="headerArt">
+                <pos>0.112 0.085</pos>
+                <origin>1 0.5</origin>
+                <maxSize>0.042 0.04</maxSize>
+            </image>
+            <textlist name="gamelistTextlist">
+                <pos>0.07 0.175</pos>
+                <origin>0 0</origin>
+                <size>0.235 0.65</size>
+                <horizontalMargin>0.0085</horizontalMargin>
+                <selectorWidth>0.0009</selectorWidth>
+                <selectorHeight>${selectorH}</selectorHeight>
+                <selectorVerticalOffset>${selectorY}</selectorVerticalOffset>
+            </textlist>
+            <image name="listFade">
+                <pos>0.297 0.175</pos>
+                <origin>1 0</origin>
+                <size>0.028 0.65</size>
+            </image>
+            <gamelistinfo name="gamelistInfo">
+                <pos>0.0785 0.865</pos>
+                <origin>0 0.5</origin>
+                <size>0.22 0.04</size>
+            </gamelistinfo>
+        </view>
+    </variant>
+
+    <variant name="index, indexStill">
+        <view name="gamelist">
+            <image name="mediaAmbient">
+                <pos>0.4725 0.4035</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.3391 0.658</size>
+            </image>
+            <image name="mediaMatte">
+                <pos>0.345 0.175</pos>
+                <origin>0 0</origin>
+                <size>0.255 0.457</size>
+                <cornerRadius>0.0035</cornerRadius>
+            </image>
+            <image name="mediaPlaceholder">
+                <pos>0.4725 0.4035</pos>
+                <origin>0.5 0.5</origin>
+                <maxSize>0.12 0.17</maxSize>
+            </image>
+            <text name="description">
+                <pos>0.345 0.672</pos>
+                <origin>0 0</origin>
+                <size>0.255 0.173</size>
+            </text>
+
+            <text name="gameTitle">
+                <pos>0.645 0.395</pos>
+                <origin>0 1</origin>
+                <size>0.285 0.3</size>
+            </text>
+            <image name="captionRule">
+                <pos>0.6455 0.43</pos>
+                <origin>0 0.5</origin>
+                <size>0.014 0.0016</size>
+            </image>
+            <text name="genre">
+                <pos>0.6655 0.43</pos>
+                <origin>0 0.5</origin>
+                <size>0.19 0.04</size>
+            </text>
+            <rating name="rating">
+                <pos>0.93 0.43</pos>
+                <origin>1 0.5</origin>
+                <size>0 0.021</size>
+            </rating>
+            <text name="fileTags">
+                <pos>0.876 0.43</pos>
+                <origin>1 0.5</origin>
+                <size>0.2 0.04</size>
+            </text>
+
+            <text name="labelReleased">
+                <pos>0.645 0.49</pos>
+                <origin>0 0.5</origin>
+                <size>0.13 0.03</size>
+            </text>
+            <datetime name="releaseDate">
+                <pos>0.645 0.523</pos>
+                <origin>0 0.5</origin>
+                <size>0.13 0.04</size>
+            </datetime>
+            <text name="labelPlayers">
+                <pos>0.7875 0.49</pos>
+                <origin>0 0.5</origin>
+                <size>0.13 0.03</size>
+            </text>
+            <text name="players">
+                <pos>0.7875 0.523</pos>
+                <origin>0 0.5</origin>
+                <size>0.13 0.04</size>
+            </text>
+            <text name="labelDeveloper">
+                <pos>0.645 0.58</pos>
+                <origin>0 0.5</origin>
+                <size>0.13 0.03</size>
+            </text>
+            <text name="developer">
+                <pos>0.645 0.613</pos>
+                <origin>0 0.5</origin>
+                <size>0.13 0.04</size>
+            </text>
+            <text name="labelPublisher">
+                <pos>0.7875 0.58</pos>
+                <origin>0 0.5</origin>
+                <size>0.13 0.03</size>
+            </text>
+            <text name="publisher">
+                <pos>0.7875 0.613</pos>
+                <origin>0 0.5</origin>
+                <size>0.13 0.04</size>
+            </text>
+
+            <image name="statsRule">
+                <pos>0.645 0.675</pos>
+                <origin>0 0.5</origin>
+                <size>0.285 0.0012</size>
+            </image>
+            <text name="labelLastPlayed">
+                <pos>0.645 0.725</pos>
+                <origin>0 0.5</origin>
+                <size>0.09 0.03</size>
+            </text>
+            <datetime name="lastPlayed">
+                <pos>0.645 0.758</pos>
+                <origin>0 0.5</origin>
+                <size>0.09 0.04</size>
+            </datetime>
+            <text name="labelPlayCount">
+                <pos>0.74 0.725</pos>
+                <origin>0 0.5</origin>
+                <size>0.09 0.03</size>
+            </text>
+            <text name="playCount">
+                <pos>0.74 0.758</pos>
+                <origin>0 0.5</origin>
+                <size>0.09 0.04</size>
+            </text>
+            <text name="labelPlayTime">
+                <pos>0.835 0.725</pos>
+                <origin>0 0.5</origin>
+                <size>0.095 0.03</size>
+            </text>
+            <text name="playTime">
+                <pos>0.835 0.758</pos>
+                <origin>0 0.5</origin>
+                <size>0.095 0.04</size>
+            </text>
+
+            <badges name="badges">
+                <pos>0.645 0.83</pos>
+                <origin>0 0.5</origin>
+                <size>0.285 0.034</size>
+                <itemMargin>0.0055 -1</itemMargin>
+            </badges>
+            <!-- Achievement progress, above the stats rule, at its right end -->
+            <image name="raProgress">
+                <pos>0.93 0.656</pos>
+                <origin>1 0.5</origin>
+                <maxSize>0.2 0.022</maxSize>
+            </image>
+        </view>
+    </variant>
+
+    <variant name="index">
+        <view name="gamelist">
+            <image name="videoStill">
+                <pos>0.4725 0.4035</pos>
+                <cropSize>0.2535 0.4545</cropSize>
+                <cornerRadius>0.0035</cornerRadius>
+            </image>
+            <video name="gameVideo">
+                <pos>0.4725 0.4035</pos>
+                <cropSize>0.255 0.457</cropSize>
+                <videoCornerRadius>0.0035</videoCornerRadius>
+                <imageCornerRadius>0.0035</imageCornerRadius>
+            </video>
+        </view>
+    </variant>
+
+    <variant name="indexStill">
+        <view name="gamelist">
+            <image name="gameImage">
+                <pos>0.4725 0.4035</pos>
+                <cropSize>0.255 0.457</cropSize>
+                <cornerRadius>0.0035</cornerRadius>
+            </image>
+        </view>
+    </variant>
+
+    <variant name="typographic">
+        <view name="gamelist">
+            <text name="gameTitle">
+                <pos>0.385 0.43</pos>
+                <origin>0 1</origin>
+                <size>0.53 0.27</size>
+            </text>
+            <image name="captionRule">
+                <pos>0.3855 0.472</pos>
+                <origin>0 0.5</origin>
+                <size>0.014 0.0016</size>
+            </image>
+            <text name="genre">
+                <pos>0.4055 0.472</pos>
+                <origin>0 0.5</origin>
+                <size>0.3 0.04</size>
+            </text>
+            <rating name="rating">
+                <pos>0.93 0.472</pos>
+                <origin>1 0.5</origin>
+                <size>0 0.021</size>
+            </rating>
+            <text name="fileTags">
+                <pos>0.876 0.472</pos>
+                <origin>1 0.5</origin>
+                <size>0.3 0.04</size>
+            </text>
+
+            <text name="labelReleased">
+                <pos>0.385 0.535</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.03</size>
+            </text>
+            <datetime name="releaseDate">
+                <pos>0.385 0.568</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.04</size>
+            </datetime>
+            <text name="labelDeveloper">
+                <pos>0.5225 0.535</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.03</size>
+            </text>
+            <text name="developer">
+                <pos>0.5225 0.568</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.04</size>
+            </text>
+            <text name="labelPublisher">
+                <pos>0.66 0.535</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.03</size>
+            </text>
+            <text name="publisher">
+                <pos>0.66 0.568</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.04</size>
+            </text>
+            <text name="labelPlayers">
+                <pos>0.7975 0.535</pos>
+                <origin>0 0.5</origin>
+                <size>0.1325 0.03</size>
+            </text>
+            <text name="players">
+                <pos>0.7975 0.568</pos>
+                <origin>0 0.5</origin>
+                <size>0.1325 0.04</size>
+            </text>
+
+            <image name="statsRule">
+                <pos>0.385 0.625</pos>
+                <origin>0 0.5</origin>
+                <size>0.545 0.0012</size>
+            </image>
+            <text name="labelLastPlayed">
+                <pos>0.385 0.675</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.03</size>
+            </text>
+            <datetime name="lastPlayed">
+                <pos>0.385 0.708</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.04</size>
+            </datetime>
+            <text name="labelPlayCount">
+                <pos>0.5225 0.675</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.03</size>
+            </text>
+            <text name="playCount">
+                <pos>0.5225 0.708</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.04</size>
+            </text>
+            <text name="labelPlayTime">
+                <pos>0.66 0.675</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.03</size>
+            </text>
+            <text name="playTime">
+                <pos>0.66 0.708</pos>
+                <origin>0 0.5</origin>
+                <size>0.125 0.04</size>
+            </text>
+            <badges name="badges">
+                <pos>0.93 0.6745</pos>
+                <origin>1 0</origin>
+                <size>0.13 0.068</size>
+                <horizontalAlignment>right</horizontalAlignment>
+                <lines>2</lines>
+                <itemsPerLine>5</itemsPerLine>
+                <itemMargin>0.0055 -1</itemMargin>
+            </badges>
+            <!-- Achievement progress, above the stats rule, at its right end -->
+            <image name="raProgress">
+                <pos>0.93 0.606</pos>
+                <origin>1 0.5</origin>
+                <maxSize>0.2 0.022</maxSize>
+            </image>
+
+            <text name="description">
+                <pos>0.385 0.755</pos>
+                <origin>0 0</origin>
+                <size>0.42 0.09</size>
+            </text>
+        </view>
+    </variant>
+
+    <variant name="gallery">
+        <include>./gallery/21-9-${systemCoverSizeType}.xml</include>
+        <view name="gamelist">
+            <text name="header">
+                <pos>0.118 0.085</pos>
+                <origin>0 0.5</origin>
+                <size>0.55 0.04</size>
+            </text>
+            <image name="headerArt">
+                <pos>0.112 0.085</pos>
+                <origin>1 0.5</origin>
+                <maxSize>0.042 0.04</maxSize>
+            </image>
+            <gamelistinfo name="gamelistInfo">
+                <pos>0.93 0.86</pos>
+                <origin>1 0.5</origin>
+                <size>0.2 0.04</size>
+            </gamelistinfo>
+            <carousel name="gamelistCarousel">
+                <pos>0 0.15</pos>
+                <size>1 0.5</size>
+                <origin>0 0</origin>
+            </carousel>
+            <text name="genre">
+                <pos>0.5 0.672</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.5 0.04</size>
+            </text>
+            <text name="fileTags">
+                <pos>0.5 0.627</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.5 0.04</size>
+            </text>
+            <text name="gameTitle">
+                <pos>0.5 0.735</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.7 0.1</size>
+            </text>
+            <text name="labelReleased">
+                <pos>0.4 0.805</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.1 0.03</size>
+            </text>
+            <datetime name="releaseDate">
+                <pos>0.4 0.838</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.1 0.04</size>
+            </datetime>
+            <text name="labelDeveloper">
+                <pos>0.5 0.805</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.1 0.03</size>
+            </text>
+            <text name="developer">
+                <pos>0.5 0.838</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.1 0.04</size>
+            </text>
+            <text name="labelPlayers">
+                <pos>0.6 0.805</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.1 0.03</size>
+            </text>
+            <text name="players">
+                <pos>0.6 0.838</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.1 0.04</size>
+            </text>
+            <badges name="badges">
+                <pos>0.07 0.86</pos>
+                <origin>0 0.5</origin>
+                <size>0.2 0.032</size>
+                <horizontalAlignment>left</horizontalAlignment>
+                <itemMargin>0.0055 -1</itemMargin>
+            </badges>
+            <!-- Achievement progress, centered beneath the facts -->
+            <image name="raProgress">
+                <pos>0.5 0.872</pos>
+                <origin>0.5 0.5</origin>
+                <maxSize>0.2 0.022</maxSize>
+            </image>
+        </view>
+    </variant>
+
+    <variant name="grid">
+        <include>./grid/21-9-${systemCoverSizeType}.xml</include>
+        <view name="gamelist">
+            <text name="header">
+                <pos>0.118 0.085</pos>
+                <origin>0 0.5</origin>
+                <size>0.55 0.04</size>
+            </text>
+            <image name="headerArt">
+                <pos>0.112 0.085</pos>
+                <origin>1 0.5</origin>
+                <maxSize>0.042 0.04</maxSize>
+            </image>
+            <gamelistinfo name="gamelistInfo">
+                <pos>0.07 0.865</pos>
+                <origin>0 0.5</origin>
+                <size>0.25 0.04</size>
+            </gamelistinfo>
+            <grid name="gamelistGrid">
+                <imageCornerRadius>0.0025</imageCornerRadius>
+                <backgroundCornerRadius>0.0025</backgroundCornerRadius>
+                <textBackgroundCornerRadius>0.0025</textBackgroundCornerRadius>
+            </grid>
+
+            <text name="gameTitle">
+                <pos>0.61 0.295</pos>
+                <origin>0 1</origin>
+                <size>0.32 0.15</size>
+            </text>
+            <image name="captionRule">
+                <pos>0.6105 0.33</pos>
+                <origin>0 0.5</origin>
+                <size>0.014 0.0016</size>
+            </image>
+            <text name="genre">
+                <pos>0.6305 0.33</pos>
+                <origin>0 0.5</origin>
+                <size>0.224 0.04</size>
+            </text>
+            <rating name="rating">
+                <pos>0.93 0.33</pos>
+                <origin>1 0.5</origin>
+                <size>0 0.021</size>
+            </rating>
+            <text name="fileTags">
+                <pos>0.876 0.33</pos>
+                <origin>1 0.5</origin>
+                <size>0.22 0.04</size>
+            </text>
+            <text name="description">
+                <pos>0.61 0.365</pos>
+                <origin>0 0</origin>
+                <size>0.32 0.115</size>
+            </text>
+
+            <image name="mediaAmbient">
+                <pos>0.6965 0.665</pos>
+                <origin>0.5 0.5</origin>
+                <size>0.2301 0.4463</size>
+            </image>
+            <image name="mediaMatte">
+                <pos>0.61 0.51</pos>
+                <origin>0 0</origin>
+                <size>0.173 0.31</size>
+                <cornerRadius>0.0035</cornerRadius>
+            </image>
+            <image name="mediaPlaceholder">
+                <pos>0.6965 0.665</pos>
+                <origin>0.5 0.5</origin>
+                <maxSize>0.0831 0.1209</maxSize>
+            </image>
+            <image name="videoStill">
+                <pos>0.6965 0.665</pos>
+                <cropSize>0.1715 0.3075</cropSize>
+                <cornerRadius>0.0035</cornerRadius>
+            </image>
+            <video name="gameVideo">
+                <pos>0.6965 0.665</pos>
+                <cropSize>0.173 0.31</cropSize>
+                <videoCornerRadius>0.0035</videoCornerRadius>
+                <imageCornerRadius>0.0035</imageCornerRadius>
+            </video>
+
+            <text name="labelReleased">
+                <pos>0.807 0.522</pos>
+                <origin>0 0.5</origin>
+                <size>0.123 0.03</size>
+            </text>
+            <datetime name="releaseDate">
+                <pos>0.807 0.555</pos>
+                <origin>0 0.5</origin>
+                <size>0.123 0.04</size>
+            </datetime>
+            <text name="labelDeveloper">
+                <pos>0.807 0.6063</pos>
+                <origin>0 0.5</origin>
+                <size>0.123 0.03</size>
+            </text>
+            <text name="developer">
+                <pos>0.807 0.6393</pos>
+                <origin>0 0.5</origin>
+                <size>0.123 0.04</size>
+            </text>
+            <text name="labelPublisher">
+                <pos>0.807 0.6907</pos>
+                <origin>0 0.5</origin>
+                <size>0.123 0.03</size>
+            </text>
+            <text name="publisher">
+                <pos>0.807 0.7237</pos>
+                <origin>0 0.5</origin>
+                <size>0.123 0.04</size>
+            </text>
+            <text name="labelPlayers">
+                <pos>0.807 0.775</pos>
+                <origin>0 0.5</origin>
+                <size>0.123 0.03</size>
+            </text>
+            <text name="players">
+                <pos>0.807 0.808</pos>
+                <origin>0 0.5</origin>
+                <size>0.123 0.04</size>
+            </text>
+            <badges name="badges">
+                <pos>0.61 0.865</pos>
+                <origin>0 0.5</origin>
+                <size>0.32 0.034</size>
+                <itemMargin>0.0055 -1</itemMargin>
+            </badges>
+            <!-- Achievement progress, at the right end of the badges row -->
+            <image name="raProgress">
+                <pos>0.93 0.865</pos>
+                <origin>1 0.5</origin>
+                <maxSize>0.2 0.022</maxSize>
+            </image>
+        </view>
+    </variant>
+</theme>

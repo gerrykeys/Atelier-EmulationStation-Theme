@@ -1,0 +1,16 @@
+<!--
+    Typographic variant: no media frame, the page is carried by the title alone.
+    Also used automatically for systems without any scraped media.
+-->
+
+<theme>
+    <view name="gamelist">
+        <image name="mediaAmbient, mediaMatte, mediaPlaceholder">
+            <visible>false</visible>
+        </image>
+        <text name="gameTitle">
+            <fontSize>${typoTitleSize}</fontSize>
+            <lineSpacing>1.1</lineSpacing>
+        </text>
+    </view>
+</theme>

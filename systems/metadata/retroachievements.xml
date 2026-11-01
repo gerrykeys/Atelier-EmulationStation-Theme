@@ -1,0 +1,145 @@
+<theme>
+    <variables>
+        <systemName>RetroAchievements</systemName>
+        <systemDescription>View your achievements on RetroAchievements</systemDescription>
+        <systemManufacturer>Various</systemManufacturer>
+        <systemReleaseYear>Various</systemReleaseYear>
+        <systemReleaseDate>Various</systemReleaseDate>
+        <systemReleaseDateFormated>Various</systemReleaseDateFormated>
+        <systemHardwareType>Achievements</systemHardwareType>
+        <systemCoverSize>1-1</systemCoverSize>
+        <systemCoverSizeType>square</systemCoverSizeType>
+        <systemColor>D4A537</systemColor>
+        <systemColorPalette1>D4A537</systemColorPalette1>
+        <systemColorPalette2>8C6A1F</systemColorPalette2>
+        <systemColorPalette3>F2D48A</systemColorPalette3>
+        <systemColorPalette4>3B2F14</systemColorPalette4>
+        <systemCartSize>1-1</systemCartSize>
+    </variables>
+    <language name="ar_SA">
+        <variables>
+            <systemDescription>اعرض إنجازاتك على RetroAchievements</systemDescription>
+            <systemHardwareType>إنجازات</systemHardwareType>
+        </variables>
+    </language>
+    <language name="bs_BA">
+        <variables>
+            <systemDescription>Pogledajte svoja dostignuća na RetroAchievements</systemDescription>
+            <systemHardwareType>Dostignuća</systemHardwareType>
+        </variables>
+    </language>
+    <language name="ca_ES">
+        <variables>
+            <systemDescription>Consulta els teus assoliments a RetroAchievements</systemDescription>
+            <systemHardwareType>Assoliments</systemHardwareType>
+        </variables>
+    </language>
+    <language name="de_DE">
+        <variables>
+            <systemDescription>Deine Erfolge auf RetroAchievements ansehen</systemDescription>
+            <systemHardwareType>Erfolge</systemHardwareType>
+        </variables>
+    </language>
+    <language name="es_ES">
+        <variables>
+            <systemDescription>Ver tus logros en RetroAchievements</systemDescription>
+            <systemHardwareType>Logros</systemHardwareType>
+        </variables>
+    </language>
+    <language name="fr_FR">
+        <variables>
+            <systemDescription>Afficher vos succès sur RetroAchievements</systemDescription>
+            <systemHardwareType>Succès</systemHardwareType>
+        </variables>
+    </language>
+    <language name="hr_HR">
+        <variables>
+            <systemDescription>Pogledajte svoja postignuća na RetroAchievements</systemDescription>
+            <systemHardwareType>Postignuća</systemHardwareType>
+        </variables>
+    </language>
+    <language name="it_IT">
+        <variables>
+            <systemDescription>Visualizza i tuoi obiettivi su RetroAchievements</systemDescription>
+            <systemHardwareType>Obiettivi</systemHardwareType>
+        </variables>
+    </language>
+    <language name="ja_JP">
+        <variables>
+            <systemDescription>RetroAchievementsの実績を表示</systemDescription>
+            <systemHardwareType>実績</systemHardwareType>
+        </variables>
+    </language>
+    <language name="ko_KR">
+        <variables>
+            <systemDescription>RetroAchievements 도전 과제 보기</systemDescription>
+            <systemHardwareType>도전 과제</systemHardwareType>
+        </variables>
+    </language>
+    <language name="nl_NL">
+        <variables>
+            <systemDescription>Bekijk je prestaties op RetroAchievements</systemDescription>
+            <systemHardwareType>Prestaties</systemHardwareType>
+        </variables>
+    </language>
+    <language name="pl_PL">
+        <variables>
+            <systemDescription>Wyświetlanie osiągnięć z RetroAchievements</systemDescription>
+            <systemHardwareType>Osiągnięcia</systemHardwareType>
+        </variables>
+    </language>
+    <language name="pt_BR">
+        <variables>
+            <systemDescription>Veja suas conquistas no RetroAchievements</systemDescription>
+            <systemHardwareType>Conquistas</systemHardwareType>
+        </variables>
+    </language>
+    <language name="pt_PT">
+        <variables>
+            <systemDescription>Veja as suas conquistas no RetroAchievements</systemDescription>
+            <systemHardwareType>Conquistas</systemHardwareType>
+        </variables>
+    </language>
+    <language name="ro_RO">
+        <variables>
+            <systemDescription>Vizualizați realizările de pe RetroAchievements</systemDescription>
+            <systemHardwareType>Realizări</systemHardwareType>
+        </variables>
+    </language>
+    <language name="ru_RU">
+        <variables>
+            <systemDescription>Просмотр достижений RetroAchievements</systemDescription>
+            <systemHardwareType>Достижения</systemHardwareType>
+        </variables>
+    </language>
+    <language name="sr_RS">
+        <variables>
+            <systemDescription>Погледајте своја достигнућа на RetroAchievements</systemDescription>
+            <systemHardwareType>Достигнућа</systemHardwareType>
+        </variables>
+    </language>
+    <language name="sv_SE">
+        <variables>
+            <systemDescription>Visa dina prestationer på RetroAchievements</systemDescription>
+            <systemHardwareType>Prestationer</systemHardwareType>
+        </variables>
+    </language>
+    <language name="vi_VN">
+        <variables>
+            <systemDescription>Xem thành tích của bạn trên RetroAchievements</systemDescription>
+            <systemHardwareType>Thành tích</systemHardwareType>
+        </variables>
+    </language>
+    <language name="zh_CN">
+        <variables>
+            <systemDescription>查看你在 RetroAchievements 上的成就</systemDescription>
+            <systemHardwareType>成就</systemHardwareType>
+        </variables>
+    </language>
+    <language name="zh_TW">
+        <variables>
+            <systemDescription>檢視你在 RetroAchievements 上的成就</systemDescription>
+            <systemHardwareType>成就</systemHardwareType>
+        </variables>
+    </language>
+</theme>

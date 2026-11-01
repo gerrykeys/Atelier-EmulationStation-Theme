@@ -1,0 +1,238 @@
+<!--
+    Color schemes.
+
+    bg              page background
+    surface         passe-partout behind game media and typographic covers
+    title           headlines and selected entries
+    text            running text such as descriptions
+    muted           labels, help prompts, secondary information
+    list            unselected list entries
+    faint           hairlines
+    accent          the single accent: selection marker, rules, captions, stars
+    art             system line drawings
+    placeholder     line drawing shown in an empty media frame
+    ambient         light (dark schemes) or shadow (light schemes) behind the game media
+    selectionGlow   the same effect, stronger, marking the selected cover in the grid
+
+    Every scheme has an "atmosphere" twin with the same palette and three additions:
+    the light behind the media (and the grid selection) takes the color of the system
+    from its metadata (systemColor, defined before this file is included), a soft room
+    light of that color sits behind the drawing in the system view, and the game lists
+    are backed by the fanart (or screenshot) of the selected game.
+
+    atmosphere      fanart or screenshot behind the game lists: visibility, opacity
+                    and saturation
+    roomLight       light of the system color in the system view
+    listFadeVisible the fade at the right edge of the game list, which only blends
+                    into a plain background
+-->
+
+<theme>
+    <colorScheme name="noir">
+        <variables>
+            <bgColor>100F0E</bgColor>
+            <surfaceColor>181716</surfaceColor>
+            <titleColor>EFE9DF</titleColor>
+            <textColor>B7B0A5</textColor>
+            <mutedColor>7F786E</mutedColor>
+            <listColor>8E877C</listColor>
+            <faintColor>2E2B28</faintColor>
+            <accentColor>C9AB79</accentColor>
+            <artColor>E9E2D6E6</artColor>
+            <placeholderColor>EFE9DF1A</placeholderColor>
+            <ambientImage>./../core/images/ambient-glow.png</ambientImage>
+            <ambientColor>C9AB792E</ambientColor>
+            <ambientTileImage>./../core/images/ambient-glow-tile.png</ambientTileImage>
+            <selectionGlowColor>C9AB7966</selectionGlowColor>
+            <gridDimOpacity>0.6</gridDimOpacity>
+            <atmosphereVisible>false</atmosphereVisible>
+            <atmosphereOpacity>0</atmosphereOpacity>
+            <atmosphereSaturation>1</atmosphereSaturation>
+            <roomLightVisible>false</roomLightVisible>
+            <roomLightColor>00000000</roomLightColor>
+            <listFadeVisible>true</listFadeVisible>
+        </variables>
+    </colorScheme>
+
+    <colorScheme name="ivory">
+        <variables>
+            <bgColor>F3EFE8</bgColor>
+            <surfaceColor>E6E0D5</surfaceColor>
+            <titleColor>1C1A17</titleColor>
+            <textColor>4D4943</textColor>
+            <mutedColor>8A8378</mutedColor>
+            <listColor>7A7469</listColor>
+            <faintColor>D4CDC1</faintColor>
+            <accentColor>9A7440</accentColor>
+            <artColor>2A2622E6</artColor>
+            <placeholderColor>1C1A1720</placeholderColor>
+            <ambientImage>./../core/images/ambient-shadow.png</ambientImage>
+            <ambientColor>3B2F2240</ambientColor>
+            <ambientTileImage>./../core/images/ambient-shadow-tile.png</ambientTileImage>
+            <selectionGlowColor>3B2F2266</selectionGlowColor>
+            <gridDimOpacity>0.75</gridDimOpacity>
+            <atmosphereVisible>false</atmosphereVisible>
+            <atmosphereOpacity>0</atmosphereOpacity>
+            <atmosphereSaturation>1</atmosphereSaturation>
+            <roomLightVisible>false</roomLightVisible>
+            <roomLightColor>00000000</roomLightColor>
+            <listFadeVisible>true</listFadeVisible>
+        </variables>
+    </colorScheme>
+
+    <colorScheme name="midnight">
+        <variables>
+            <bgColor>0D1219</bgColor>
+            <surfaceColor>141B24</surfaceColor>
+            <titleColor>E9EDF2</titleColor>
+            <textColor>A6AFBB</textColor>
+            <mutedColor>6B7583</mutedColor>
+            <listColor>7E8896</listColor>
+            <faintColor>222B37</faintColor>
+            <accentColor>D2B47C</accentColor>
+            <artColor>E3E8EFE6</artColor>
+            <placeholderColor>E9EDF21A</placeholderColor>
+            <ambientImage>./../core/images/ambient-glow.png</ambientImage>
+            <ambientColor>8FAAD42E</ambientColor>
+            <ambientTileImage>./../core/images/ambient-glow-tile.png</ambientTileImage>
+            <selectionGlowColor>8FAAD466</selectionGlowColor>
+            <gridDimOpacity>0.6</gridDimOpacity>
+            <atmosphereVisible>false</atmosphereVisible>
+            <atmosphereOpacity>0</atmosphereOpacity>
+            <atmosphereSaturation>1</atmosphereSaturation>
+            <roomLightVisible>false</roomLightVisible>
+            <roomLightColor>00000000</roomLightColor>
+            <listFadeVisible>true</listFadeVisible>
+        </variables>
+    </colorScheme>
+
+    <colorScheme name="oled">
+        <variables>
+            <bgColor>000000</bgColor>
+            <surfaceColor>0B0B0B</surfaceColor>
+            <titleColor>F2F2F2</titleColor>
+            <textColor>B3B3B3</textColor>
+            <mutedColor>767676</mutedColor>
+            <listColor>8A8A8A</listColor>
+            <faintColor>262626</faintColor>
+            <accentColor>C9AB79</accentColor>
+            <artColor>EDEDEDE6</artColor>
+            <placeholderColor>F2F2F21A</placeholderColor>
+            <ambientImage>./../core/images/ambient-glow.png</ambientImage>
+            <ambientColor>FFFFFF1C</ambientColor>
+            <ambientTileImage>./../core/images/ambient-glow-tile.png</ambientTileImage>
+            <selectionGlowColor>FFFFFF40</selectionGlowColor>
+            <gridDimOpacity>0.55</gridDimOpacity>
+            <atmosphereVisible>false</atmosphereVisible>
+            <atmosphereOpacity>0</atmosphereOpacity>
+            <atmosphereSaturation>1</atmosphereSaturation>
+            <roomLightVisible>false</roomLightVisible>
+            <roomLightColor>00000000</roomLightColor>
+            <listFadeVisible>true</listFadeVisible>
+        </variables>
+    </colorScheme>
+
+    <colorScheme name="noirAtmosphere">
+        <variables>
+            <bgColor>100F0E</bgColor>
+            <surfaceColor>181716</surfaceColor>
+            <titleColor>EFE9DF</titleColor>
+            <textColor>B7B0A5</textColor>
+            <mutedColor>7F786E</mutedColor>
+            <listColor>8E877C</listColor>
+            <faintColor>2E2B28</faintColor>
+            <accentColor>C9AB79</accentColor>
+            <artColor>E9E2D6E6</artColor>
+            <placeholderColor>EFE9DF1A</placeholderColor>
+            <ambientImage>./../core/images/ambient-glow.png</ambientImage>
+            <ambientColor>${systemColor}40</ambientColor>
+            <ambientTileImage>./../core/images/ambient-glow-tile.png</ambientTileImage>
+            <selectionGlowColor>${systemColor}80</selectionGlowColor>
+            <gridDimOpacity>0.6</gridDimOpacity>
+            <atmosphereVisible>true</atmosphereVisible>
+            <atmosphereOpacity>0.13</atmosphereOpacity>
+            <atmosphereSaturation>0.55</atmosphereSaturation>
+            <roomLightVisible>true</roomLightVisible>
+            <roomLightColor>${systemColor}38</roomLightColor>
+            <listFadeVisible>false</listFadeVisible>
+        </variables>
+    </colorScheme>
+
+    <colorScheme name="ivoryAtmosphere">
+        <variables>
+            <bgColor>F3EFE8</bgColor>
+            <surfaceColor>E6E0D5</surfaceColor>
+            <titleColor>1C1A17</titleColor>
+            <textColor>4D4943</textColor>
+            <mutedColor>8A8378</mutedColor>
+            <listColor>7A7469</listColor>
+            <faintColor>D4CDC1</faintColor>
+            <accentColor>9A7440</accentColor>
+            <artColor>2A2622E6</artColor>
+            <placeholderColor>1C1A1720</placeholderColor>
+            <ambientImage>./../core/images/ambient-glow.png</ambientImage>
+            <ambientColor>${systemColor}40</ambientColor>
+            <ambientTileImage>./../core/images/ambient-glow-tile.png</ambientTileImage>
+            <selectionGlowColor>${systemColor}70</selectionGlowColor>
+            <gridDimOpacity>0.75</gridDimOpacity>
+            <atmosphereVisible>true</atmosphereVisible>
+            <atmosphereOpacity>0.09</atmosphereOpacity>
+            <atmosphereSaturation>0.45</atmosphereSaturation>
+            <roomLightVisible>true</roomLightVisible>
+            <roomLightColor>${systemColor}2E</roomLightColor>
+            <listFadeVisible>false</listFadeVisible>
+        </variables>
+    </colorScheme>
+
+    <colorScheme name="midnightAtmosphere">
+        <variables>
+            <bgColor>0D1219</bgColor>
+            <surfaceColor>141B24</surfaceColor>
+            <titleColor>E9EDF2</titleColor>
+            <textColor>A6AFBB</textColor>
+            <mutedColor>6B7583</mutedColor>
+            <listColor>7E8896</listColor>
+            <faintColor>222B37</faintColor>
+            <accentColor>D2B47C</accentColor>
+            <artColor>E3E8EFE6</artColor>
+            <placeholderColor>E9EDF21A</placeholderColor>
+            <ambientImage>./../core/images/ambient-glow.png</ambientImage>
+            <ambientColor>${systemColor}40</ambientColor>
+            <ambientTileImage>./../core/images/ambient-glow-tile.png</ambientTileImage>
+            <selectionGlowColor>${systemColor}80</selectionGlowColor>
+            <gridDimOpacity>0.6</gridDimOpacity>
+            <atmosphereVisible>true</atmosphereVisible>
+            <atmosphereOpacity>0.13</atmosphereOpacity>
+            <atmosphereSaturation>0.5</atmosphereSaturation>
+            <roomLightVisible>true</roomLightVisible>
+            <roomLightColor>${systemColor}38</roomLightColor>
+            <listFadeVisible>false</listFadeVisible>
+        </variables>
+    </colorScheme>
+
+    <colorScheme name="oledAtmosphere">
+        <variables>
+            <bgColor>000000</bgColor>
+            <surfaceColor>0B0B0B</surfaceColor>
+            <titleColor>F2F2F2</titleColor>
+            <textColor>B3B3B3</textColor>
+            <mutedColor>767676</mutedColor>
+            <listColor>8A8A8A</listColor>
+            <faintColor>262626</faintColor>
+            <accentColor>C9AB79</accentColor>
+            <artColor>EDEDEDE6</artColor>
+            <placeholderColor>F2F2F21A</placeholderColor>
+            <ambientImage>./../core/images/ambient-glow.png</ambientImage>
+            <ambientColor>${systemColor}38</ambientColor>
+            <ambientTileImage>./../core/images/ambient-glow-tile.png</ambientTileImage>
+            <selectionGlowColor>${systemColor}70</selectionGlowColor>
+            <gridDimOpacity>0.55</gridDimOpacity>
+            <atmosphereVisible>true</atmosphereVisible>
+            <atmosphereOpacity>0.12</atmosphereOpacity>
+            <atmosphereSaturation>0.5</atmosphereSaturation>
+            <roomLightVisible>true</roomLightVisible>
+            <roomLightColor>${systemColor}30</roomLightColor>
+            <listFadeVisible>false</listFadeVisible>
+        </variables>
+    </colorScheme>
+</theme>

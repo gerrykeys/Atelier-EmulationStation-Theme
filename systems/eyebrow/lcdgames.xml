@@ -1,0 +1,6 @@
+<theme>
+    <variables>
+        <atelierEyebrow>${systemHardwareType}</atelierEyebrow>
+        <systemArt>./../systems/controllers-tagged/lcdgames.svg</systemArt>
+    </variables>
+</theme>

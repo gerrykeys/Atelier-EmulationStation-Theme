@@ -1,0 +1,270 @@
+<!--
+    Labels. These are rendered in tracked capitals so they are written in sentence case here.
+-->
+
+<theme>
+    <!-- en_US and en_GB, also the fallback for everything else -->
+    <variables>
+        <langReleased>Released</langReleased>
+        <langDeveloper>Developer</langDeveloper>
+        <langPublisher>Publisher</langPublisher>
+        <langPlayers>Players</langPlayers>
+        <langLastPlayed>Last played</langLastPlayed>
+        <langPlayCount>Times played</langPlayCount>
+        <langPlayTime>Play time</langPlayTime>
+        <langCollectionYear>All games, every platform, released in</langCollectionYear>
+    </variables>
+
+    <language name="it_IT">
+        <variables>
+            <langReleased>Uscita</langReleased>
+            <langDeveloper>Sviluppatore</langDeveloper>
+            <langPublisher>Editore</langPublisher>
+            <langPlayers>Giocatori</langPlayers>
+            <langLastPlayed>Ultima partita</langLastPlayed>
+            <langPlayCount>Partite</langPlayCount>
+            <langPlayTime>Tempo di gioco</langPlayTime>
+            <langCollectionYear>Tutti i giochi delle piattaforme per l'anno</langCollectionYear>
+        </variables>
+    </language>
+    <language name="fr_FR">
+        <variables>
+            <langReleased>Sortie</langReleased>
+            <langDeveloper>Développeur</langDeveloper>
+            <langPublisher>Éditeur</langPublisher>
+            <langPlayers>Joueurs</langPlayers>
+            <langLastPlayed>Dernière partie</langLastPlayed>
+            <langPlayCount>Parties</langPlayCount>
+            <langPlayTime>Temps de jeu</langPlayTime>
+            <langCollectionYear>Tous les jeux, toutes plateformes, sortis en</langCollectionYear>
+        </variables>
+    </language>
+    <language name="de_DE">
+        <variables>
+            <langReleased>Erschienen</langReleased>
+            <langDeveloper>Entwickler</langDeveloper>
+            <langPublisher>Publisher</langPublisher>
+            <langPlayers>Spieler</langPlayers>
+            <langLastPlayed>Zuletzt gespielt</langLastPlayed>
+            <langPlayCount>Gespielt</langPlayCount>
+            <langPlayTime>Spielzeit</langPlayTime>
+            <langCollectionYear>Alle Spiele aller Plattformen aus dem Jahr</langCollectionYear>
+        </variables>
+    </language>
+    <language name="es_ES">
+        <variables>
+            <langReleased>Lanzamiento</langReleased>
+            <langDeveloper>Desarrollador</langDeveloper>
+            <langPublisher>Editor</langPublisher>
+            <langPlayers>Jugadores</langPlayers>
+            <langLastPlayed>Última partida</langLastPlayed>
+            <langPlayCount>Partidas</langPlayCount>
+            <langPlayTime>Tiempo de juego</langPlayTime>
+            <langCollectionYear>Todos los juegos de todas las plataformas del año</langCollectionYear>
+        </variables>
+    </language>
+    <language name="pt_BR">
+        <variables>
+            <langReleased>Lançamento</langReleased>
+            <langDeveloper>Desenvolvedora</langDeveloper>
+            <langPublisher>Publicadora</langPublisher>
+            <langPlayers>Jogadores</langPlayers>
+            <langLastPlayed>Última partida</langLastPlayed>
+            <langPlayCount>Partidas</langPlayCount>
+            <langPlayTime>Tempo de jogo</langPlayTime>
+            <langCollectionYear>Todos os jogos de todas as plataformas do ano</langCollectionYear>
+        </variables>
+    </language>
+    <language name="pt_PT">
+        <variables>
+            <langReleased>Lançamento</langReleased>
+            <langDeveloper>Produtora</langDeveloper>
+            <langPublisher>Editora</langPublisher>
+            <langPlayers>Jogadores</langPlayers>
+            <langLastPlayed>Última sessão</langLastPlayed>
+            <langPlayCount>Sessões</langPlayCount>
+            <langPlayTime>Tempo de jogo</langPlayTime>
+            <langCollectionYear>Todos os jogos de todas as plataformas do ano</langCollectionYear>
+        </variables>
+    </language>
+    <language name="nl_NL">
+        <variables>
+            <langReleased>Uitgebracht</langReleased>
+            <langDeveloper>Ontwikkelaar</langDeveloper>
+            <langPublisher>Uitgever</langPublisher>
+            <langPlayers>Spelers</langPlayers>
+            <langLastPlayed>Laatst gespeeld</langLastPlayed>
+            <langPlayCount>Keer gespeeld</langPlayCount>
+            <langPlayTime>Speeltijd</langPlayTime>
+            <langCollectionYear>Alle games van alle platforms uit</langCollectionYear>
+        </variables>
+    </language>
+    <language name="sv_SE">
+        <variables>
+            <langReleased>Släppt</langReleased>
+            <langDeveloper>Utvecklare</langDeveloper>
+            <langPublisher>Utgivare</langPublisher>
+            <langPlayers>Spelare</langPlayers>
+            <langLastPlayed>Senast spelad</langLastPlayed>
+            <langPlayCount>Antal gånger</langPlayCount>
+            <langPlayTime>Speltid</langPlayTime>
+            <langCollectionYear>Alla spel från alla plattformar från</langCollectionYear>
+        </variables>
+    </language>
+    <language name="pl_PL">
+        <variables>
+            <langReleased>Wydanie</langReleased>
+            <langDeveloper>Producent</langDeveloper>
+            <langPublisher>Wydawca</langPublisher>
+            <langPlayers>Gracze</langPlayers>
+            <langLastPlayed>Ostatnio grane</langLastPlayed>
+            <langPlayCount>Uruchomienia</langPlayCount>
+            <langPlayTime>Czas gry</langPlayTime>
+            <langCollectionYear>Wszystkie gry ze wszystkich platform z roku</langCollectionYear>
+        </variables>
+    </language>
+    <language name="ru_RU">
+        <variables>
+            <langReleased>Выпуск</langReleased>
+            <langDeveloper>Разработчик</langDeveloper>
+            <langPublisher>Издатель</langPublisher>
+            <langPlayers>Игроки</langPlayers>
+            <langLastPlayed>Последний запуск</langLastPlayed>
+            <langPlayCount>Запусков</langPlayCount>
+            <langPlayTime>Время в игре</langPlayTime>
+            <langCollectionYear>Все игры всех платформ, выпущенные в</langCollectionYear>
+        </variables>
+    </language>
+    <language name="ja_JP">
+        <variables>
+            <langReleased>発売日</langReleased>
+            <langDeveloper>開発</langDeveloper>
+            <langPublisher>発売元</langPublisher>
+            <langPlayers>プレイ人数</langPlayers>
+            <langLastPlayed>最終プレイ</langLastPlayed>
+            <langPlayCount>プレイ回数</langPlayCount>
+            <langPlayTime>プレイ時間</langPlayTime>
+            <langCollectionYear>全プラットフォームのゲーム・発売年</langCollectionYear>
+        </variables>
+    </language>
+    <language name="ko_KR">
+        <variables>
+            <langReleased>출시</langReleased>
+            <langDeveloper>개발사</langDeveloper>
+            <langPublisher>퍼블리셔</langPublisher>
+            <langPlayers>플레이어</langPlayers>
+            <langLastPlayed>마지막 플레이</langLastPlayed>
+            <langPlayCount>플레이 횟수</langPlayCount>
+            <langPlayTime>플레이 시간</langPlayTime>
+            <langCollectionYear>모든 플랫폼의 게임, 출시 연도</langCollectionYear>
+        </variables>
+    </language>
+    <language name="zh_CN">
+        <variables>
+            <langReleased>发行</langReleased>
+            <langDeveloper>开发商</langDeveloper>
+            <langPublisher>发行商</langPublisher>
+            <langPlayers>玩家人数</langPlayers>
+            <langLastPlayed>最近游玩</langLastPlayed>
+            <langPlayCount>游玩次数</langPlayCount>
+            <langPlayTime>游玩时间</langPlayTime>
+            <langCollectionYear>全平台游戏 · 发行年份</langCollectionYear>
+        </variables>
+    </language>
+    <language name="zh_TW">
+        <variables>
+            <langReleased>發行</langReleased>
+            <langDeveloper>開發商</langDeveloper>
+            <langPublisher>發行商</langPublisher>
+            <langPlayers>玩家人數</langPlayers>
+            <langLastPlayed>最近遊玩</langLastPlayed>
+            <langPlayCount>遊玩次數</langPlayCount>
+            <langPlayTime>遊玩時間</langPlayTime>
+            <langCollectionYear>全平台遊戲 · 發行年份</langCollectionYear>
+        </variables>
+    </language>
+    <language name="ar_SA">
+        <variables>
+            <langReleased>الإصدار</langReleased>
+            <langDeveloper>المطور</langDeveloper>
+            <langPublisher>الناشر</langPublisher>
+            <langPlayers>اللاعبون</langPlayers>
+            <langLastPlayed>آخر تشغيل</langLastPlayed>
+            <langPlayCount>مرات التشغيل</langPlayCount>
+            <langPlayTime>وقت اللعب</langPlayTime>
+            <langCollectionYear>جميع ألعاب المنصات لعام</langCollectionYear>
+        </variables>
+    </language>
+    <language name="bs_BA">
+        <variables>
+            <langReleased>Objavljeno</langReleased>
+            <langDeveloper>Razvojni tim</langDeveloper>
+            <langPublisher>Izdavač</langPublisher>
+            <langPlayers>Igrači</langPlayers>
+            <langLastPlayed>Posljednje igrano</langLastPlayed>
+            <langPlayCount>Broj igranja</langPlayCount>
+            <langPlayTime>Vrijeme igranja</langPlayTime>
+            <langCollectionYear>Sve igre svih platformi iz godine</langCollectionYear>
+        </variables>
+    </language>
+    <language name="ca_ES">
+        <variables>
+            <langReleased>Llançament</langReleased>
+            <langDeveloper>Desenvolupador</langDeveloper>
+            <langPublisher>Editor</langPublisher>
+            <langPlayers>Jugadors</langPlayers>
+            <langLastPlayed>Última partida</langLastPlayed>
+            <langPlayCount>Partides</langPlayCount>
+            <langPlayTime>Temps de joc</langPlayTime>
+            <langCollectionYear>Tots els jocs de totes les plataformes de l'any</langCollectionYear>
+        </variables>
+    </language>
+    <language name="hr_HR">
+        <variables>
+            <langReleased>Objavljeno</langReleased>
+            <langDeveloper>Razvojni tim</langDeveloper>
+            <langPublisher>Izdavač</langPublisher>
+            <langPlayers>Igrači</langPlayers>
+            <langLastPlayed>Zadnje igrano</langLastPlayed>
+            <langPlayCount>Broj igranja</langPlayCount>
+            <langPlayTime>Vrijeme igranja</langPlayTime>
+            <langCollectionYear>Sve igre svih platformi iz godine</langCollectionYear>
+        </variables>
+    </language>
+    <language name="ro_RO">
+        <variables>
+            <langReleased>Lansare</langReleased>
+            <langDeveloper>Dezvoltator</langDeveloper>
+            <langPublisher>Editor</langPublisher>
+            <langPlayers>Jucători</langPlayers>
+            <langLastPlayed>Ultima sesiune</langLastPlayed>
+            <langPlayCount>Sesiuni</langPlayCount>
+            <langPlayTime>Timp de joc</langPlayTime>
+            <langCollectionYear>Toate jocurile tuturor platformelor din anul</langCollectionYear>
+        </variables>
+    </language>
+    <language name="sr_RS">
+        <variables>
+            <langReleased>Objavljeno</langReleased>
+            <langDeveloper>Razvojni tim</langDeveloper>
+            <langPublisher>Izdavač</langPublisher>
+            <langPlayers>Igrači</langPlayers>
+            <langLastPlayed>Poslednje igrano</langLastPlayed>
+            <langPlayCount>Broj igranja</langPlayCount>
+            <langPlayTime>Vreme igranja</langPlayTime>
+            <langCollectionYear>Sve igre svih platformi iz godine</langCollectionYear>
+        </variables>
+    </language>
+    <language name="vi_VN">
+        <variables>
+            <langReleased>Phát hành</langReleased>
+            <langDeveloper>Nhà phát triển</langDeveloper>
+            <langPublisher>Nhà phát hành</langPublisher>
+            <langPlayers>Người chơi</langPlayers>
+            <langLastPlayed>Chơi lần cuối</langLastPlayed>
+            <langPlayCount>Số lần chơi</langPlayCount>
+            <langPlayTime>Thời gian chơi</langPlayTime>
+            <langCollectionYear>Tất cả trò chơi của mọi nền tảng năm</langCollectionYear>
+        </variables>
+    </language>
+</theme>

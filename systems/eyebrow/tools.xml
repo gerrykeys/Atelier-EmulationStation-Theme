@@ -1,0 +1,5 @@
+<theme>
+    <variables>
+        <atelierEyebrow>${systemHardwareType}</atelierEyebrow>
+    </variables>
+</theme>

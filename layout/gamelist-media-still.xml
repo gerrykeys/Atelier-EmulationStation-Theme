@@ -1,0 +1,17 @@
+<!--
+    Index variant without videos: a single still image filling the rounded card.
+    Covers are left out as cropping them to the card would cut them badly, and miximages
+    as they hold the covers with a platform banner made for the Collections system.
+-->
+
+<theme>
+    <view name="gamelist">
+        <image name="gameImage">
+            <origin>0.5 0.5</origin>
+            <imageType>screenshot, titlescreen</imageType>
+            <scrollFadeIn>true</scrollFadeIn>
+            <interpolation>nearest</interpolation>
+            <zIndex>30</zIndex>
+        </image>
+    </view>
+</theme>

@@ -1,0 +1,76 @@
+<!--
+    Custom collections: in the grouped Collections system the header shows the name of
+    the collection in the display face (for the year collections made by
+    scripts/year-collections.js, the year) and beneath it, in the accent color, the
+    platform the selected game comes from. Games inside a year collection are sorted by
+    platform, so this line works as the heading of each group.
+
+    At the top level, where the collections themselves are listed, ES-DE shows a random
+    game of the selected collection and describes it. Instead, a veil in the page color
+    covers its media, the atmosphere fanart and the description (set beneath the veil in
+    gamelist-details.xml), and the name of the selected collection is set behind the list
+    as a large, faint numeral. Both use customCollectionNameGrouped, which ES-DE only
+    fills at the top level, so inside a collection they draw nothing at all. The header
+    there falls back to its default value, a heading that the numeral completes ("All
+    games, every platform, released in" ... "1992", see languages.xml).
+
+    The visibility variables are set by theme.xml (regular header) and swapped by
+    systems/eyebrow/custom-collections.xml, which also gives the Grid and Gallery tiles
+    their larger display face and mutes the game videos, as the random game's video
+    would otherwise play behind the veil. Positions are set in the aspect ratio files.
+-->
+
+<theme>
+    <view name="gamelist">
+        <text name="header">
+            <visible>${regularHeaderVisible}</visible>
+        </text>
+        <text name="collectionTitle">
+            <metadata>systemFullname</metadata>
+            <defaultValue>${langCollectionYear}</defaultValue>
+            <fontPath>${fontDisplay}</fontPath>
+            <fontSize>${collectionTitleSize}</fontSize>
+            <color>${titleColor}</color>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <visible>${collectionHeaderVisible}</visible>
+            <zIndex>40</zIndex>
+        </text>
+        <text name="collectionPlatform">
+            <metadata>sourceSystemFullname</metadata>
+            <defaultValue>:space:</defaultValue>
+            <fontPath>${fontCaps}</fontPath>
+            <fontSize>${capsSize}</fontSize>
+            <color>${accentColor}</color>
+            <letterCase>uppercase</letterCase>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <visible>${collectionHeaderVisible}</visible>
+            <zIndex>40</zIndex>
+        </text>
+
+        <!-- Top level: veil over the random game's media, then the large numeral -->
+        <text name="collectionVeil">
+            <metadata>customCollectionNameGrouped</metadata>
+            <pos>0 0</pos>
+            <origin>0 0</origin>
+            <size>1 1</size>
+            <fontPath>${fontText}</fontPath>
+            <fontSize>${capsSize}</fontSize>
+            <color>00000000</color>
+            <backgroundColor>${bgColor}</backgroundColor>
+            <visible>${collectionHeaderVisible}</visible>
+            <zIndex>34</zIndex>
+        </text>
+        <text name="collectionNumeral">
+            <metadata>customCollectionNameGrouped</metadata>
+            <fontPath>${fontDisplay}</fontPath>
+            <color>${titleColor}12</color>
+            <horizontalAlignment>right</horizontalAlignment>
+            <verticalAlignment>bottom</verticalAlignment>
+            <lineSpacing>1</lineSpacing>
+            <visible>${collectionHeaderVisible}</visible>
+            <zIndex>35</zIndex>
+        </text>
+    </view>
+</theme>

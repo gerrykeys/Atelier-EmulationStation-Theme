@@ -1,0 +1,9 @@
+<!--
+    Written by achievements/progress.js: true while the achievement progress is enabled
+    with "Enable achievement progress.cmd". The theme ships with false.
+-->
+<theme>
+    <variables>
+        <raProgressVisible>false</raProgressVisible>
+    </variables>
+</theme>

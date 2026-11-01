@@ -1,0 +1,11 @@
+<!-- Gallery cover size: 16-9-landscape -->
+
+<theme>
+    <view name="gamelist">
+        <carousel name="gamelistCarousel">
+            <itemSize>0.195 0.26</itemSize>
+            <maxItemCount>3.8</maxItemCount>
+            <selectedItemMargins>0.024 0.024</selectedItemMargins>
+        </carousel>
+    </view>
+</theme>

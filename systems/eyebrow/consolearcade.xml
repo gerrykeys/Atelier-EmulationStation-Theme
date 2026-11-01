@@ -1,0 +1,6 @@
+<theme>
+    <variables>
+        <atelierEyebrow>${systemHardwareType}</atelierEyebrow>
+        <systemArt>./../systems/controllers-tagged/consolearcade.svg</systemArt>
+    </variables>
+</theme>

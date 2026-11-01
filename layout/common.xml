@@ -1,0 +1,101 @@
+<!--
+    Elements shared by the system and gamelist views. Positions are set in the
+    aspect ratio files.
+-->
+
+<theme>
+    <view name="system, gamelist">
+        <image name="background">
+            <pos>0 0</pos>
+            <size>1 1</size>
+            <origin>0 0</origin>
+            <path>${pixel}</path>
+            <color>${bgColor}</color>
+            <zIndex>0</zIndex>
+        </image>
+        <helpsystem name="help">
+            <origin>0 0.5</origin>
+            <textColor>${mutedColor}</textColor>
+            <iconColor>${mutedColor}</iconColor>
+            <fontPath>${fontCapsLight}</fontPath>
+            <fontSize>${helpSize}</fontSize>
+            <entryRelativeScale>0.62</entryRelativeScale>
+            <entrySpacing>0.017</entrySpacing>
+            <iconTextSpacing>0.0055</iconTextSpacing>
+            <letterCase>uppercase</letterCase>
+            <customButtonIcon button="button_a_PS">./../core/help/button_a_PS.svg</customButtonIcon>
+            <customButtonIcon button="button_a_SNES">./../core/help/button_a_SNES.svg</customButtonIcon>
+            <customButtonIcon button="button_a_XBOX">./../core/help/button_a_XBOX.svg</customButtonIcon>
+            <customButtonIcon button="button_a_switch">./../core/help/button_a_switch.svg</customButtonIcon>
+            <customButtonIcon button="button_b_PS">./../core/help/button_b_PS.svg</customButtonIcon>
+            <customButtonIcon button="button_b_SNES">./../core/help/button_b_SNES.svg</customButtonIcon>
+            <customButtonIcon button="button_b_XBOX">./../core/help/button_b_XBOX.svg</customButtonIcon>
+            <customButtonIcon button="button_b_switch">./../core/help/button_b_switch.svg</customButtonIcon>
+            <customButtonIcon button="button_back_PS123">./../core/help/button_back_PS123.svg</customButtonIcon>
+            <customButtonIcon button="button_back_PS4">./../core/help/button_back_PS4.svg</customButtonIcon>
+            <customButtonIcon button="button_back_PS5">./../core/help/button_back_PS5.svg</customButtonIcon>
+            <customButtonIcon button="button_back_SNES">./../core/help/button_back_SNES.svg</customButtonIcon>
+            <customButtonIcon button="button_back_XBOX">./../core/help/button_back_XBOX.svg</customButtonIcon>
+            <customButtonIcon button="button_back_XBOX360">./../core/help/button_back_XBOX360.svg</customButtonIcon>
+            <customButtonIcon button="button_back_switch">./../core/help/button_back_switch.svg</customButtonIcon>
+            <customButtonIcon button="button_l">./../core/help/button_l.svg</customButtonIcon>
+            <customButtonIcon button="button_lr">./../core/help/button_lr.svg</customButtonIcon>
+            <customButtonIcon button="button_lt">./../core/help/button_lt.svg</customButtonIcon>
+            <customButtonIcon button="button_ltrt">./../core/help/button_ltrt.svg</customButtonIcon>
+            <customButtonIcon button="button_r">./../core/help/button_r.svg</customButtonIcon>
+            <customButtonIcon button="button_rt">./../core/help/button_rt.svg</customButtonIcon>
+            <customButtonIcon button="button_start_PS123">./../core/help/button_start_PS123.svg</customButtonIcon>
+            <customButtonIcon button="button_start_PS4">./../core/help/button_start_PS4.svg</customButtonIcon>
+            <customButtonIcon button="button_start_PS5">./../core/help/button_start_PS5.svg</customButtonIcon>
+            <customButtonIcon button="button_start_SNES">./../core/help/button_start_SNES.svg</customButtonIcon>
+            <customButtonIcon button="button_start_XBOX">./../core/help/button_start_XBOX.svg</customButtonIcon>
+            <customButtonIcon button="button_start_XBOX360">./../core/help/button_start_XBOX360.svg</customButtonIcon>
+            <customButtonIcon button="button_start_switch">./../core/help/button_start_switch.svg</customButtonIcon>
+            <customButtonIcon button="button_x_PS">./../core/help/button_x_PS.svg</customButtonIcon>
+            <customButtonIcon button="button_x_SNES">./../core/help/button_x_SNES.svg</customButtonIcon>
+            <customButtonIcon button="button_x_XBOX">./../core/help/button_x_XBOX.svg</customButtonIcon>
+            <customButtonIcon button="button_x_switch">./../core/help/button_x_switch.svg</customButtonIcon>
+            <customButtonIcon button="button_y_PS">./../core/help/button_y_PS.svg</customButtonIcon>
+            <customButtonIcon button="button_y_SNES">./../core/help/button_y_SNES.svg</customButtonIcon>
+            <customButtonIcon button="button_y_XBOX">./../core/help/button_y_XBOX.svg</customButtonIcon>
+            <customButtonIcon button="button_y_switch">./../core/help/button_y_switch.svg</customButtonIcon>
+            <customButtonIcon button="dpad_all">./../core/help/dpad_all.svg</customButtonIcon>
+            <customButtonIcon button="dpad_leftright">./../core/help/dpad_leftright.svg</customButtonIcon>
+            <customButtonIcon button="dpad_updown">./../core/help/dpad_updown.svg</customButtonIcon>
+            <customButtonIcon button="thumbstick_click">./../core/help/thumbstick_click.svg</customButtonIcon>
+        </helpsystem>
+        <systemstatus name="systemStatus">
+            <origin>1 0.5</origin>
+            <height>${capsSize}</height>
+            <fontPath>${fontCapsLight}</fontPath>
+            <textRelativeScale>0.85</textRelativeScale>
+            <color>${mutedColor}</color>
+            <entrySpacing>0.008</entrySpacing>
+        </systemstatus>
+        <clock name="clock">
+            <origin>1 0.5</origin>
+            <fontPath>${fontCapsLight}</fontPath>
+            <fontSize>${capsSize}</fontSize>
+            <color>${mutedColor}</color>
+            <format>%H:%M</format>
+        </clock>
+    </view>
+
+    <!-- Atmosphere color schemes: the selected game's fanart (or its screenshot) fills
+         the page behind the game list, faint and desaturated, and fades in after
+         scrolling. The other schemes hide it. -->
+    <view name="gamelist">
+        <image name="atmosphere">
+            <pos>0.5 0.5</pos>
+            <origin>0.5 0.5</origin>
+            <cropSize>1 1</cropSize>
+            <imageType>fanart, screenshot</imageType>
+            <interpolation>linear</interpolation>
+            <scrollFadeIn>true</scrollFadeIn>
+            <opacity>${atmosphereOpacity}</opacity>
+            <saturation>${atmosphereSaturation}</saturation>
+            <visible>${atmosphereVisible}</visible>
+            <zIndex>2</zIndex>
+        </image>
+    </view>
+</theme>

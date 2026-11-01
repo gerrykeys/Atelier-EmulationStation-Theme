@@ -1,0 +1,6 @@
+<theme>
+    <variables>
+        <atelierEyebrow>${systemHardwareType}</atelierEyebrow>
+        <systemArt>./../systems/controllers-tagged/pcarcade.svg</systemArt>
+    </variables>
+</theme>

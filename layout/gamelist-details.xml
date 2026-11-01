@@ -1,0 +1,222 @@
+<!--
+    Details shared by the index, typographic and grid variants: framed media, title,
+    facts and personal statistics.
+    The video and still image elements are defined in gamelist-media-*.xml.
+-->
+
+<theme>
+    <view name="gamelist">
+        <!-- Media card: soft ambient light (or shadow) behind a rounded card that the
+             game media fills edge to edge, with the system drawing as placeholder -->
+        <image name="mediaAmbient">
+            <path>${ambientImage}</path>
+            <color>${ambientColor}</color>
+            <interpolation>linear</interpolation>
+            <zIndex>22</zIndex>
+        </image>
+        <image name="mediaMatte">
+            <path>${pixel}</path>
+            <color>${surfaceColor}</color>
+            <zIndex>24</zIndex>
+        </image>
+        <image name="mediaPlaceholder">
+            <path>${artPath}</path>
+            <default>${artFallback}</default>
+            <color>${placeholderColor}</color>
+            <interpolation>linear</interpolation>
+            <zIndex>25</zIndex>
+        </image>
+
+        <!-- Title and genre caption -->
+        <text name="gameTitle">
+            <metadata>name</metadata>
+            <systemNameSuffix>false</systemNameSuffix>
+            <fontPath>${fontDisplay}</fontPath>
+            <fontSize>${gameTitleSize}</fontSize>
+            <color>${titleColor}</color>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>bottom</verticalAlignment>
+            <lineSpacing>1.12</lineSpacing>
+            <zIndex>40</zIndex>
+        </text>
+        <image name="captionRule">
+            <path>${pixel}</path>
+            <color>${accentColor}</color>
+            <metadataElement>true</metadataElement>
+            <zIndex>40</zIndex>
+        </image>
+        <text name="genre">
+            <metadata>genre</metadata>
+            <defaultValue>:space:</defaultValue>
+            <fontPath>${fontCaps}</fontPath>
+            <fontSize>${capsSize}</fontSize>
+            <color>${accentColor}</color>
+            <letterCase>uppercase</letterCase>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <zIndex>40</zIndex>
+        </text>
+        <rating name="rating">
+            <hideIfZero>true</hideIfZero>
+            <color>${accentColor}</color>
+            <filledPath>./../core/images/star-filled.svg</filledPath>
+            <unfilledPath>./../core/images/star-unfilled.svg</unfilledPath>
+            <overlay>false</overlay>
+            <interpolation>linear</interpolation>
+            <zIndex>45</zIndex>
+        </rating>
+        <!-- Tags from the file name, such as region, languages and revision. The tag font
+             hides the title and draws every bracketed part as an outlined tag, so a file
+             without any shows nothing -->
+        <text name="fileTags">
+            <metadata>physicalName</metadata>
+            <metadataElement>true</metadataElement>
+            <fontPath>${fontTags}</fontPath>
+            <fontSize>${labelSize}</fontSize>
+            <color>${mutedColor}</color>
+            <letterCase>uppercase</letterCase>
+            <horizontalAlignment>right</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <zIndex>40</zIndex>
+        </text>
+
+        <!-- Facts: tracked capital labels over plain values, an em dash when unknown -->
+        <text name="labelReleased, labelDeveloper, labelPublisher, labelPlayers,
+                    labelLastPlayed, labelPlayCount, labelPlayTime">
+            <metadataElement>true</metadataElement>
+            <fontPath>${fontCaps}</fontPath>
+            <fontSize>${labelSize}</fontSize>
+            <color>${mutedColor}</color>
+            <letterCase>uppercase</letterCase>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <zIndex>40</zIndex>
+        </text>
+        <text name="labelReleased">
+            <text>${langReleased}</text>
+        </text>
+        <text name="labelDeveloper">
+            <text>${langDeveloper}</text>
+        </text>
+        <text name="labelPublisher">
+            <text>${langPublisher}</text>
+        </text>
+        <text name="labelPlayers">
+            <text>${langPlayers}</text>
+        </text>
+        <text name="labelLastPlayed">
+            <text>${langLastPlayed}</text>
+        </text>
+        <text name="labelPlayCount">
+            <text>${langPlayCount}</text>
+        </text>
+        <text name="labelPlayTime">
+            <text>${langPlayTime}</text>
+        </text>
+
+        <text name="developer, publisher, players, playCount, playTime">
+            <fontPath>${fontText}</fontPath>
+            <fontSize>${valueSize}</fontSize>
+            <color>${titleColor}</color>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <zIndex>40</zIndex>
+        </text>
+        <text name="developer">
+            <metadata>developer</metadata>
+            <defaultValue>—</defaultValue>
+        </text>
+        <text name="publisher">
+            <metadata>publisher</metadata>
+            <defaultValue>—</defaultValue>
+        </text>
+        <text name="players">
+            <metadata>players</metadata>
+            <defaultValue>—</defaultValue>
+        </text>
+        <text name="playCount">
+            <metadata>playcount</metadata>
+        </text>
+        <text name="playTime">
+            <metadata>playtime</metadata>
+        </text>
+        <datetime name="releaseDate, lastPlayed">
+            <fontPath>${fontText}</fontPath>
+            <fontSize>${valueSize}</fontSize>
+            <color>${titleColor}</color>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <zIndex>40</zIndex>
+        </datetime>
+        <datetime name="releaseDate">
+            <metadata>releasedate</metadata>
+            <format>%Y</format>
+            <defaultValue>—</defaultValue>
+        </datetime>
+        <datetime name="lastPlayed">
+            <metadata>lastplayed</metadata>
+            <displayRelative>true</displayRelative>
+        </datetime>
+
+        <image name="statsRule">
+            <path>${pixel}</path>
+            <color>${faintColor}</color>
+            <metadataElement>true</metadataElement>
+            <zIndex>40</zIndex>
+        </image>
+
+        <text name="description">
+            <metadata>description</metadata>
+            <container>true</container>
+            <containerType>vertical</containerType>
+            <containerStartDelay>5</containerStartDelay>
+            <containerScrollSpeed>0.7</containerScrollSpeed>
+            <containerResetDelay>8</containerResetDelay>
+            <fontPath>${fontText}</fontPath>
+            <fontSize>${descSize}</fontSize>
+            <color>${textColor}</color>
+            <lineSpacing>1.55</lineSpacing>
+            <horizontalAlignment>left</horizontalAlignment>
+            <!-- Beneath the veil of the collections top level, see collections.xml -->
+            <zIndex>33</zIndex>
+        </text>
+
+        <badges name="badges">
+            <horizontalAlignment>left</horizontalAlignment>
+            <direction>row</direction>
+            <lines>1</lines>
+            <itemsPerLine>9</itemsPerLine>
+            <slots>favorite, completed, kidgame, broken, controller, altemulator, manual, folder, collection</slots>
+            <controllerPos>0.5 0.5</controllerPos>
+            <controllerSize>0.56</controllerSize>
+            <customBadgeIcon badge="favorite">./../core/badges/favorite.svg</customBadgeIcon>
+            <customBadgeIcon badge="completed">./../core/badges/completed.svg</customBadgeIcon>
+            <customBadgeIcon badge="kidgame">./../core/badges/kidgame.svg</customBadgeIcon>
+            <customBadgeIcon badge="broken">./../core/badges/broken.svg</customBadgeIcon>
+            <customBadgeIcon badge="controller">./../core/badges/controller.svg</customBadgeIcon>
+            <customBadgeIcon badge="altemulator">./../core/badges/altemulator.svg</customBadgeIcon>
+            <customBadgeIcon badge="manual">./../core/badges/manual.svg</customBadgeIcon>
+            <customBadgeIcon badge="folder">./../core/badges/folder.svg</customBadgeIcon>
+            <customBadgeIcon badge="collection">./../core/badges/collection.svg</customBadgeIcon>
+            <folderLinkPos>0.5 0.56</folderLinkPos>
+            <folderLinkSize>0.42</folderLinkSize>
+            <badgeIconColor>${accentColor}</badgeIconColor>
+            <controllerIconColor>${accentColor}</controllerIconColor>
+            <folderLinkIconColor>${accentColor}</folderLinkIconColor>
+            <interpolation>linear</interpolation>
+            <zIndex>45</zIndex>
+        </badges>
+
+        <!-- Achievement progress ("12 / 74", a bar, the percentage), drawn by the
+             achievements app into the physical media images, which Atelier shows
+             nowhere else; only while it is enabled (see achievements/progress.js) -->
+        <image name="raProgress">
+            <imageType>physicalmedia</imageType>
+            <color>${accentColor}</color>
+            <interpolation>linear</interpolation>
+            <metadataElement>true</metadataElement>
+            <visible>${raProgressVisible}</visible>
+            <zIndex>45</zIndex>
+        </image>
+    </view>
+</theme>

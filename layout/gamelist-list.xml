@@ -1,0 +1,68 @@
+<!--
+    Gamelist elements shared by the textlist based variants: the running header and
+    the game index itself.
+-->
+
+<theme>
+    <view name="gamelist">
+        <text name="header">
+            <text>${system.fullName}</text>
+            <fontPath>${fontCaps}</fontPath>
+            <fontSize>${capsSize}</fontSize>
+            <color>${mutedColor}</color>
+            <letterCase>uppercase</letterCase>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <zIndex>40</zIndex>
+        </text>
+        <!-- The system's controller drawing, set just before the header text -->
+        <image name="headerArt">
+            <path>${artPath}</path>
+            <default>${artFallback}</default>
+            <color>${textColor}</color>
+            <interpolation>linear</interpolation>
+            <zIndex>40</zIndex>
+        </image>
+
+        <textlist name="gamelistTextlist">
+            <selectorColor>${accentColor}</selectorColor>
+            <selectorColorEnd>${accentColor}</selectorColorEnd>
+            <primaryColor>${listColor}</primaryColor>
+            <secondaryColor>${accentColor}</secondaryColor>
+            <selectedColor>${titleColor}</selectedColor>
+            <selectedSecondaryColor>${titleColor}</selectedSecondaryColor>
+            <fontPath>${fontText}</fontPath>
+            <fontSize>${listSize}</fontSize>
+            <lineSpacing>${listSpacing}</lineSpacing>
+            <horizontalAlignment>left</horizontalAlignment>
+            <letterCase>none</letterCase>
+            <indicators>symbols</indicators>
+            <collectionIndicators>symbols</collectionIndicators>
+            <textHorizontalScrolling>true</textHorizontalScrolling>
+            <textHorizontalScrollSpeed>0.8</textHorizontalScrollSpeed>
+            <textHorizontalScrollDelay>2.5</textHorizontalScrollDelay>
+            <systemNameSuffix>true</systemNameSuffix>
+            <letterCaseSystemNameSuffix>uppercase</letterCaseSystemNameSuffix>
+            <zIndex>50</zIndex>
+        </textlist>
+
+        <!-- Softens the right edge where long names are clipped -->
+        <image name="listFade">
+            <path>${pixel}</path>
+            <color>${bgColor}00</color>
+            <colorEnd>${bgColor}FF</colorEnd>
+            <gradientType>horizontal</gradientType>
+            <visible>${listFadeVisible}</visible>
+            <zIndex>55</zIndex>
+        </image>
+
+        <gamelistinfo name="gamelistInfo">
+            <fontPath>${fontCapsLight}</fontPath>
+            <fontSize>${capsSize}</fontSize>
+            <color>${mutedColor}</color>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <zIndex>45</zIndex>
+        </gamelistinfo>
+    </view>
+</theme>

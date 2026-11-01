@@ -1,0 +1,92 @@
+<!--
+    Grid variant: box covers in rows across the left side of the page, and a column with
+    the title, genre and description of the selected game, followed by the media card
+    (screenshot fading into the video) with the facts beside it.
+
+    The selected cover is marked by the same ambient light (or shadow on light color
+    schemes) used behind the media card, drawn as the grid selector beneath the cover.
+    Every item reserves 11% of its size on each side for that halo, which is why the
+    covers use an imageRelativeScale of 0.78. Covers are shown whole (contain): box art
+    rarely matches the item shape exactly, and cropping cut off titles and logos. So
+    that no band shows beside a slightly narrower cover, the items have no background;
+    games without a cover get theirs from the text background, as typographic tiles.
+    The one exception is the Collections system, where the covers carry the platform
+    name down their left side (see scripts/platform-banners.js): there the background,
+    sized like the covers, is the band behind that name in the scheme's surface color.
+    It matches the text background, so it doesn't show on the year tiles.
+
+    The media card, video, title, facts and description come from gamelist-details.xml
+    and gamelist-media-video.xml, which are included before this file. Their positions
+    are in the grid blocks of the aspect ratio files; item sizes per cover shape are set
+    in layout/grid/.
+-->
+
+<theme>
+    <view name="gamelist">
+        <!-- The column keeps to the essentials: no play statistics -->
+        <text name="labelLastPlayed, labelPlayCount, playCount, labelPlayTime, playTime">
+            <visible>false</visible>
+        </text>
+        <datetime name="lastPlayed">
+            <visible>false</visible>
+        </datetime>
+        <image name="statsRule">
+            <visible>false</visible>
+        </image>
+
+        <text name="header">
+            <text>${system.fullName}</text>
+            <fontPath>${fontCaps}</fontPath>
+            <fontSize>${capsSize}</fontSize>
+            <color>${mutedColor}</color>
+            <letterCase>uppercase</letterCase>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <zIndex>40</zIndex>
+        </text>
+        <image name="headerArt">
+            <path>${artPath}</path>
+            <default>${artFallback}</default>
+            <color>${textColor}</color>
+            <interpolation>linear</interpolation>
+            <zIndex>40</zIndex>
+        </image>
+        <gamelistinfo name="gamelistInfo">
+            <fontPath>${fontCapsLight}</fontPath>
+            <fontSize>${capsSize}</fontSize>
+            <color>${mutedColor}</color>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <zIndex>45</zIndex>
+        </gamelistinfo>
+
+        <grid name="gamelistGrid">
+            <imageType>${tileImageType}</imageType>
+            <imageFit>contain</imageFit>
+            <imageInterpolation>linear</imageInterpolation>
+            <imageRelativeScale>0.78</imageRelativeScale>
+            <backgroundImage>./../core/images/grid-band-${gridBand}.svg</backgroundImage>
+            <backgroundRelativeScale>0.78</backgroundRelativeScale>
+            <backgroundColor>${surfaceColor}</backgroundColor>
+            <selectorImage>${ambientTileImage}</selectorImage>
+            <selectorColor>${selectionGlowColor}</selectorColor>
+            <selectorLayer>bottom</selectorLayer>
+            <itemScale>1.07</itemScale>
+            <itemSpacing>0 0</itemSpacing>
+            <scaleInwards>true</scaleInwards>
+            <fractionalRows>false</fractionalRows>
+            <unfocusedItemOpacity>${gridDimOpacity}</unfocusedItemOpacity>
+            <unfocusedItemSaturation>0.85</unfocusedItemSaturation>
+            <fontPath>${tileFont}</fontPath>
+            <fontSize>${gridTextSize}</fontSize>
+            <textColor>${textColor}</textColor>
+            <textSelectedColor>${titleColor}</textSelectedColor>
+            <textBackgroundColor>${surfaceColor}</textBackgroundColor>
+            <textSelectedBackgroundColor>${surfaceColor}</textSelectedBackgroundColor>
+            <textRelativeScale>0.78</textRelativeScale>
+            <lineSpacing>1.15</lineSpacing>
+            <systemNameSuffix>false</systemNameSuffix>
+            <zIndex>50</zIndex>
+        </grid>
+    </view>
+</theme>

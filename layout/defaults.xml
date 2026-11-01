@@ -1,0 +1,16 @@
+<!--
+    Fallback values for variables that are used in element properties.
+
+    ES-DE refuses properties that resolve to an empty string and unthemes the whole
+    system when that happens, so every variable used in a property needs a non-empty
+    value even for systems that ship without metadata (for example user-defined custom
+    systems). A no-break space renders as nothing.
+-->
+
+<theme>
+    <variables>
+        <atelierEyebrow>&#160;</atelierEyebrow>
+        <systemDescription>&#160;</systemDescription>
+        <systemCoverSizeType>portrait</systemCoverSizeType>
+    </variables>
+</theme>
