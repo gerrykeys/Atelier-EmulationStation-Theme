@@ -7,7 +7,115 @@
         <gridTextSize>${collectionGridTextSize}</gridTextSize>
         <coverTextSize>${collectionGridTextSize}</coverTextSize>
         <videoAudio>false</videoAudio>
-        <tileImageType>miximage, cover</tileImageType>
-        <gridBand>collections</gridBand>
     </variables>
+    <language name="ar_SA">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.ar_SA.svg</namedArt>
+        </variables>
+    </language>
+    <language name="bs_BA">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.bs_BA.svg</namedArt>
+        </variables>
+    </language>
+    <language name="ca_ES">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.ca_ES.svg</namedArt>
+        </variables>
+    </language>
+    <language name="de_DE">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.de_DE.svg</namedArt>
+        </variables>
+    </language>
+    <language name="en_GB">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.en_GB.svg</namedArt>
+        </variables>
+    </language>
+    <language name="es_ES">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.es_ES.svg</namedArt>
+        </variables>
+    </language>
+    <language name="fr_FR">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.fr_FR.svg</namedArt>
+        </variables>
+    </language>
+    <language name="hr_HR">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.hr_HR.svg</namedArt>
+        </variables>
+    </language>
+    <language name="it_IT">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.it_IT.svg</namedArt>
+        </variables>
+    </language>
+    <language name="ja_JP">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.ja_JP.svg</namedArt>
+        </variables>
+    </language>
+    <language name="ko_KR">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.ko_KR.svg</namedArt>
+        </variables>
+    </language>
+    <language name="nl_NL">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.nl_NL.svg</namedArt>
+        </variables>
+    </language>
+    <language name="pl_PL">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.pl_PL.svg</namedArt>
+        </variables>
+    </language>
+    <language name="pt_BR">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.pt_BR.svg</namedArt>
+        </variables>
+    </language>
+    <language name="pt_PT">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.pt_PT.svg</namedArt>
+        </variables>
+    </language>
+    <language name="ro_RO">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.ro_RO.svg</namedArt>
+        </variables>
+    </language>
+    <language name="ru_RU">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.ru_RU.svg</namedArt>
+        </variables>
+    </language>
+    <language name="sr_RS">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.sr_RS.svg</namedArt>
+        </variables>
+    </language>
+    <language name="sv_SE">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.sv_SE.svg</namedArt>
+        </variables>
+    </language>
+    <language name="vi_VN">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.vi_VN.svg</namedArt>
+        </variables>
+    </language>
+    <language name="zh_CN">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.zh_CN.svg</namedArt>
+        </variables>
+    </language>
+    <language name="zh_TW">
+        <variables>
+            <namedArt>./../systems/controllers-named/custom-collections.zh_TW.svg</namedArt>
+        </variables>
+    </language>
 </theme>

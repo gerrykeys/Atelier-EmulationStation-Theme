@@ -14,6 +14,10 @@
             <letterCase>uppercase</letterCase>
             <horizontalAlignment>left</horizontalAlignment>
             <verticalAlignment>center</verticalAlignment>
+            <container>true</container>
+            <containerType>horizontal</containerType>
+            <containerStartDelay>2.5</containerStartDelay>
+            <containerScrollSpeed>0.7</containerScrollSpeed>
             <zIndex>40</zIndex>
         </text>
         <!-- The system's controller drawing, set just before the header text -->
@@ -35,7 +39,7 @@
 
         <carousel name="gamelistCarousel">
             <type>horizontal</type>
-            <imageType>${tileImageType}</imageType>
+            <imageType>cover</imageType>
             <itemScale>1.22</itemScale>
             <itemVerticalAlignment>center</itemVerticalAlignment>
             <imageFit>contain</imageFit>
@@ -71,6 +75,13 @@
             <zIndex>40</zIndex>
         </text>
 
+        <!-- Long values scroll rather than ending in an ellipsis, see gamelist-details.xml -->
+        <text name="genre, fileTags, developer">
+            <container>true</container>
+            <containerType>horizontal</containerType>
+            <containerStartDelay>2.5</containerStartDelay>
+            <containerScrollSpeed>0.7</containerScrollSpeed>
+        </text>
         <text name="labelReleased, labelDeveloper, labelPlayers">
             <metadataElement>true</metadataElement>
             <fontPath>${fontCaps}</fontPath>

@@ -4,8 +4,7 @@
     The media fills the rounded card edge to edge (cropSize), so screenshots and videos
     of any shape share the same footprint. Covers are left out as cropping them to the
     card would cut them badly; games with only a cover show the placeholder drawing.
-    Miximages are left out too, as they hold the covers with a platform banner that the
-    year collection scripts make for the Collections system.
+    Miximages come after the screenshot and title screen, for games with neither.
 
     When ES-DE starts a video it stops drawing the still image and fades the video in
     from transparency. The videoStill element keeps the screenshot underneath so that
@@ -16,14 +15,14 @@
     <view name="gamelist">
         <image name="videoStill">
             <origin>0.5 0.5</origin>
-            <imageType>screenshot, titlescreen</imageType>
+            <imageType>screenshot, titlescreen, miximage</imageType>
             <scrollFadeIn>true</scrollFadeIn>
             <interpolation>nearest</interpolation>
             <zIndex>29</zIndex>
         </image>
         <video name="gameVideo">
             <origin>0.5 0.5</origin>
-            <imageType>screenshot, titlescreen</imageType>
+            <imageType>screenshot, titlescreen, miximage</imageType>
             <delay>1.6</delay>
             <fadeInType>transparent</fadeInType>
             <fadeInTime>1.1</fadeInTime>

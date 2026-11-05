@@ -12,7 +12,7 @@
         <langLastPlayed>Last played</langLastPlayed>
         <langPlayCount>Times played</langPlayCount>
         <langPlayTime>Play time</langPlayTime>
-        <langCollectionYear>All games, every platform, released in</langCollectionYear>
+        <langCollectionHeading>Your collections</langCollectionHeading>
     </variables>
 
     <language name="it_IT">
@@ -24,7 +24,7 @@
             <langLastPlayed>Ultima partita</langLastPlayed>
             <langPlayCount>Partite</langPlayCount>
             <langPlayTime>Tempo di gioco</langPlayTime>
-            <langCollectionYear>Tutti i giochi delle piattaforme per l'anno</langCollectionYear>
+            <langCollectionHeading>Le tue collezioni</langCollectionHeading>
         </variables>
     </language>
     <language name="fr_FR">
@@ -36,7 +36,7 @@
             <langLastPlayed>Dernière partie</langLastPlayed>
             <langPlayCount>Parties</langPlayCount>
             <langPlayTime>Temps de jeu</langPlayTime>
-            <langCollectionYear>Tous les jeux, toutes plateformes, sortis en</langCollectionYear>
+            <langCollectionHeading>Vos collections</langCollectionHeading>
         </variables>
     </language>
     <language name="de_DE">
@@ -48,7 +48,7 @@
             <langLastPlayed>Zuletzt gespielt</langLastPlayed>
             <langPlayCount>Gespielt</langPlayCount>
             <langPlayTime>Spielzeit</langPlayTime>
-            <langCollectionYear>Alle Spiele aller Plattformen aus dem Jahr</langCollectionYear>
+            <langCollectionHeading>Deine Sammlungen</langCollectionHeading>
         </variables>
     </language>
     <language name="es_ES">
@@ -60,7 +60,7 @@
             <langLastPlayed>Última partida</langLastPlayed>
             <langPlayCount>Partidas</langPlayCount>
             <langPlayTime>Tiempo de juego</langPlayTime>
-            <langCollectionYear>Todos los juegos de todas las plataformas del año</langCollectionYear>
+            <langCollectionHeading>Tus colecciones</langCollectionHeading>
         </variables>
     </language>
     <language name="pt_BR">
@@ -72,7 +72,7 @@
             <langLastPlayed>Última partida</langLastPlayed>
             <langPlayCount>Partidas</langPlayCount>
             <langPlayTime>Tempo de jogo</langPlayTime>
-            <langCollectionYear>Todos os jogos de todas as plataformas do ano</langCollectionYear>
+            <langCollectionHeading>Suas coleções</langCollectionHeading>
         </variables>
     </language>
     <language name="pt_PT">
@@ -84,7 +84,7 @@
             <langLastPlayed>Última sessão</langLastPlayed>
             <langPlayCount>Sessões</langPlayCount>
             <langPlayTime>Tempo de jogo</langPlayTime>
-            <langCollectionYear>Todos os jogos de todas as plataformas do ano</langCollectionYear>
+            <langCollectionHeading>As tuas coleções</langCollectionHeading>
         </variables>
     </language>
     <language name="nl_NL">
@@ -96,7 +96,7 @@
             <langLastPlayed>Laatst gespeeld</langLastPlayed>
             <langPlayCount>Keer gespeeld</langPlayCount>
             <langPlayTime>Speeltijd</langPlayTime>
-            <langCollectionYear>Alle games van alle platforms uit</langCollectionYear>
+            <langCollectionHeading>Je collecties</langCollectionHeading>
         </variables>
     </language>
     <language name="sv_SE">
@@ -108,7 +108,7 @@
             <langLastPlayed>Senast spelad</langLastPlayed>
             <langPlayCount>Antal gånger</langPlayCount>
             <langPlayTime>Speltid</langPlayTime>
-            <langCollectionYear>Alla spel från alla plattformar från</langCollectionYear>
+            <langCollectionHeading>Dina samlingar</langCollectionHeading>
         </variables>
     </language>
     <language name="pl_PL">
@@ -120,7 +120,7 @@
             <langLastPlayed>Ostatnio grane</langLastPlayed>
             <langPlayCount>Uruchomienia</langPlayCount>
             <langPlayTime>Czas gry</langPlayTime>
-            <langCollectionYear>Wszystkie gry ze wszystkich platform z roku</langCollectionYear>
+            <langCollectionHeading>Twoje kolekcje</langCollectionHeading>
         </variables>
     </language>
     <language name="ru_RU">
@@ -132,7 +132,7 @@
             <langLastPlayed>Последний запуск</langLastPlayed>
             <langPlayCount>Запусков</langPlayCount>
             <langPlayTime>Время в игре</langPlayTime>
-            <langCollectionYear>Все игры всех платформ, выпущенные в</langCollectionYear>
+            <langCollectionHeading>Ваши коллекции</langCollectionHeading>
         </variables>
     </language>
     <language name="ja_JP">
@@ -144,7 +144,7 @@
             <langLastPlayed>最終プレイ</langLastPlayed>
             <langPlayCount>プレイ回数</langPlayCount>
             <langPlayTime>プレイ時間</langPlayTime>
-            <langCollectionYear>全プラットフォームのゲーム・発売年</langCollectionYear>
+            <langCollectionHeading>マイコレクション</langCollectionHeading>
         </variables>
     </language>
     <language name="ko_KR">
@@ -156,7 +156,7 @@
             <langLastPlayed>마지막 플레이</langLastPlayed>
             <langPlayCount>플레이 횟수</langPlayCount>
             <langPlayTime>플레이 시간</langPlayTime>
-            <langCollectionYear>모든 플랫폼의 게임, 출시 연도</langCollectionYear>
+            <langCollectionHeading>내 컬렉션</langCollectionHeading>
         </variables>
     </language>
     <language name="zh_CN">
@@ -168,7 +168,7 @@
             <langLastPlayed>最近游玩</langLastPlayed>
             <langPlayCount>游玩次数</langPlayCount>
             <langPlayTime>游玩时间</langPlayTime>
-            <langCollectionYear>全平台游戏 · 发行年份</langCollectionYear>
+            <langCollectionHeading>我的合集</langCollectionHeading>
         </variables>
     </language>
     <language name="zh_TW">
@@ -180,7 +180,7 @@
             <langLastPlayed>最近遊玩</langLastPlayed>
             <langPlayCount>遊玩次數</langPlayCount>
             <langPlayTime>遊玩時間</langPlayTime>
-            <langCollectionYear>全平台遊戲 · 發行年份</langCollectionYear>
+            <langCollectionHeading>我的合集</langCollectionHeading>
         </variables>
     </language>
     <language name="ar_SA">
@@ -192,7 +192,7 @@
             <langLastPlayed>آخر تشغيل</langLastPlayed>
             <langPlayCount>مرات التشغيل</langPlayCount>
             <langPlayTime>وقت اللعب</langPlayTime>
-            <langCollectionYear>جميع ألعاب المنصات لعام</langCollectionYear>
+            <langCollectionHeading>مجموعاتك</langCollectionHeading>
         </variables>
     </language>
     <language name="bs_BA">
@@ -204,7 +204,7 @@
             <langLastPlayed>Posljednje igrano</langLastPlayed>
             <langPlayCount>Broj igranja</langPlayCount>
             <langPlayTime>Vrijeme igranja</langPlayTime>
-            <langCollectionYear>Sve igre svih platformi iz godine</langCollectionYear>
+            <langCollectionHeading>Tvoje kolekcije</langCollectionHeading>
         </variables>
     </language>
     <language name="ca_ES">
@@ -216,7 +216,7 @@
             <langLastPlayed>Última partida</langLastPlayed>
             <langPlayCount>Partides</langPlayCount>
             <langPlayTime>Temps de joc</langPlayTime>
-            <langCollectionYear>Tots els jocs de totes les plataformes de l'any</langCollectionYear>
+            <langCollectionHeading>Les teves col·leccions</langCollectionHeading>
         </variables>
     </language>
     <language name="hr_HR">
@@ -228,7 +228,7 @@
             <langLastPlayed>Zadnje igrano</langLastPlayed>
             <langPlayCount>Broj igranja</langPlayCount>
             <langPlayTime>Vrijeme igranja</langPlayTime>
-            <langCollectionYear>Sve igre svih platformi iz godine</langCollectionYear>
+            <langCollectionHeading>Tvoje kolekcije</langCollectionHeading>
         </variables>
     </language>
     <language name="ro_RO">
@@ -240,7 +240,7 @@
             <langLastPlayed>Ultima sesiune</langLastPlayed>
             <langPlayCount>Sesiuni</langPlayCount>
             <langPlayTime>Timp de joc</langPlayTime>
-            <langCollectionYear>Toate jocurile tuturor platformelor din anul</langCollectionYear>
+            <langCollectionHeading>Colecțiile tale</langCollectionHeading>
         </variables>
     </language>
     <language name="sr_RS">
@@ -252,7 +252,7 @@
             <langLastPlayed>Poslednje igrano</langLastPlayed>
             <langPlayCount>Broj igranja</langPlayCount>
             <langPlayTime>Vreme igranja</langPlayTime>
-            <langCollectionYear>Sve igre svih platformi iz godine</langCollectionYear>
+            <langCollectionHeading>Tvoje kolekcije</langCollectionHeading>
         </variables>
     </language>
     <language name="vi_VN">
@@ -264,7 +264,7 @@
             <langLastPlayed>Chơi lần cuối</langLastPlayed>
             <langPlayCount>Số lần chơi</langPlayCount>
             <langPlayTime>Thời gian chơi</langPlayTime>
-            <langCollectionYear>Tất cả trò chơi của mọi nền tảng năm</langCollectionYear>
+            <langCollectionHeading>Bộ sưu tập của bạn</langCollectionHeading>
         </variables>
     </language>
 </theme>

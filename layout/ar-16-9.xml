@@ -8,16 +8,31 @@
 -->
 
 <theme>
-    <!-- At the extra large font size the help prompts need the whole footer, so the
-         system status moves up to the header line, with the clock to its left -->
+    <!-- The clock ends the header line, with Wi-Fi and then the battery to its left, one
+         entry spacing (0.008) apart. Wi-Fi is placed by the widest time, 00:00, which is
+         3.37 em of the status size; other times leave a little more room. The icons are
+         as wide as they are tall, a share of the screen height, so these values are
+         halfway between 16:9 and 16:10 -->
     <variables>
-        <statusPos>0.94 0.93</statusPos>
-        <clockPos>0.94 0.085</clockPos>
+        <wifiPos>0.884 0.085</wifiPos>
+        <statusPos>0.862 0.085</statusPos>
     </variables>
+    <fontSize name="small">
+        <variables>
+            <wifiPos>0.89 0.085</wifiPos>
+            <statusPos>0.87 0.085</statusPos>
+        </variables>
+    </fontSize>
+    <fontSize name="large">
+        <variables>
+            <wifiPos>0.876 0.085</wifiPos>
+            <statusPos>0.851 0.085</statusPos>
+        </variables>
+    </fontSize>
     <fontSize name="x-large">
         <variables>
-            <statusPos>0.94 0.085</statusPos>
-            <clockPos>0.805 0.085</clockPos>
+            <wifiPos>0.866 0.085</wifiPos>
+            <statusPos>0.838 0.085</statusPos>
         </variables>
     </fontSize>
 
@@ -29,8 +44,11 @@
             <systemstatus name="systemStatus">
                 <pos>${statusPos}</pos>
             </systemstatus>
+            <systemstatus name="systemStatusWifi">
+                <pos>${wifiPos}</pos>
+            </systemstatus>
             <clock name="clock">
-                <pos>${clockPos}</pos>
+                <pos>0.94 0.085</pos>
             </clock>
         </view>
 
@@ -80,16 +98,31 @@
                 <origin>0 0.5</origin>
                 <size>0.6 0.03</size>
             </text>
-            <text name="collectionNumeral">
+            <text name="collectionName">
                 <pos>0.94 0.86</pos>
                 <origin>1 1</origin>
                 <size>0.6 0.5</size>
-                <fontSize>0.34</fontSize>
+                <fontSize>0.15</fontSize>
             </text>
         </view>
     </variant>
 
-    <variant name="index, indexStill, indexCompact, indexCompactStill, typographic">
+    <!-- The Names variants, see layout/system-names.xml. The carousel items gain the strips
+         above and below the drawing; the veil covers the name of the selected system,
+         from just beneath the tallest drawing, and stops short of its neighbors -->
+    <variant name="indexNames, indexStillNames, indexCompactNames, indexCompactStillNames, typographicNames, galleryNames, gridNames">
+        <view name="system">
+            <carousel name="systemCarousel">
+                <itemSize>0.2 0.4128</itemSize>
+            </carousel>
+            <image name="selectedNameVeil">
+                <pos>0.5 0.62</pos>
+                <size>0.4 0.15</size>
+            </image>
+        </view>
+    </variant>
+
+    <variant name="index, indexStill, indexCompact, indexCompactStill, typographic, indexNames, indexStillNames, indexCompactNames, indexCompactStillNames, typographicNames">
         <view name="gamelist">
             <text name="header">
                 <pos>0.125 0.085</pos>
@@ -123,7 +156,7 @@
         </view>
     </variant>
 
-    <variant name="index, indexStill, indexCompact, indexCompactStill">
+    <variant name="index, indexStill, indexCompact, indexCompactStill, indexNames, indexStillNames, indexCompactNames, indexCompactStillNames">
         <view name="gamelist">
             <text name="gameTitle">
                 <pos>0.41 0.3</pos>
@@ -268,7 +301,7 @@
         </view>
     </variant>
 
-    <variant name="index, indexCompact">
+    <variant name="index, indexCompact, indexNames, indexCompactNames">
         <view name="gamelist">
             <image name="videoStill">
                 <pos>0.545 0.585</pos>
@@ -284,7 +317,7 @@
         </view>
     </variant>
 
-    <variant name="indexStill, indexCompactStill">
+    <variant name="indexStill, indexCompactStill, indexStillNames, indexCompactStillNames">
         <view name="gamelist">
             <image name="gameImage">
                 <pos>0.545 0.585</pos>
@@ -298,7 +331,7 @@
          The caption lines up with the first row of the list, everything beneath it moves
          up by 0.14 and the description gets the room, six lines instead of two. Only the
          positions change -->
-    <variant name="indexCompact, indexCompactStill">
+    <variant name="indexCompact, indexCompactStill, indexCompactNames, indexCompactStillNames">
         <view name="gamelist">
             <text name="gameTitle">
                 <visible>false</visible>
@@ -383,7 +416,7 @@
         </view>
     </variant>
 
-    <variant name="indexCompact">
+    <variant name="indexCompact, indexCompactNames">
         <view name="gamelist">
             <image name="videoStill">
                 <pos>0.545 0.445</pos>
@@ -394,7 +427,7 @@
         </view>
     </variant>
 
-    <variant name="indexCompactStill">
+    <variant name="indexCompactStill, indexCompactStillNames">
         <view name="gamelist">
             <image name="gameImage">
                 <pos>0.545 0.445</pos>
@@ -402,7 +435,7 @@
         </view>
     </variant>
 
-    <variant name="typographic">
+    <variant name="typographic, typographicNames">
         <view name="gamelist">
             <text name="gameTitle">
                 <pos>0.41 0.4</pos>
@@ -530,7 +563,7 @@
         </view>
     </variant>
 
-    <variant name="gallery">
+    <variant name="gallery, galleryNames">
         <include>./gallery/16-9-${systemCoverSizeType}.xml</include>
         <view name="gamelist">
             <text name="header">
@@ -614,7 +647,7 @@
         </view>
     </variant>
 
-    <variant name="grid">
+    <variant name="grid, gridNames">
         <include>./grid/16-9-${systemCoverSizeType}.xml</include>
         <view name="gamelist">
             <text name="header">

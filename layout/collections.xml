@@ -1,18 +1,18 @@
 <!--
     Custom collections: in the grouped Collections system the header shows the name of
-    the collection in the display face (for the year collections made by
-    scripts/year-collections.js, the year) and beneath it, in the accent color, the
-    platform the selected game comes from. Games inside a year collection are sorted by
-    platform, so this line works as the heading of each group.
+    the collection in the display face and beneath it, in the accent color, the
+    platform the selected game comes from. The collections Catalogue makes sort their
+    games by platform (catalogue/scripts/windows/collections.ps1), so this line works as
+    the heading of each group.
 
     At the top level, where the collections themselves are listed, ES-DE shows a random
     game of the selected collection and describes it. Instead, a veil in the page color
     covers its media, the atmosphere fanart and the description (set beneath the veil in
-    gamelist-details.xml), and the name of the selected collection is set behind the list
-    as a large, faint numeral. Both use customCollectionNameGrouped, which ES-DE only
-    fills at the top level, so inside a collection they draw nothing at all. The header
-    there falls back to its default value, a heading that the numeral completes ("All
-    games, every platform, released in" ... "1992", see languages.xml).
+    gamelist-details.xml), and the name of the selected collection is set behind the list,
+    large and faint, on up to three lines. Both use customCollectionNameGrouped, which
+    ES-DE only fills at the top level, so inside a collection they draw nothing at all.
+    The header there falls back to its default value, a heading over the list ("Your
+    collections", see languages.xml).
 
     The visibility variables are set by theme.xml (regular header) and swapped by
     systems/eyebrow/custom-collections.xml, which also gives the Grid and Gallery tiles
@@ -27,7 +27,7 @@
         </text>
         <text name="collectionTitle">
             <metadata>systemFullname</metadata>
-            <defaultValue>${langCollectionYear}</defaultValue>
+            <defaultValue>${langCollectionHeading}</defaultValue>
             <fontPath>${fontDisplay}</fontPath>
             <fontSize>${collectionTitleSize}</fontSize>
             <color>${titleColor}</color>
@@ -49,7 +49,7 @@
             <zIndex>40</zIndex>
         </text>
 
-        <!-- Top level: veil over the random game's media, then the large numeral -->
+        <!-- Top level: veil over the random game's media, then the large name -->
         <text name="collectionVeil">
             <metadata>customCollectionNameGrouped</metadata>
             <pos>0 0</pos>
@@ -62,7 +62,7 @@
             <visible>${collectionHeaderVisible}</visible>
             <zIndex>34</zIndex>
         </text>
-        <text name="collectionNumeral">
+        <text name="collectionName">
             <metadata>customCollectionNameGrouped</metadata>
             <fontPath>${fontDisplay}</fontPath>
             <color>${titleColor}12</color>

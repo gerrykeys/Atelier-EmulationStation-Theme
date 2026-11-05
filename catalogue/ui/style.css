@@ -1,0 +1,295 @@
+/* Catalogue's own parts of the page: its two modes, how a game stands, beneath its
+   cover and in the lists, the marks of the chosen games, the folder chooser, the
+   on-screen keyboard and the collections. The rest is common/ui/atelier.css. */
+
+/* The header: the mode open in the accent and where in it, and at the right end of the
+   content the other mode after the Select button, as the help prompts show buttons */
+.header.modes { display: flex; align-items: center; }
+.modes .here { flex: none; color: var(--accent); }
+.modes .place { min-width: 0; margin-left: 0.9em; overflow: hidden; text-overflow: ellipsis; }
+.modes .other {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--help-icon-spacing);
+  margin-left: auto;
+  padding-left: 2em;
+  font-family: CapsLight;
+}
+.modes.flow .other { margin-left: 0; }
+.modes .other .art { --tint: var(--muted); width: var(--help-icon); height: var(--help-icon); }
+
+/* Changing mode, the page slides in from the side of the mode, the Catalogue being on
+   the left */
+@keyframes from-left { from { opacity: 0; transform: translateX(-1.6vw); } }
+@keyframes from-right { from { opacity: 0; transform: translateX(1.6vw); } }
+#library.from-left { animation: from-left 0.28s ease-out; }
+#library.from-right { animation: from-right 0.28s ease-out; }
+
+/* The choice of mode: two squares side by side under the title, each with the mode's
+   drawing, its name, how much it holds and what it is for; the chosen one is lit like
+   a selected cover, the open one carries a tag */
+.menu.sections { width: auto; padding: 0; background: none; }
+.menu.sections .menu-title { justify-content: center; margin-bottom: 3.6vh; }
+.menu.sections .menu-rows { display: flex; gap: 4vh; max-height: none; overflow: visible; }
+.menu.sections .menu-row {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0;
+  width: 40vh;
+  height: 40vh;
+  box-sizing: border-box;
+  padding: 6.2vh 3.6vh 0;
+  border-radius: 0.5vw;
+  background: var(--surface);
+  text-align: center;
+  color: var(--list);
+  box-shadow: 0 0 0 max(1px, 0.12vh) var(--faint);
+  transition: transform 0.15s, box-shadow 0.15s, color 0.15s;
+}
+.menu.sections .menu-row.selected {
+  transform: scale(1.05);
+  color: var(--title);
+  box-shadow: 0 0 0 max(1px, 0.22vh) var(--accent), 0 0 7vh var(--glow);
+}
+.menu.sections .menu-row.selected::before { display: none; }
+.menu.sections .menu-art { --tint: var(--muted); width: 17vh; height: 12vh; opacity: 1; margin-bottom: 3.4vh; transition: background-color 0.15s; }
+.menu.sections .menu-row.selected .menu-art { --tint: var(--accent); }
+.menu.sections .menu-words { flex: none; width: 100%; align-items: center; }
+.menu.sections .menu-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Display;
+  font-size: 4.6vh;
+  line-height: 1.15;
+}
+.menu.sections .menu-note { margin: 1.2vh 0 0; }
+.menu.sections .menu-row.selected .menu-note { color: var(--accent); }
+.menu.sections .menu-sub { margin-top: 1.8vh; white-space: normal; line-height: 1.5; }
+.menu.sections .menu-value {
+  position: absolute;
+  top: 2.2vh;
+  right: 2.2vh;
+  margin: 0;
+  font-family: Tags;
+  font-size: var(--tag-size);
+}
+
+/* Games only in the archive are a shade fainter. The line beneath a cover, and before
+   the state in the list with covers, only shows a transfer: waiting, then growing. */
+.cover.status-remote .pic { opacity: calc(var(--dim) * 0.6); filter: saturate(0.4); }
+.shelf.active .cover.status-remote.selected .pic { opacity: 0.8; filter: saturate(0.6); }
+.cover > .bar, .list-row .meta .bar { display: none; }
+.cover.busy > .bar, .cover.waiting > .bar, .busy .meta .bar, .waiting .meta .bar { display: block; }
+.waiting .bar { animation: waiting 1.4s ease-in-out infinite; }
+@keyframes waiting { 50% { opacity: 0.35; } }
+
+/* How a game stands: a disc with a sign, at the bottom corner of its cover, before its
+   state in the lists and before the state of the chosen game. Installed is quiet, to
+   install neutral, what asks for something is in the accent: to sync outlined, not
+   archived filled. */
+.state-icon {
+  --sign: none;
+  --ink: var(--muted);
+  --ring: var(--faint);
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: inset 0 0 0 max(1px, 0.14vh) var(--ring);
+}
+.state-icon::after {
+  content: '';
+  position: absolute;
+  inset: 20%;
+  background-color: var(--ink);
+  -webkit-mask: var(--sign) center / contain no-repeat;
+  mask: var(--sign) center / contain no-repeat;
+}
+.state-icon:not([data-state]) { display: none; }
+.cover > .state-icon { right: -1.1vh; bottom: -1.1vh; width: 3vh; height: 3vh; z-index: 1; box-shadow: inset 0 0 0 max(1px, 0.14vh) var(--ring), 0 0 0 0.35vh var(--bg); }
+.state-icon.inline { position: relative; display: inline-block; flex: none; width: 1.7em; height: 1.7em; margin-right: 0.65em; vertical-align: middle; }
+/* The line of a list with covers keeps its own gap */
+.list-row .meta .state-icon.inline { margin-right: -0.25em; }
+/* In the lists of titles, the state at the right end of the row, after its icon */
+.list-row .row-state { display: inline-flex; align-items: center; }
+.state-icon[data-state='installed'] {
+  --sign: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M8.5 5.2v13.6L19.2 12z' fill='white'/></svg>");
+}
+.state-icon[data-state='download'] {
+  --ink: var(--text);
+  --ring: var(--muted);
+  --sign: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 3.5v15.5M5 12.5l7 7 7-7' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+.state-icon[data-state='sync'] {
+  --ink: var(--accent);
+  --ring: var(--accent);
+  --sign: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g fill='none' stroke='white' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'><path d='M3.6 10.6A8.6 8.6 0 0 1 19 7.2M20.4 13.4A8.6 8.6 0 0 1 5 16.8'/><path d='M19.6 2.4v5.2h-5.2M4.4 21.6v-5.2h5.2'/></g></svg>");
+}
+.state-icon[data-state='upload'] {
+  --ink: var(--bg);
+  --ring: var(--accent);
+  background: var(--accent);
+  --sign: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 20.5V5M5 11.5l7-7 7 7' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+.state-icon[data-state='unavailable'] {
+  --sign: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M5 12h14' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round'/></svg>");
+}
+
+/* Marked games: a small round mark in the accent at the corner of the cover, or
+   before the name */
+.check { display: none; position: absolute; border-radius: 50%; background: var(--accent); }
+.marked > .check { display: block; }
+.cover > .check { top: -0.55vh; right: -0.55vh; width: 1.5vh; height: 1.5vh; box-shadow: 0 0 0 0.3vh var(--bg); }
+.list-row > .check { left: calc(var(--list-margin) * 0.35); top: calc(50% - 0.45vh); width: 0.9vh; height: 0.9vh; }
+
+/* In the lists, the state at the right end of the row */
+.list-row.with-state { padding-right: 16vw; }
+.row-state {
+  position: absolute;
+  right: 0;
+  font-family: CapsLight;
+  text-transform: uppercase;
+  font-size: var(--caps-size);
+  color: var(--muted);
+}
+.list-row.selected .row-state { color: var(--accent); }
+.list-row.status-remote { color: var(--muted); }
+.list-row .meta .state { white-space: nowrap; }
+
+/* The line beneath the facts: maker and kind, or what went wrong */
+.next { display: flex; align-items: center; gap: var(--badge-gap); font-size: var(--desc-size); color: var(--text); white-space: nowrap; overflow: hidden; }
+.next .caps { color: var(--accent); font-size: var(--caps-size); }
+.next span:last-child { overflow: hidden; text-overflow: ellipsis; }
+
+/* Menus: long labels end in an ellipsis; the padding keeps the descenders inside */
+.menu-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0.2em 0; margin: -0.2em 0; }
+.menu-value { flex: none; margin-left: 1.5em; }
+
+/* The folder chooser */
+.browse-path { color: var(--muted); font-size: var(--caps-size); }
+.browse-row.use { color: var(--accent); }
+.browse-row.use.selected { color: var(--title); }
+
+/* The filters keep to one line each, across the whole width */
+.tabs { overflow: hidden; }
+.tab { white-space: nowrap; }
+
+/* The platforms: each row with the platform's drawing before its name */
+.platform-row { display: flex; align-items: center; gap: 0.9em; }
+.platform-row .art { --tint: currentColor; flex: none; width: 2.6em; height: 1.5em; opacity: 0.8; }
+.platform-row .name { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.platform-row.selected .art { opacity: 1; }
+/* The count takes only the room it needs, the name the rest */
+.platform-row.with-state { padding-right: 0; }
+.platform-row .row-state { position: static; flex: none; margin-left: auto; padding-left: 1em; }
+.list-row .pic .art { --tint: var(--muted); width: 80%; height: 60%; }
+
+/* The notice of finished transfers: a small card in the surface color on the header
+   line, with a tick in the accent, sliding in and fading away */
+.notice-layer { z-index: 7; pointer-events: none; }
+.notice {
+  display: flex;
+  align-items: center;
+  gap: 1.6vh;
+  max-width: 34vw;
+  padding: 1.3vh 2.4vh 1.3vh 1.6vh;
+  background: var(--surface);
+  border-radius: 0.35vw;
+  box-shadow: 0 0 0 max(1px, 0.12vh) var(--faint), 0 1.2vh 3vh rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(-1.2vh);
+  transition: opacity 0.4s, transform 0.4s;
+}
+.notice.shown { opacity: 1; transform: none; }
+.notice .tick { position: relative; flex: none; width: 3.4vh; height: 3.4vh; border-radius: 50%; background: var(--accent); }
+.notice .tick::after {
+  content: '';
+  position: absolute;
+  left: 36%;
+  top: 22%;
+  width: 24%;
+  height: 42%;
+  border: solid var(--surface);
+  border-width: 0 0.4vh 0.4vh 0;
+  transform: rotate(45deg);
+}
+.notice .text { min-width: 0; }
+.notice-title { font-family: Caps; text-transform: uppercase; font-size: var(--caps-size); color: var(--accent); white-space: nowrap; }
+.notice-line { margin-top: 0.3vh; font-size: var(--desc-size); color: var(--title); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.notice-hint { margin-top: 0.2vh; font-size: var(--desc-size); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* The collections: the row that makes a new one, with a plus in place of a drawing */
+.platform-row.new-row { color: var(--accent); }
+.platform-row.new-row.selected { color: var(--title); }
+/* As wide as the drawings, in its own larger size */
+.platform-row .art.plus-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(2.6em / 1.5);
+  height: 1em;
+  background: none;
+  -webkit-mask: none;
+  mask: none;
+  font-family: Display;
+  font-size: 1.5em;
+  line-height: 1;
+}
+
+/* The first tile of a collection adds games: a dashed outline with a plus */
+.add-tile {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border: max(1px, 0.16vh) dashed var(--muted);
+  border-radius: var(--tile-radius);
+  background: var(--bg);
+  font-family: Caps;
+  text-transform: uppercase;
+  font-size: var(--caps-size);
+  text-align: center;
+  color: var(--muted);
+}
+.add-tile .plus { font-family: Display; font-size: 3.2em; line-height: 0.8; color: var(--accent); }
+.shelf.active .cover.add.selected .add-tile { border-color: var(--accent); color: var(--title); }
+.list-row.add { color: var(--accent); }
+.list-row.add.selected { color: var(--title); }
+.list-row .pic .add-tile { padding: 0; border-width: max(1px, 0.12vh); }
+.list-row .pic .add-tile .label { display: none; }
+.list-row .pic .add-tile .plus { font-size: 2.4em; }
+
+/* A game of the search that is in the collection: a tick in the accent at the corner
+   of its cover; in the lists, its state says so in the accent */
+.badge { display: none; position: absolute; border-radius: 50%; background: var(--accent); }
+.member > .badge { display: block; }
+.cover > .badge { top: -1vh; right: -1vh; width: 2.8vh; height: 2.8vh; box-shadow: 0 0 0 0.3vh var(--bg); z-index: 1; }
+.cover > .badge::after {
+  content: '';
+  position: absolute;
+  left: 36%;
+  top: 20%;
+  width: 24%;
+  height: 44%;
+  border: solid var(--bg);
+  border-width: 0 0.35vh 0.35vh 0;
+  transform: rotate(45deg);
+}
+.list-row.member .row-state, .list-row.member .state { color: var(--accent); }
+
+/* The covers and rows of the games just done light up for a moment */
+@keyframes done-glow { 0% { opacity: 0; } 25% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes done-text { 0%, 50% { color: var(--accent); } }
+.cover.done .glow { animation: done-glow 2.4s ease-out; }
+.list-row.done .row-state, .list-row.done .state, .list-row.done .name { animation: done-text 2.4s ease-out; }

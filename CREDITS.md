@@ -13,9 +13,9 @@
 
 ## Scripts
 
-The year collection scripts draw the platform banners with [resvg-js](https://github.com/yisibl/resvg-js) (Mozilla Public License 2.0), which they download on first use; it is not part of the theme.
+The scripts and the apps run with Windows PowerShell and .NET Framework, draw their images with GDI+ and write the zip files of Catalogue with .NET's own zip support, all part of Windows.
 
-The achievements app (`achievements/`) shows data and badge images from the [RetroAchievements](https://retroachievements.org) web API, fetched with each user's own key. They are not part of the theme. Games are identified with hashes computed the way [rcheevos](https://github.com/RetroAchievements/rcheevos) does.
+The achievements app (`achievements`, its server in `achievements/scripts/windows`) shows data and badge images from the [RetroAchievements](https://retroachievements.org) web API, fetched with each user's own key. They are not part of the theme. Games are identified with hashes computed the way [rcheevos](https://github.com/RetroAchievements/rcheevos) does.
 
 ## Original work
 

@@ -1,0 +1,35 @@
+<!--
+    The Names variants: every system in the carousel has its name beneath its drawing,
+    so the neighbors can be read as well. A carousel item shows an image or a text, never
+    both, so the names are part of copies of the drawings (see tools/build-named-art.js).
+    That is also why they don't follow the font size, and why custom collections, which
+    can't be known in advance, get the folder without a name.
+
+    The selected system has its name in the drawing too, where the large title goes. The
+    veil, in the page color, hides it. It sits above the carousel, which paints the page,
+    and below the room light of the atmosphere schemes, which would otherwise show its
+    edges. With the soft transitions it fades with the text, so the name of the system
+    that arrives grows with its drawing and gives way to the title. Its position and the
+    size of the carousel items are in the aspect ratio files.
+
+    The neighbors are brighter than in the other variants: at the opacity of those, the
+    names can hardly be read. The tags of the shared drawings say what the names say, so
+    only the few systems that have the same name in ES-DE keep theirs.
+-->
+
+<theme>
+    <view name="system">
+        <carousel name="systemCarousel">
+            <staticImage>${namedArt}</staticImage>
+            <defaultImage>${namedArtFallback}</defaultImage>
+            <unfocusedItemOpacity>0.55</unfocusedItemOpacity>
+        </carousel>
+
+        <image name="selectedNameVeil">
+            <path>${pixel}</path>
+            <origin>0.5 0.5</origin>
+            <color>${bgColor}</color>
+            <zIndex>20.5</zIndex>
+        </image>
+    </view>
+</theme>

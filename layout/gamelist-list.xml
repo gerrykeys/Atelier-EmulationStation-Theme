@@ -5,6 +5,7 @@
 
 <theme>
     <view name="gamelist">
+        <!-- A long system name scrolls rather than ending in an ellipsis -->
         <text name="header">
             <text>${system.fullName}</text>
             <fontPath>${fontCaps}</fontPath>
@@ -13,6 +14,10 @@
             <letterCase>uppercase</letterCase>
             <horizontalAlignment>left</horizontalAlignment>
             <verticalAlignment>center</verticalAlignment>
+            <container>true</container>
+            <containerType>horizontal</containerType>
+            <containerStartDelay>2.5</containerStartDelay>
+            <containerScrollSpeed>0.7</containerScrollSpeed>
             <zIndex>40</zIndex>
         </text>
         <!-- The system's controller drawing, set just before the header text -->

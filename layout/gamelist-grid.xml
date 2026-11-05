@@ -10,10 +10,6 @@
     rarely matches the item shape exactly, and cropping cut off titles and logos. So
     that no band shows beside a slightly narrower cover, the items have no background;
     games without a cover get theirs from the text background, as typographic tiles.
-    The one exception is the Collections system, where the covers carry the platform
-    name down their left side (see scripts/platform-banners.js): there the background,
-    sized like the covers, is the band behind that name in the scheme's surface color.
-    It matches the text background, so it doesn't show on the year tiles.
 
     The media card, video, title, facts and description come from gamelist-details.xml
     and gamelist-media-video.xml, which are included before this file. Their positions
@@ -42,6 +38,10 @@
             <letterCase>uppercase</letterCase>
             <horizontalAlignment>left</horizontalAlignment>
             <verticalAlignment>center</verticalAlignment>
+            <container>true</container>
+            <containerType>horizontal</containerType>
+            <containerStartDelay>2.5</containerStartDelay>
+            <containerScrollSpeed>0.7</containerScrollSpeed>
             <zIndex>40</zIndex>
         </text>
         <image name="headerArt">
@@ -61,13 +61,10 @@
         </gamelistinfo>
 
         <grid name="gamelistGrid">
-            <imageType>${tileImageType}</imageType>
+            <imageType>cover</imageType>
             <imageFit>contain</imageFit>
             <imageInterpolation>linear</imageInterpolation>
             <imageRelativeScale>0.78</imageRelativeScale>
-            <backgroundImage>./../core/images/grid-band-${gridBand}.svg</backgroundImage>
-            <backgroundRelativeScale>0.78</backgroundRelativeScale>
-            <backgroundColor>${surfaceColor}</backgroundColor>
             <selectorImage>${ambientTileImage}</selectorImage>
             <selectorColor>${selectionGlowColor}</selectorColor>
             <selectorLayer>bottom</selectorLayer>

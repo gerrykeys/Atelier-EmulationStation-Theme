@@ -545,4 +545,206 @@
         <label language="vi_VN">Lưới</label>
         <selectable>true</selectable>
     </variant>
+    <variant name="indexNames">
+        <label language="en_US">Index · names</label>
+        <label language="en_GB">Index · names</label>
+        <label language="it_IT">Indice · nomi</label>
+        <label language="fr_FR">Index · noms</label>
+        <label language="de_DE">Index · Namen</label>
+        <label language="es_ES">Índice · nombres</label>
+        <label language="pt_BR">Índice · nomes</label>
+        <label language="pt_PT">Índice · nomes</label>
+        <label language="nl_NL">Index · namen</label>
+        <label language="sv_SE">Index · namn</label>
+        <label language="pl_PL">Indeks · nazwy</label>
+        <label language="ru_RU">Указатель · названия</label>
+        <label language="ja_JP">インデックス · 名前</label>
+        <label language="ko_KR">인덱스 · 이름</label>
+        <label language="zh_CN">索引 · 名称</label>
+        <label language="zh_TW">索引 · 名稱</label>
+        <label language="ar_SA">فهرس · الأسماء</label>
+        <label language="bs_BA">Indeks · nazivi</label>
+        <label language="ca_ES">Índex · noms</label>
+        <label language="hr_HR">Kazalo · nazivi</label>
+        <label language="ro_RO">Index · nume</label>
+        <label language="sr_RS">Indeks · nazivi</label>
+        <label language="vi_VN">Mục lục · tên</label>
+        <selectable>true</selectable>
+        <override>
+            <trigger>noMedia</trigger>
+            <mediaType>miximage, screenshot, titlescreen, video</mediaType>
+            <useVariant>typographicNames</useVariant>
+        </override>
+    </variant>
+    <variant name="indexStillNames">
+        <label language="en_US">Index, no videos · names</label>
+        <label language="en_GB">Index, no videos · names</label>
+        <label language="it_IT">Indice, senza video · nomi</label>
+        <label language="fr_FR">Index, sans vidéos · noms</label>
+        <label language="de_DE">Index, ohne Videos · Namen</label>
+        <label language="es_ES">Índice, sin vídeos · nombres</label>
+        <label language="pt_BR">Índice, sem vídeos · nomes</label>
+        <label language="pt_PT">Índice, sem vídeos · nomes</label>
+        <label language="nl_NL">Index, zonder video's · namen</label>
+        <label language="sv_SE">Index, utan videor · namn</label>
+        <label language="pl_PL">Indeks, bez wideo · nazwy</label>
+        <label language="ru_RU">Указатель, без видео · названия</label>
+        <label language="ja_JP">インデックス（動画なし） · 名前</label>
+        <label language="ko_KR">인덱스 (동영상 없음) · 이름</label>
+        <label language="zh_CN">索引（无视频） · 名称</label>
+        <label language="zh_TW">索引（無影片） · 名稱</label>
+        <label language="ar_SA">فهرس، بدون فيديو · الأسماء</label>
+        <label language="bs_BA">Indeks, bez videa · nazivi</label>
+        <label language="ca_ES">Índex, sense vídeos · noms</label>
+        <label language="hr_HR">Kazalo, bez videa · nazivi</label>
+        <label language="ro_RO">Index, fără videoclipuri · nume</label>
+        <label language="sr_RS">Indeks, bez videa · nazivi</label>
+        <label language="vi_VN">Mục lục, không video · tên</label>
+        <selectable>true</selectable>
+        <override>
+            <trigger>noMedia</trigger>
+            <mediaType>miximage, screenshot, titlescreen</mediaType>
+            <useVariant>typographicNames</useVariant>
+        </override>
+    </variant>
+    <variant name="indexCompactNames">
+        <label language="en_US">Index, compact · names</label>
+        <label language="en_GB">Index, compact · names</label>
+        <label language="it_IT">Indice compatto · nomi</label>
+        <label language="fr_FR">Index compact · noms</label>
+        <label language="de_DE">Index, kompakt · Namen</label>
+        <label language="es_ES">Índice compacto · nombres</label>
+        <label language="pt_BR">Índice compacto · nomes</label>
+        <label language="pt_PT">Índice compacto · nomes</label>
+        <label language="nl_NL">Index, compact · namen</label>
+        <label language="sv_SE">Index, kompakt · namn</label>
+        <label language="pl_PL">Indeks kompaktowy · nazwy</label>
+        <label language="ru_RU">Указатель, компактный · названия</label>
+        <label language="ja_JP">インデックス（コンパクト） · 名前</label>
+        <label language="ko_KR">인덱스 (컴팩트) · 이름</label>
+        <label language="zh_CN">索引（紧凑） · 名称</label>
+        <label language="zh_TW">索引（緊湊） · 名稱</label>
+        <label language="ar_SA">فهرس مضغوط · الأسماء</label>
+        <label language="bs_BA">Indeks, kompaktni · nazivi</label>
+        <label language="ca_ES">Índex compacte · noms</label>
+        <label language="hr_HR">Kazalo, kompaktno · nazivi</label>
+        <label language="ro_RO">Index compact · nume</label>
+        <label language="sr_RS">Indeks, kompaktni · nazivi</label>
+        <label language="vi_VN">Mục lục thu gọn · tên</label>
+        <selectable>true</selectable>
+        <override>
+            <trigger>noMedia</trigger>
+            <mediaType>miximage, screenshot, titlescreen, video</mediaType>
+            <useVariant>typographicNames</useVariant>
+        </override>
+    </variant>
+    <variant name="indexCompactStillNames">
+        <label language="en_US">Index, compact, no videos · names</label>
+        <label language="en_GB">Index, compact, no videos · names</label>
+        <label language="it_IT">Indice compatto, senza video · nomi</label>
+        <label language="fr_FR">Index compact, sans vidéos · noms</label>
+        <label language="de_DE">Index, kompakt, ohne Videos · Namen</label>
+        <label language="es_ES">Índice compacto, sin vídeos · nombres</label>
+        <label language="pt_BR">Índice compacto, sem vídeos · nomes</label>
+        <label language="pt_PT">Índice compacto, sem vídeos · nomes</label>
+        <label language="nl_NL">Index, compact, zonder video's · namen</label>
+        <label language="sv_SE">Index, kompakt, utan videor · namn</label>
+        <label language="pl_PL">Indeks kompaktowy, bez wideo · nazwy</label>
+        <label language="ru_RU">Указатель, компактный, без видео · названия</label>
+        <label language="ja_JP">インデックス（コンパクト・動画なし） · 名前</label>
+        <label language="ko_KR">인덱스 (컴팩트, 동영상 없음) · 이름</label>
+        <label language="zh_CN">索引（紧凑，无视频） · 名称</label>
+        <label language="zh_TW">索引（緊湊，無影片） · 名稱</label>
+        <label language="ar_SA">فهرس مضغوط، بدون فيديو · الأسماء</label>
+        <label language="bs_BA">Indeks, kompaktni, bez videa · nazivi</label>
+        <label language="ca_ES">Índex compacte, sense vídeos · noms</label>
+        <label language="hr_HR">Kazalo, kompaktno, bez videa · nazivi</label>
+        <label language="ro_RO">Index compact, fără videoclipuri · nume</label>
+        <label language="sr_RS">Indeks, kompaktni, bez videa · nazivi</label>
+        <label language="vi_VN">Mục lục thu gọn, không video · tên</label>
+        <selectable>true</selectable>
+        <override>
+            <trigger>noMedia</trigger>
+            <mediaType>miximage, screenshot, titlescreen</mediaType>
+            <useVariant>typographicNames</useVariant>
+        </override>
+    </variant>
+    <variant name="typographicNames">
+        <label language="en_US">Typographic · names</label>
+        <label language="en_GB">Typographic · names</label>
+        <label language="it_IT">Tipografico · nomi</label>
+        <label language="fr_FR">Typographique · noms</label>
+        <label language="de_DE">Typografisch · Namen</label>
+        <label language="es_ES">Tipográfico · nombres</label>
+        <label language="pt_BR">Tipográfico · nomes</label>
+        <label language="pt_PT">Tipográfico · nomes</label>
+        <label language="nl_NL">Typografisch · namen</label>
+        <label language="sv_SE">Typografisk · namn</label>
+        <label language="pl_PL">Typograficzny · nazwy</label>
+        <label language="ru_RU">Типографский · названия</label>
+        <label language="ja_JP">タイポグラフィ · 名前</label>
+        <label language="ko_KR">타이포그래피 · 이름</label>
+        <label language="zh_CN">排版 · 名称</label>
+        <label language="zh_TW">排版 · 名稱</label>
+        <label language="ar_SA">طباعي · الأسماء</label>
+        <label language="bs_BA">Tipografski · nazivi</label>
+        <label language="ca_ES">Tipogràfic · noms</label>
+        <label language="hr_HR">Tipografski · nazivi</label>
+        <label language="ro_RO">Tipografic · nume</label>
+        <label language="sr_RS">Tipografski · nazivi</label>
+        <label language="vi_VN">Kiểu chữ · tên</label>
+        <selectable>true</selectable>
+    </variant>
+    <variant name="galleryNames">
+        <label language="en_US">Gallery · names</label>
+        <label language="en_GB">Gallery · names</label>
+        <label language="it_IT">Galleria · nomi</label>
+        <label language="fr_FR">Galerie · noms</label>
+        <label language="de_DE">Galerie · Namen</label>
+        <label language="es_ES">Galería · nombres</label>
+        <label language="pt_BR">Galeria · nomes</label>
+        <label language="pt_PT">Galeria · nomes</label>
+        <label language="nl_NL">Galerij · namen</label>
+        <label language="sv_SE">Galleri · namn</label>
+        <label language="pl_PL">Galeria · nazwy</label>
+        <label language="ru_RU">Галерея · названия</label>
+        <label language="ja_JP">ギャラリー · 名前</label>
+        <label language="ko_KR">갤러리 · 이름</label>
+        <label language="zh_CN">画廊 · 名称</label>
+        <label language="zh_TW">畫廊 · 名稱</label>
+        <label language="ar_SA">معرض · الأسماء</label>
+        <label language="bs_BA">Galerija · nazivi</label>
+        <label language="ca_ES">Galeria · noms</label>
+        <label language="hr_HR">Galerija · nazivi</label>
+        <label language="ro_RO">Galerie · nume</label>
+        <label language="sr_RS">Galerija · nazivi</label>
+        <label language="vi_VN">Thư viện · tên</label>
+        <selectable>true</selectable>
+    </variant>
+    <variant name="gridNames">
+        <label language="en_US">Grid · names</label>
+        <label language="en_GB">Grid · names</label>
+        <label language="it_IT">Griglia · nomi</label>
+        <label language="fr_FR">Grille · noms</label>
+        <label language="de_DE">Raster · Namen</label>
+        <label language="es_ES">Cuadrícula · nombres</label>
+        <label language="pt_BR">Grade · nomes</label>
+        <label language="pt_PT">Grelha · nomes</label>
+        <label language="nl_NL">Raster · namen</label>
+        <label language="sv_SE">Rutnät · namn</label>
+        <label language="pl_PL">Siatka · nazwy</label>
+        <label language="ru_RU">Сетка · названия</label>
+        <label language="ja_JP">グリッド · 名前</label>
+        <label language="ko_KR">그리드 · 이름</label>
+        <label language="zh_CN">网格 · 名称</label>
+        <label language="zh_TW">網格 · 名稱</label>
+        <label language="ar_SA">شبكة · الأسماء</label>
+        <label language="bs_BA">Mreža · nazivi</label>
+        <label language="ca_ES">Graella · noms</label>
+        <label language="hr_HR">Mreža · nazivi</label>
+        <label language="ro_RO">Grilă · nume</label>
+        <label language="sr_RS">Mreža · nazivi</label>
+        <label language="vi_VN">Lưới · tên</label>
+        <selectable>true</selectable>
+    </variant>
 </themeCapabilities>

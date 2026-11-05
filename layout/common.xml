@@ -64,18 +64,27 @@
             <customButtonIcon button="dpad_updown">./../core/help/dpad_updown.svg</customButtonIcon>
             <customButtonIcon button="thumbstick_click">./../core/help/thumbstick_click.svg</customButtonIcon>
         </helpsystem>
-        <systemstatus name="systemStatus">
+        <!-- The header line ends with the battery, Wi-Fi and the clock. One element always
+             draws its indicators as Bluetooth, Wi-Fi, cellular, battery, so Wi-Fi gets an
+             element of its own to come after the battery -->
+        <systemstatus name="systemStatus, systemStatusWifi">
             <origin>1 0.5</origin>
-            <height>${capsSize}</height>
+            <height>${statusSize}</height>
             <fontPath>${fontCapsLight}</fontPath>
             <textRelativeScale>0.85</textRelativeScale>
             <color>${mutedColor}</color>
             <entrySpacing>0.008</entrySpacing>
         </systemstatus>
+        <systemstatus name="systemStatus">
+            <entries>bluetooth, cellular, battery</entries>
+        </systemstatus>
+        <systemstatus name="systemStatusWifi">
+            <entries>wifi</entries>
+        </systemstatus>
         <clock name="clock">
             <origin>1 0.5</origin>
             <fontPath>${fontCapsLight}</fontPath>
-            <fontSize>${capsSize}</fontSize>
+            <fontSize>${statusSize}</fontSize>
             <color>${mutedColor}</color>
             <format>%H:%M</format>
         </clock>

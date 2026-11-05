@@ -3,12 +3,10 @@
 // wall of badges. LB/RB filter the library by progress and Y sorts it; on the wall
 // they change game and view. Header, help prompts, details column and media card sit
 // where the theme's Grid layout puts them for the screen's aspect ratio, in fractions
-// of the screen width and height as ES-DE does. Driven by a controller through the
-// Gamepad API, or by the keyboard.
+// of the screen width and height as ES-DE does, with the parts all of Atelier's apps
+// share in common/ui/atelier.js. Driven by a controller through the Gamepad API, or by
+// the keyboard.
 
-let S; // the session: colors, sizes, layouts, language and settings from ES-DE
-let T; // the words in the language of ES-DE
-let L; // the layouts for this aspect ratio
 let library = { user: null, games: [] };
 const state = { screen: 'games', mode: 'grid', filter: 'all', sort: 'recent', shelf: 0, picks: {}, game: 0, badge: 0, view: 'set', menu: null };
 const details = new Map();
@@ -21,222 +19,17 @@ const SORTS = ['recent', 'progress', 'name'];
 const VIEWS = ['set', 'locked', 'unlocked'];
 // How the library shows the games: shelves of covers, a list of names, names with covers
 const MODES = ['grid', 'list', 'covers'];
-// In fractions of the screen height: the progress block at the top of the content,
-// and the parts of a shelf
+// In fractions of the screen height: the progress block at the top of the content
 const OVERVIEW = 0.115;
-const SHELF = { label: 0.062, cover: 0.17, bar: 0.02, gap: 0.045 };
-// The platform name sits at the top of its label space, leaving room above the covers
-const SHELF_NAME = 0.03;
-// Room beside the shelves for the light around a selected cover, in screen widths
-const SHELF_PAD = 0.03;
 
-const vw = f => `${f * 100}vw`;
-const vh = f => `${f * 100}vh`;
-const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
-const themeUrl = p => '/theme/' + p.replace(/^(\.\/)?(\.\.\/)?/, '');
 const badgeUrl = (badge, locked) => `/ra/Badge/${badge}${locked ? '_lock' : ''}.png`;
-const percent = f => `${Math.floor(f * 100)}%`;
-
-function el(tag, cls, parent, text) {
-  const e = document.createElement(tag);
-  if (cls) e.className = cls;
-  if (text !== undefined) e.textContent = text;
-  if (parent) parent.appendChild(e);
-  return e;
-}
-
-// Positions an element like ES-DE: pos and origin, then size, cropSize or maxSize
-function place(e, p, { line = false, origin } = {}) {
-  if (!p || !p.pos) {
-    e.hidden = true;
-    return e;
-  }
-  const size = p.size || p.cropSize || p.maxSize;
-  const [ox, oy] = origin || p.origin || (p.cropSize || p.maxSize ? [0.5, 0.5] : [0, 0]);
-  e.classList.add('el');
-  e.style.left = vw(p.pos[0]);
-  e.style.top = vh(p.pos[1]);
-  if (size) {
-    if (size[0]) e.style.width = vw(size[0]);
-    if (size[1]) e.style.height = vh(size[1]);
-    if (line && size[1]) e.style.lineHeight = vh(size[1]);
-  }
-  e.style.transform = `translate(${-ox * 100}%, ${-oy * 100}%)`;
-  if (p.cornerRadius) e.style.borderRadius = vw(p.cornerRadius);
-  return e;
-}
-
-function setVars(vars) {
-  for (const [name, value] of Object.entries(vars)) document.documentElement.style.setProperty(`--${name}`, value);
-}
-
-const systemInfo = system => S.systems[system] || S.systems._default || { color: 'C9AB79', cover: 0.75 };
-
-// The color scheme of ES-DE; the atmosphere schemes take the system's color
-function applyColors(system) {
-  const c = S.colors;
-  const systemColor = systemInfo(system).color || 'C9AB79';
-  const color = v => '#' + v.replace('${systemColor}', systemColor);
-  setVars({
-    bg: color(c.bgColor), surface: color(c.surfaceColor), title: color(c.titleColor), text: color(c.textColor),
-    muted: color(c.mutedColor), list: color(c.listColor), faint: color(c.faintColor), accent: color(c.accentColor),
-    placeholder: color(c.placeholderColor), ambient: color(c.ambientColor), glow: color(c.selectionGlowColor),
-    'ambient-image': `url(${themeUrl(c.ambientImage)})`, 'glow-image': `url(${themeUrl(c.ambientTileImage)})`,
-    dim: c.gridDimOpacity, 'atmosphere-opacity': c.atmosphereOpacity,
-  });
-  document.getElementById('atmosphere').style.filter = `saturate(${c.atmosphereSaturation})`;
-}
-
-function applySizes() {
-  const f = S.fontSizes;
-  // The footer of a 4:3 screen has no room for the larger prompts of some font sizes
-  const help = Number(aspectRatio() === '4:3' ? f.helpSizeNarrow : f.helpSize) * 0.62;
-  setVars({
-    'caps-size': vh(f.capsSize), 'label-size': vh(f.labelSize), 'tag-size': vh(f.tagSize), 'value-size': vh(f.valueSize),
-    'desc-size': vh(f.descSize), 'game-title-size': vh(f.gameTitleSize), 'tile-text': vh(f.gridTextSize),
-    'help-size': vh(help), 'help-icon': vh(help * 1.25), 'help-spacing': vw(0.017), 'help-icon-spacing': vw(0.0055),
-    'tile-radius': vw(0.0025), 'badge-gap': vw(0.0055), 'tab-gap': vw(0.018), 'list-size': vh(f.listSize),
-    'list-margin': vw(L.games.gamelistTextlist.horizontalMargin), 'icon-gap': vw(0.008),
-    'selector-width': vw(L.games.gamelistTextlist.selectorWidth), 'selector-height': vh(L.games.gamelistTextlist.selectorHeight),
-  });
-}
-
-function aspectRatio() {
-  const set = { '21:9': '21:9', '16:9': '16:9', '16:10': '16:9', '4:3': '4:3' }[S.aspectRatio];
-  if (set) return set;
-  const r = innerWidth / innerHeight;
-  return r >= 2 ? '21:9' : r >= 1.5 ? '16:9' : '4:3';
-}
-
-// The content area left of the details column: from the page margin to the end of
-// the theme's grid, between the header and the footer
-function contentBox() {
-  const grid = L.achievements.gamelistGrid;
-  const list = L.games.gamelistTextlist;
-  const left = L.games.help.pos[0];
-  return { left, right: grid.pos[0] + grid.size[0] - (left - grid.pos[0]), top: list.pos[1], bottom: list.pos[1] + list.size[1] };
-}
-
-// System drawings, with the theme's fallback for systems that have none
-const artChecked = new Map();
-function setArt(e, system) {
-  const own = themeUrl(`systems/controllers/${system}.svg`);
-  const apply = ok => e.style.setProperty('--src', `url(${ok ? own : themeUrl('systems/controllers/custom-collections.svg')})`);
-  if (artChecked.has(system)) return apply(artChecked.get(system));
-  const img = new Image();
-  img.onload = () => { artChecked.set(system, true); apply(true); };
-  img.onerror = () => { artChecked.set(system, false); apply(false); };
-  img.src = own;
-}
-
-// Labels above values, as the facts of the theme
-function fact(parent, layout, labelName, valueName) {
-  const label = place(el('div', 'line label', parent), layout[labelName], { line: true });
-  const value = place(el('div', 'line value', parent), layout[valueName], { line: true });
-  return (name, text) => {
-    label.textContent = name;
-    value.textContent = text ?? '—';
-  };
-}
-
-// A hairline track filled with the accent up to a fraction
-function bar(parent, p) {
-  const track = el('div', 'bar', parent);
-  if (p) place(track, p);
-  const fill = el('div', 'fill', track);
-  const set = fraction => { fill.style.width = `${clamp(fraction, 0, 1) * 100}%`; };
-  set.track = track;
-  return set;
-}
-
-// A label with a percentage at the right end, a bar beneath and a line of figures
-function progressBlock(parent, x, y, width) {
-  const label = place(el('div', 'line label', parent), { pos: [x, y], size: [width * 0.7, 0.03] }, { line: true, origin: [0, 0.5] });
-  const value = place(el('div', 'line percent', parent), { pos: [x + width, y], size: [width * 0.3, 0.04] }, { line: true, origin: [1, 0.5] });
-  const fill = bar(parent, { pos: [x, y + 0.026], size: [width, 0.004] });
-  const sub = place(el('div', 'line sub', parent), { pos: [x, y + 0.06], size: [width, 0.035] }, { line: true, origin: [0, 0.5] });
-  return (name, fraction, figures, warning) => {
-    label.textContent = name;
-    value.textContent = fraction == null ? '' : percent(fraction);
-    fill(fraction || 0);
-    sub.textContent = figures || '';
-    sub.classList.toggle('warning', Boolean(warning));
-  };
-}
-
-// An image in a rounded card with the ambient light behind and the system drawing as
-// placeholder
-function mediaCard(parent, layout, imageName) {
-  place(el('div', 'ambient', parent), layout.mediaAmbient);
-  place(el('div', 'matte', parent), layout.mediaMatte);
-  const placeholder = place(el('div', 'art', parent), layout.mediaPlaceholder);
-  placeholder.style.setProperty('--tint', 'var(--placeholder)');
-  const box = place(el('div', 'matte', parent), layout[imageName]);
-  box.style.background = 'none';
-  const img = el('img', 'shot', box);
-  img.onload = () => img.classList.add('shown');
-  return (url, system) => {
-    setArt(placeholder, system);
-    if (img.getAttribute('src') === url) return;
-    img.classList.remove('shown');
-    if (url) img.src = url;
-    else img.removeAttribute('src');
-  };
-}
-
-// Text that scrolls up slowly when it doesn't fit, as the theme's descriptions do
-function scroller(box) {
-  const inner = el('div', 'scroll', box);
-  let timer = null;
-  return content => {
-    clearTimeout(timer);
-    inner.style.transition = 'none';
-    inner.style.transform = 'none';
-    inner.replaceChildren(document.createTextNode(content || ''));
-    const overflow = inner.scrollHeight - box.clientHeight;
-    if (overflow <= 0) return;
-    const lineHeight = parseFloat(getComputedStyle(box).fontSize) * 1.55;
-    const run = () => {
-      const seconds = overflow / lineHeight * 2.2;
-      inner.style.transition = `transform ${seconds}s linear`;
-      inner.style.transform = `translateY(${-overflow}px)`;
-      timer = setTimeout(() => {
-        inner.style.transition = 'none';
-        inner.style.transform = 'none';
-        timer = setTimeout(run, 5000);
-      }, seconds * 1000 + 8000);
-    };
-    timer = setTimeout(run, 5000);
-  };
-}
-
-// At the right margin of the header line. ES-DE puts the clock there, or beside the system
-// status when that moves up, which the page does not show
-function corner(parent, layout) {
-  return place(el('div', 'line corner', parent),
-    { pos: [layout.systemStatus.pos[0], layout.clock.pos[1]], size: [0.3, S.fontSizes.capsSize * 2] },
-    { line: true, origin: [1, 0.5] });
-}
-
-// The tags beneath the caption, where the theme shows the file tags; the tag font draws
-// each bracketed word as an outlined tag
-function tag(parent, layout) {
-  const e = place(el('div', 'line tags', parent), layout.fileTags, { line: true });
-  return words => { e.textContent = words.filter(Boolean).map(w => `(${w})`).join(' '); };
-}
-
-function header(root, layout, text) {
-  const art = place(el('div', 'art', root), layout.headerArt);
-  const title = place(el('div', 'line caps header', root, text), layout.header, { line: true });
-  return { art, title };
-}
 
 function buildGames() {
   const root = document.getElementById('games');
   root.replaceChildren();
   const l = L.achievements;
   const b = contentBox();
-  const { art } = header(root, l, 'RetroAchievements');
+  const { art } = header(root, l, 'Retro Achievements');
   art.style.setProperty('--src', `url(${themeUrl('systems/controllers/retroachievements.svg')})`);
   G.corner = corner(root, l);
   // The filters take the place of the label above the bar, which shows their progress
@@ -292,36 +85,19 @@ function buildAchievements() {
 
 // Help prompts with the theme's icons for the controller chosen in ES-DE
 function renderHelp() {
-  const type = S.controller.toLowerCase();
-  const family = type.startsWith('ps') ? 'PS' : type.startsWith('switch') ? 'switch' : type === 'snes' ? 'SNES' : 'XBOX';
-  const menu = [`button_start_${family}`, T.help.menu];
-  const entries = state.menu !== null
-    ? [['dpad_updown', T.help.choose], ['dpad_leftright', T.help.change], [`button_a_${family}`, T.help.select],
-      [`button_b_${family}`, T.help.close]]
+  const menu = ['start', T.help.menu];
+  if (keyboard.isOpen()) {
+    return showHelp([['dpad_all', T.help.choose], ['a', T.help.type], ['x', T.help.erase], ['y', T.help.space],
+      ['start', T.help.done], ['b', T.help.cancel]]);
+  }
+  if (state.account) return showHelp([['dpad_updown', T.help.choose], ['a', T.help.select], ['b', T.help.close]]);
+  showHelp(state.menu !== null
+    ? [['dpad_updown', T.help.choose], ['dpad_leftright', T.help.change], ['a', T.help.select], ['b', T.help.close]]
     : state.screen === 'games'
-      ? [['dpad_all', T.help.choose], ['button_lr', T.help.filter], [`button_y_${family}`, T.help.sort],
-        [`button_a_${family}`, T.help.select], [`button_b_${family}`, T.help.back], menu]
-      : [['dpad_all', T.help.choose], ['button_lr', T.help.game], [`button_y_${family}`, T.help.view],
-        [`button_b_${family}`, T.help.back], menu];
-  const help = document.getElementById('help');
-  place(help, { pos: L.games.help.pos }, { origin: [0, 0.5] });
-  help.replaceChildren(...entries.map(([icon, label]) => {
-    const entry = el('div', 'entry');
-    el('div', 'art', entry).style.setProperty('--src', `url(${themeUrl(`core/help/${icon}.svg`)})`);
-    el('span', '', entry, label);
-    return entry;
-  }));
+      ? [['dpad_all', T.help.choose], ['button_lr', T.help.filter], ['y', T.help.sort], ['a', T.help.select], ['b', T.help.back], menu]
+      : [['dpad_all', T.help.choose], ['button_lr', T.help.game], ['y', T.help.view], ['b', T.help.back], menu]);
 }
 
-const locale = () => S.language.replace('_', '-');
-const number = n => new Intl.NumberFormat(locale()).format(n);
-const parseDate = s => s ? new Date(/Z|[+-]\d\d:?\d\d$/.test(s) ? s : s.replace(' ', 'T') + 'Z') : null;
-function date(s, withTime) {
-  const d = parseDate(s);
-  if (!d) return null;
-  const options = { day: 'numeric', month: 'short', year: 'numeric', ...(withTime && { hour: '2-digit', minute: '2-digit' }) };
-  return new Intl.DateTimeFormat(locale(), options).format(d);
-}
 function duration(seconds) {
   if (!seconds) return null;
   const minutes = Math.round(seconds / 60);
@@ -378,12 +154,6 @@ function showCorner() {
   const text = u ? `${u.name}  ·  ${T.points(number(u.points))}` : (S.username || '');
   G.corner.textContent = text;
   A.corner.textContent = text;
-}
-
-function message(target, title, text) {
-  target.hidden = !title;
-  if (!title) return;
-  target.replaceChildren(el('span', 'caps', null, title), document.createTextNode(text || ''));
 }
 
 // The library
@@ -458,8 +228,8 @@ function renderLibrary(keep) {
   coverPics.clear();
   G.shelves.hidden = state.mode !== 'grid';
   G.listBox.hidden = state.mode === 'grid';
-  if (state.mode === 'grid') drawShelves();
-  else drawList();
+  if (state.mode === 'grid') drawShelves(G, shelves, drawGame);
+  else drawList(G, shelves, state.mode === 'covers', drawGame);
   const count = new Set(shelves.flatMap(s => s.games)).size;
   G.info.textContent = `${T.games(number(count))}  ·  ${T.sorts[state.sort]}`;
   message(G.message, shelves.length ? null : (library.games.length ? T.noneHere : T.empty),
@@ -476,109 +246,28 @@ function renderLibrary(keep) {
   select(target[0], target[1]);
 }
 
-function groupLabel(parent, shelf) {
-  const label = el('div', 'shelf-label', parent);
-  if (shelf.system) setArt(el('div', 'art', label), shelf.system);
-  el('span', '', label, shelf.title);
-  el('span', 'count', label, number(shelf.games.length));
-  return label;
-}
-
-function drawShelves() {
-  G.track.replaceChildren();
-  const H = innerHeight;
-  const pad = SHELF_PAD * innerWidth;
-  const coverHeight = SHELF.cover * H;
-  const shelfHeight = (SHELF.label + SHELF.cover + SHELF.bar + SHELF.gap) * H;
-  shelves.forEach((shelf, s) => {
-    const e = el('div', 'shelf', G.track);
-    e.style.top = `${s * shelfHeight}px`;
-    e.style.height = `${shelfHeight}px`;
-    const label = groupLabel(e, shelf);
-    label.style.left = `${pad}px`;
-    label.style.height = `${SHELF_NAME * H}px`;
-    const row = el('div', 'row', e);
-    row.style.left = `${pad}px`;
-    row.style.top = `${SHELF.label * H}px`;
-    shelf.x = [];
-    shelf.w = [];
-    let x = 0;
-    for (const i of shelf.games) {
-      const g = library.games[i];
-      const width = coverHeight * clamp(systemInfo(g.system).cover || 0.75, 0.6, 1.5);
-      const tile = el('div', 'cover', row);
-      tile.style.left = `${x}px`;
-      tile.style.width = `${width}px`;
-      tile.style.height = `${coverHeight}px`;
-      el('div', 'glow', tile);
-      const pic = el('div', 'pic', tile);
-      fillCover(pic, g);
-      coverPics.set(i, [...(coverPics.get(i) || []), pic]);
-      const progress = bar(tile);
-      progress.track.style.top = `${coverHeight + 0.01 * H}px`;
-      progress.track.style.height = `${Math.max(1, Math.round(0.0025 * H))}px`;
-      progress(fraction(progressOf(g)));
-      shelf.x.push(x);
-      shelf.w.push(width);
-      x += width + coverHeight * 0.16;
-    }
-    shelf.row = row;
-    shelf.el = e;
-  });
-  G.track.style.transform = 'none';
-  G.scroll = 0;
-}
-
-// Names one under the other, as in the theme's game lists; with covers, each name has
-// the game's whole box cover beside it and its progress beneath
-function drawList() {
-  G.listTrack.replaceChildren();
-  const H = innerHeight;
-  const covers = state.mode === 'covers';
-  const rowHeight = covers ? 0.09 * H : S.fontSizes.listSize * S.fontSizes.listSpacing * H;
-  const headHeight = 0.055 * H;
-  const list = L.games.gamelistTextlist;
-  G.selector = el('div', 'selector', G.listTrack);
-  G.selector.style.width = vw(list.selectorWidth);
-  G.selector.style.height = covers ? `${rowHeight * 0.5}px` : vh(list.selectorHeight);
-  G.selectorOffset = covers ? rowHeight * 0.25 : list.selectorVerticalOffset * H;
-  let y = 0;
-  shelves.forEach((shelf, s) => {
-    const label = groupLabel(G.listTrack, shelf);
-    label.style.top = `${y}px`;
-    label.style.height = `${headHeight * 0.6}px`;
-    label.style.left = vw(list.horizontalMargin);
-    shelf.label = label;
-    shelf.rows = [];
-    y += headHeight;
-    for (const i of shelf.games) {
-      const g = library.games[i];
-      const row = el('div', `list-row${covers ? ' with-cover' : ''}`, G.listTrack);
-      row.style.top = `${y}px`;
-      row.style.height = `${rowHeight}px`;
-      if (covers) {
-        // The whole cover, in a square so that the names line up whatever its shape
-        const pic = el('div', 'pic', row);
-        pic.dataset.icon = '1';
-        fillCover(pic, g);
-        coverPics.set(i, [...(coverPics.get(i) || []), pic]);
-        const text = el('div', 'text', row);
-        el('div', 'name', text, g.name);
-        const meta = el('div', 'meta', text);
-        const p = progressOf(g);
-        bar(meta)(fraction(p));
-        el('span', '', meta, `${number(p.unlocked)} / ${number(p.total)}`);
-      } else {
-        row.style.lineHeight = `${rowHeight}px`;
-        row.textContent = g.name;
-      }
-      shelf.rows.push({ el: row, top: y, height: rowHeight });
-      y += rowHeight;
-    }
-    y += 0.015 * H;
-  });
-  G.listHeight = y;
-}
+// What the shelves and lists show of a game: its cover, its progress beneath, and in the
+// list with covers the achievements unlocked
+const drawGame = {
+  system: i => library.games[i].system,
+  name: i => library.games[i].name,
+  fill(pic, i) {
+    fillCover(pic, library.games[i]);
+    coverPics.set(i, [...(coverPics.get(i) || []), pic]);
+  },
+  beneath(tile, i, coverHeight) {
+    const H = innerHeight;
+    const progress = bar(tile);
+    progress.track.style.top = `${coverHeight + 0.01 * H}px`;
+    progress.track.style.height = `${Math.max(1, Math.round(0.0025 * H))}px`;
+    progress(fraction(progressOf(library.games[i])));
+  },
+  meta(meta, i) {
+    const p = progressOf(library.games[i]);
+    bar(meta)(fraction(p));
+    el('span', '', meta, `${number(p.unlocked)} / ${number(p.total)}`);
+  },
+};
 
 function select(s, item) {
   state.shelf = clamp(s, 0, shelves.length - 1);
@@ -586,41 +275,10 @@ function select(s, item) {
   const pick = clamp(item ?? state.picks[shelf.key] ?? 0, 0, shelf.games.length - 1);
   state.picks[shelf.key] = pick;
   state.game = shelf.games[pick];
-  if (state.mode === 'grid') highlightShelves(shelf, pick);
-  else highlightList(shelf, pick);
+  if (state.mode === 'grid') highlightShelves(G, shelves, state.shelf, pick, state.picks);
+  else highlightList(G, shelves, shelf, pick);
   showGame();
   loadDetails(library.games[state.game]);
-}
-
-// The selected row stays in the middle of the list, as in the theme's game lists
-function highlightList(shelf, pick) {
-  shelves.forEach(sh => {
-    sh.label.classList.toggle('active', sh === shelf);
-    sh.rows.forEach((row, n) => row.el.classList.toggle('selected', sh === shelf && n === pick));
-  });
-  const row = shelf.rows[pick];
-  G.selector.style.top = `${row.top + G.selectorOffset}px`;
-  const height = G.listBox.clientHeight;
-  const scroll = clamp(row.top + row.height / 2 - height / 2, 0, Math.max(0, G.listHeight - height));
-  G.listTrack.style.transform = `translateY(${-scroll}px)`;
-}
-
-function highlightShelves(shelf, pick) {
-  shelves.forEach((sh, n) => {
-    sh.el.classList.toggle('active', n === state.shelf);
-    const chosen = state.picks[sh.key] ?? 0;
-    [...sh.row.children].forEach((tile, t) => tile.classList.toggle('selected', t === chosen));
-  });
-  // Scroll the shelf sideways, and the shelves up or down, only as far as needed
-  const visible = G.shelves.clientWidth - 2 * SHELF_PAD * innerWidth;
-  const peek = SHELF.cover * innerHeight * 0.3;
-  shelf.offset = clamp(shelf.offset || 0, shelf.x[pick] + shelf.w[pick] + peek - visible, Math.max(0, shelf.x[pick] - peek));
-  shelf.row.style.transform = `translateX(${-shelf.offset}px)`;
-  const height = (SHELF.label + SHELF.cover + SHELF.bar + SHELF.gap) * innerHeight;
-  // The gap after the last visible shelf may fall outside
-  const bottom = (state.shelf + 1) * height - SHELF.gap * innerHeight;
-  G.scroll = clamp(G.scroll || 0, bottom - G.shelves.clientHeight, state.shelf * height);
-  G.track.style.transform = `translateY(${-G.scroll}px)`;
 }
 
 function clearDetails() {
@@ -798,36 +456,8 @@ function openWall() {
   renderWall();
 }
 
-const sounds = {};
-let audio = null;
-function play(name) {
-  if (!S.sounds) return;
-  if (!audio) audio = new AudioContext();
-  const start = buffer => {
-    const source = audio.createBufferSource();
-    const gain = audio.createGain();
-    gain.gain.value = S.volume;
-    source.buffer = buffer;
-    source.connect(gain).connect(audio.destination);
-    source.start();
-  };
-  if (!sounds[name]) {
-    sounds[name] = fetch(themeUrl(`core/sounds/${name}.wav`)).then(r => r.arrayBuffer())
-      .then(data => audio.decodeAudioData(data)).catch(() => null);
-  }
-  sounds[name].then(buffer => buffer && start(buffer));
-}
-
-function quit() {
-  play('back');
-  fetch('/api/quit', { method: 'POST' }).catch(() => {});
-  setTimeout(() => window.close(), 250);
-}
-
-const cycle = (list, value, step) => list[(list.indexOf(value) + step + list.length) % list.length];
-
 function actGames(action) {
-  if (action === 'b') return quit();
+  if (action === 'b') return quitApp();
   if (action === 'lb' || action === 'rb') {
     play('quicksysselect');
     state.filter = cycle(FILTERS, state.filter, action === 'lb' ? -1 : 1);
@@ -842,27 +472,10 @@ function actGames(action) {
   const pick = state.picks[shelves[state.shelf].key];
   // In the lists, up and down go through the names across the platforms, left and right
   // jump to the platform before or after
-  if (state.mode !== 'grid' && ['up', 'down', 'left', 'right'].includes(action)) {
-    let [s, n] = [state.shelf, pick];
-    const last = shelves.length - 1;
-    if (action === 'down') [s, n] = n + 1 < shelves[s].games.length ? [s, n + 1] : [s + 1, 0];
-    if (action === 'up') [s, n] = n > 0 ? [s, n - 1] : [s - 1, s > 0 ? shelves[s - 1].games.length - 1 : 0];
-    if (action === 'left') [s, n] = n > 0 ? [s, 0] : [s - 1, 0];
-    if (action === 'right') [s, n] = [s + 1, 0];
-    if (s < 0 || s > last) return;
+  const target = moveIn(shelves, state.mode !== 'grid', state.shelf, pick, action);
+  if (target) {
     play('scroll');
-    return select(s, n);
-  }
-  const moves = {
-    left: [state.shelf, pick - 1], right: [state.shelf, pick + 1], up: [state.shelf - 1], down: [state.shelf + 1],
-    lt: [0, 0], rt: [shelves.length - 1],
-  };
-  if (action in moves) {
-    const [s, item] = moves[action];
-    if (s < 0 || s >= shelves.length || (item !== undefined && (item < 0 || item >= shelves[s].games.length))) return;
-    if (s === state.shelf && item === pick) return;
-    play('scroll');
-    select(s, item);
+    select(...target);
   } else if (action === 'a') {
     play('select');
     openWall();
@@ -901,48 +514,31 @@ function actWall(action) {
 }
 
 // The options menu, opened with Start as in ES-DE: the view of the library, its order
-// and filter, which apply at once behind it, and the way back to ES-DE. The view and
-// the order are kept for the next time.
+// and filter, which apply at once behind it, the RetroAchievements account and the way
+// back to ES-DE. The view and the order are kept for the next time.
 function menuRows() {
   return [
     { key: 'mode', label: T.menu.view, values: MODES, names: T.modes },
     { key: 'sort', label: T.menu.sort, values: SORTS, names: T.sorts },
     { key: 'filter', label: T.menu.filter, values: FILTERS, names: T.filters },
+    { key: 'account', label: T.menu.account },
     { key: 'exit', label: T.menu.exit },
   ];
 }
 
 function buildMenu() {
-  const old = document.getElementById('menu');
-  if (old) old.remove();
-  const root = el('div', '', document.body);
-  root.id = 'menu';
-  root.hidden = true;
-  el('div', 'menu-veil', root);
-  el('div', 'menu-glow', root);
-  const panel = el('div', 'menu', root);
-  const title = el('div', 'menu-title', panel);
-  el('span', 'menu-rule', title);
-  el('span', '', title, T.menu.title);
-  G.menuRows = el('div', '', panel);
-  G.menu = root;
+  if (G.menu) G.menu.root.remove();
+  G.menu = menuCard();
+  if (G.account) G.account.root.remove();
+  G.account = menuCard();
 }
 
 function renderMenu() {
-  G.menu.hidden = state.menu === null;
   renderHelp();
-  if (state.menu === null) return;
-  G.menuRows.replaceChildren(...menuRows().map((row, n) => {
-    const e = el('div', `menu-row${n === state.menu ? ' selected' : ''}${row.values ? '' : ' action'}`);
-    el('span', 'menu-label', e, row.label);
-    if (row.values) {
-      const value = el('span', 'menu-value', e);
-      el('span', 'arrow', value, '‹');
-      el('span', '', value, row.names[state[row.key]]);
-      el('span', 'arrow', value, '›');
-    }
-    return e;
-  }));
+  if (state.menu === null) return G.menu.hide();
+  G.menu.show(T.menu.title, menuRows().map(row => row.values
+    ? { label: row.label, value: row.names[state[row.key]] }
+    : { label: row.label, separated: row.key === 'account' }), state.menu);
 }
 
 function savePrefs() {
@@ -963,8 +559,15 @@ function actMenu(action) {
     return renderMenu();
   }
   if (row.key === 'exit') {
-    if (action === 'a') quit();
+    if (action === 'a') quitApp();
     return;
+  }
+  if (row.key === 'account') {
+    if (action !== 'a') return;
+    play('select');
+    state.menu = null;
+    renderMenu();
+    return openAccount();
   }
   if (action === 'left' || action === 'right' || action === 'a') {
     play('select');
@@ -975,7 +578,97 @@ function actMenu(action) {
   }
 }
 
+// Signing in: the username, offered from RetroArch when it is signed in there, and the
+// Web API key, typed on the on-screen keyboard or a keyboard, then checked with the site
+function openAccount() {
+  state.account = { user: S.suggestedUser || '', key: '', error: '', busy: false, selected: S.suggestedUser ? 1 : 0 };
+  renderAccount();
+}
+
+function accountRows() {
+  const a = state.account;
+  const C = T.account;
+  return [
+    { label: C.user, value: a.user || '—', plain: true, arrows: false },
+    { label: C.key, value: a.key ? '•'.repeat(Math.min(16, a.key.length)) : S.hasKey ? C.saved : '—', plain: Boolean(a.key), arrows: false },
+    { label: a.busy ? C.checking : C.connect, separated: true, disabled: !a.user || (!a.key && !S.hasKey) },
+  ];
+}
+
+function renderAccount() {
+  renderHelp();
+  if (!state.account) return G.account.hide();
+  G.account.show(T.account.title, accountRows(), state.account.selected,
+    [T.account.text, state.account.error].filter(Boolean).join('\n'));
+}
+
+function actAccount(action) {
+  const a = state.account;
+  const rows = accountRows();
+  if (a.busy) return;
+  if (action === 'b') {
+    play('back');
+    state.account = null;
+    return renderAccount();
+  }
+  if (action === 'up' || action === 'down') {
+    play('scroll');
+    a.selected = (a.selected + (action === 'up' ? -1 : 1) + rows.length) % rows.length;
+    return renderAccount();
+  }
+  if (action !== 'a' || rows[a.selected].disabled) return;
+  play('select');
+  if (a.selected === 2) return signIn();
+  const key = a.selected === 1;
+  G.account.hide();
+  keyboard.open({
+    title: key ? T.account.key : T.account.user, value: key ? a.key : a.user, mask: false, labels: T.keyboard,
+    done: value => {
+      a[key ? 'key' : 'user'] = value.trim();
+      a.error = '';
+      // From the username on to the key, and from the key to signing in
+      a.selected = Math.min(2, a.selected + 1);
+      renderAccount();
+    },
+    cancel: renderAccount,
+  });
+}
+
+async function signIn() {
+  const a = state.account;
+  a.busy = true;
+  a.error = '';
+  renderAccount();
+  let result;
+  try {
+    result = await (await fetch('/api/account', { method: 'POST', body: JSON.stringify({ username: a.user, apiKey: a.key }) })).json();
+  } catch {
+    result = { ok: false, reason: 'offline' };
+  }
+  a.busy = false;
+  if (!result.ok) {
+    a.error = { user: T.account.wrongUser, key: T.account.wrongKey, missing: T.account.missing }[result.reason] || T.account.offline;
+    return renderAccount();
+  }
+  Object.assign(S, { username: result.username, suggestedUser: result.username, hasKey: true, setupError: null });
+  state.account = null;
+  renderAccount();
+  play('select');
+  loadGames();
+}
+
 function act(action) {
+  if (keyboard.isOpen()) return keyboard.act(action);
+  if (state.account) return actAccount(action);
+  // Not signed in yet, A opens the sign-in again
+  if (S.setupError && state.menu === null) {
+    if (action === 'a') {
+      play('select');
+      return openAccount();
+    }
+    if (action === 'b') return quitApp();
+    if (action !== 'start') return;
+  }
   if (state.menu !== null) return actMenu(action);
   if (action === 'start') {
     play('select');
@@ -987,53 +680,10 @@ function act(action) {
   else actWall(action);
 }
 
-// As in ES-DE: Enter is A, Backspace is B and Escape is Start
-const KEYS = {
-  ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', Enter: 'a', ' ': 'a',
-  Backspace: 'b', Escape: 'start', PageUp: 'lb', PageDown: 'rb', Home: 'lt', End: 'rt', y: 'y', Y: 'y',
-};
-addEventListener('keydown', e => {
-  if (!KEYS[e.key]) return;
-  e.preventDefault();
-  act(KEYS[e.key]);
-});
-
-// Controllers in the standard layout: buttons A, B, Y, LB, RB, LT, RT, Start and the
-// d-pad, or the left stick. Held directions repeat as in ES-DE.
-const PAD = { 0: 'a', 1: 'b', 3: 'y', 4: 'lb', 5: 'rb', 6: 'lt', 7: 'rt', 9: 'start', 12: 'up', 13: 'down', 14: 'left', 15: 'right' };
-const REPEATS = new Set(['up', 'down', 'left', 'right']);
-const held = new Map();
-function poll(now) {
-  const pressed = new Set();
-  for (const pad of navigator.getGamepads()) {
-    if (!pad) continue;
-    for (const [index, action] of Object.entries(PAD)) if (pad.buttons[index] && pad.buttons[index].pressed) pressed.add(action);
-    const [x = 0, y = 0] = pad.axes;
-    if (y < -0.5) pressed.add('up');
-    if (y > 0.5) pressed.add('down');
-    if (x < -0.5) pressed.add('left');
-    if (x > 0.5) pressed.add('right');
-  }
-  for (const action of held.keys()) if (!pressed.has(action)) held.delete(action);
-  for (const action of pressed) {
-    const since = held.get(action);
-    if (since === undefined) {
-      held.set(action, now);
-      act(action);
-    } else if (REPEATS.has(action) && now - since > 500) {
-      held.set(action, now - 500 + 110);
-      act(action);
-    }
-  }
-  requestAnimationFrame(poll);
-}
-
 // Start
 
 async function start() {
-  S = await (await fetch('/api/session')).json();
-  T = STRINGS[S.language.slice(0, 2)] || STRINGS.en;
-  document.documentElement.lang = S.language.slice(0, 2);
+  await openSession(STRINGS);
   const layout = () => {
     L = S.layouts[aspectRatio()];
     applySizes();
@@ -1050,8 +700,24 @@ async function start() {
   if (SORTS.includes(S.prefs.sort)) state.sort = S.prefs.sort;
   layout();
   requestAnimationFrame(poll);
+  addEventListener('resize', () => {
+    layout();
+    if (library.games.length) renderLibrary(state.game);
+    if (state.screen === 'achievements') renderWall();
+    if (state.account) renderAccount();
+    if (keyboard.isOpen()) keyboard.render();
+  });
 
-  if (S.setupError) return message(G.message, T.setup, T.setupText);
+  // Not signed in yet: the sign-in comes first
+  if (S.setupError) {
+    message(G.message, T.setup, T.setupText);
+    return openAccount();
+  }
+  loadGames();
+}
+
+// The library, and the games' details in the background
+async function loadGames() {
   message(G.message, T.loading);
   try {
     const res = await fetch('/api/games');
@@ -1078,11 +744,6 @@ async function start() {
     renderMenu();
   }
   preload();
-  addEventListener('resize', () => {
-    layout();
-    renderLibrary(state.game);
-    if (state.screen === 'achievements') renderWall();
-  });
 }
 
 start();

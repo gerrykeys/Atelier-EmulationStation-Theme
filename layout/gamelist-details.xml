@@ -45,6 +45,15 @@
             <metadataElement>true</metadataElement>
             <zIndex>40</zIndex>
         </image>
+        <!-- Text that has to be read in full never ends in an ellipsis: what is wider
+             than its box scrolls sideways, as the Gallery title does. The layouts give
+             these lines enough room for common values to stand still -->
+        <text name="genre, fileTags, developer, publisher">
+            <container>true</container>
+            <containerType>horizontal</containerType>
+            <containerStartDelay>2.5</containerStartDelay>
+            <containerScrollSpeed>0.7</containerScrollSpeed>
+        </text>
         <text name="genre">
             <metadata>genre</metadata>
             <defaultValue>:space:</defaultValue>
@@ -210,7 +219,7 @@
 
         <!-- Achievement progress ("12 / 74", a bar, the percentage), drawn by the
              achievements app into the physical media images, which Atelier shows
-             nowhere else; only while it is enabled (see achievements/progress.js) -->
+             nowhere else; only while it is enabled (see achievements/scripts/windows/progress.ps1) -->
         <image name="raProgress">
             <imageType>physicalmedia</imageType>
             <color>${accentColor}</color>

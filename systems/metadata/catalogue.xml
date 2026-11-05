@@ -1,0 +1,145 @@
+<theme>
+    <variables>
+        <systemName>Catalogue</systemName>
+        <systemDescription>Keep your games in an archive on a network or USB disk, bring them back into ES-DE, and create and manage collections</systemDescription>
+        <systemManufacturer>Various</systemManufacturer>
+        <systemReleaseYear>Various</systemReleaseYear>
+        <systemReleaseDate>Various</systemReleaseDate>
+        <systemReleaseDateFormated>Various</systemReleaseDateFormated>
+        <systemHardwareType>Archive</systemHardwareType>
+        <systemCoverSize>1-1</systemCoverSize>
+        <systemCoverSizeType>square</systemCoverSizeType>
+        <systemColor>6E93B5</systemColor>
+        <systemColorPalette1>6E93B5</systemColorPalette1>
+        <systemColorPalette2>3F5F7D</systemColorPalette2>
+        <systemColorPalette3>B8CDE0</systemColorPalette3>
+        <systemColorPalette4>1E2B38</systemColorPalette4>
+        <systemCartSize>1-1</systemCartSize>
+    </variables>
+    <language name="ar_SA">
+        <variables>
+            <systemDescription>احفظ ألعابك في أرشيف على قرص شبكي أو USB، وأعدها إلى ES-DE، وأنشئ مجموعات وأدرها</systemDescription>
+            <systemHardwareType>أرشيف</systemHardwareType>
+        </variables>
+    </language>
+    <language name="bs_BA">
+        <variables>
+            <systemDescription>Čuvajte svoje igre u arhivi na mrežnom ili USB disku, vratite ih u ES-DE te kreirajte i uređujte kolekcije</systemDescription>
+            <systemHardwareType>Arhiva</systemHardwareType>
+        </variables>
+    </language>
+    <language name="ca_ES">
+        <variables>
+            <systemDescription>Desa els teus jocs en un arxiu en un disc de xarxa o USB, torna'ls a ES-DE i crea i gestiona col·leccions</systemDescription>
+            <systemHardwareType>Arxiu</systemHardwareType>
+        </variables>
+    </language>
+    <language name="de_DE">
+        <variables>
+            <systemDescription>Bewahre deine Spiele in einem Archiv auf einem Netzwerk- oder USB-Laufwerk auf, hole sie zurück in ES-DE und erstelle und verwalte Sammlungen</systemDescription>
+            <systemHardwareType>Archiv</systemHardwareType>
+        </variables>
+    </language>
+    <language name="es_ES">
+        <variables>
+            <systemDescription>Guarda tus juegos en un archivo en un disco de red o USB, devuélvelos a ES-DE y crea y gestiona colecciones</systemDescription>
+            <systemHardwareType>Archivo</systemHardwareType>
+        </variables>
+    </language>
+    <language name="fr_FR">
+        <variables>
+            <systemDescription>Rangez vos jeux dans une archive sur un disque réseau ou USB, ramenez-les dans ES-DE, et créez et gérez des collections</systemDescription>
+            <systemHardwareType>Archive</systemHardwareType>
+        </variables>
+    </language>
+    <language name="hr_HR">
+        <variables>
+            <systemDescription>Čuvajte svoje igre u arhivi na mrežnom ili USB disku, vratite ih u ES-DE te stvarajte i uređujte zbirke</systemDescription>
+            <systemHardwareType>Arhiva</systemHardwareType>
+        </variables>
+    </language>
+    <language name="it_IT">
+        <variables>
+            <systemDescription>Conserva i tuoi giochi in un archivio su un disco di rete o USB, riportali in ES-DE, crea e gestisci collezioni</systemDescription>
+            <systemHardwareType>Archivio</systemHardwareType>
+        </variables>
+    </language>
+    <language name="ja_JP">
+        <variables>
+            <systemDescription>ゲームをネットワークやUSBのディスクにアーカイブし、ES-DEに戻して、コレクションを作成・管理する</systemDescription>
+            <systemHardwareType>アーカイブ</systemHardwareType>
+        </variables>
+    </language>
+    <language name="ko_KR">
+        <variables>
+            <systemDescription>게임을 네트워크 또는 USB 디스크의 아카이브에 보관하고, ES-DE로 다시 가져오고, 컬렉션을 만들고 관리하기</systemDescription>
+            <systemHardwareType>아카이브</systemHardwareType>
+        </variables>
+    </language>
+    <language name="nl_NL">
+        <variables>
+            <systemDescription>Bewaar je games in een archief op een netwerk- of USB-schijf, haal ze terug naar ES-DE en maak en beheer collecties</systemDescription>
+            <systemHardwareType>Archief</systemHardwareType>
+        </variables>
+    </language>
+    <language name="pl_PL">
+        <variables>
+            <systemDescription>Przechowuj gry w archiwum na dysku sieciowym lub USB, przywracaj je do ES-DE oraz twórz kolekcje i zarządzaj nimi</systemDescription>
+            <systemHardwareType>Archiwum</systemHardwareType>
+        </variables>
+    </language>
+    <language name="pt_BR">
+        <variables>
+            <systemDescription>Guarde seus jogos em um arquivo em um disco de rede ou USB, traga-os de volta ao ES-DE e crie e gerencie coleções</systemDescription>
+            <systemHardwareType>Arquivo</systemHardwareType>
+        </variables>
+    </language>
+    <language name="pt_PT">
+        <variables>
+            <systemDescription>Guarde os seus jogos num arquivo num disco de rede ou USB, traga-os de volta ao ES-DE e crie e faça a gestão de coleções</systemDescription>
+            <systemHardwareType>Arquivo</systemHardwareType>
+        </variables>
+    </language>
+    <language name="ro_RO">
+        <variables>
+            <systemDescription>Păstrați jocurile într-o arhivă pe un disc de rețea sau USB, aduceți-le înapoi în ES-DE și creați și gestionați colecții</systemDescription>
+            <systemHardwareType>Arhivă</systemHardwareType>
+        </variables>
+    </language>
+    <language name="ru_RU">
+        <variables>
+            <systemDescription>Храните игры в архиве на сетевом или USB-диске, возвращайте их в ES-DE, создавайте коллекции и управляйте ими</systemDescription>
+            <systemHardwareType>Архив</systemHardwareType>
+        </variables>
+    </language>
+    <language name="sr_RS">
+        <variables>
+            <systemDescription>Чувајте игре у архиви на мрежном или USB диску, вратите их у ES-DE и правите и уређујте колекције</systemDescription>
+            <systemHardwareType>Архива</systemHardwareType>
+        </variables>
+    </language>
+    <language name="sv_SE">
+        <variables>
+            <systemDescription>Spara dina spel i ett arkiv på en nätverks- eller USB-disk, hämta tillbaka dem till ES-DE och skapa och hantera samlingar</systemDescription>
+            <systemHardwareType>Arkiv</systemHardwareType>
+        </variables>
+    </language>
+    <language name="vi_VN">
+        <variables>
+            <systemDescription>Lưu trò chơi vào kho lưu trữ trên ổ đĩa mạng hoặc USB, đưa chúng trở lại ES-DE, tạo và quản lý bộ sưu tập</systemDescription>
+            <systemHardwareType>Kho lưu trữ</systemHardwareType>
+        </variables>
+    </language>
+    <language name="zh_CN">
+        <variables>
+            <systemDescription>将你的游戏归档到网络或 USB 磁盘上，随时取回到 ES-DE，并创建和管理合集</systemDescription>
+            <systemHardwareType>归档</systemHardwareType>
+        </variables>
+    </language>
+    <language name="zh_TW">
+        <variables>
+            <systemDescription>將你的遊戲封存到網路或 USB 磁碟上，隨時取回到 ES-DE，並建立和管理合集</systemDescription>
+            <systemHardwareType>封存</systemHardwareType>
+        </variables>
+    </language>
+</theme>

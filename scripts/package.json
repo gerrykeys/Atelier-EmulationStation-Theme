@@ -1,9 +1,0 @@
-{
-  "name": "atelier-es-de-scripts",
-  "private": true,
-  "description": "Year collections, platform banners and achievement progress images for the Atelier theme, see year-collections.js and ../achievements/progress.js",
-  "license": "MIT",
-  "dependencies": {
-    "@resvg/resvg-js": "2.6.2"
-  }
-}

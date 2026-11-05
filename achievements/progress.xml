@@ -1,6 +1,6 @@
 <!--
-    Written by achievements/progress.js: true while the achievement progress is enabled
-    with "Enable achievement progress.cmd". The theme ships with false.
+    Written by achievements/scripts/windows/progress.ps1: true while the achievement progress is enabled
+    with "Retro Achievements - Enable Progress Bar in ES-DE.cmd". The theme ships with false.
 -->
 <theme>
     <variables>

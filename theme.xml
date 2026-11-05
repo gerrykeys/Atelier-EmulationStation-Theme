@@ -14,7 +14,7 @@
     <include>./systems/eyebrow/${system.theme}.xml</include>
     <include>./layout/colors.xml</include>
     <include>./layout/languages.xml</include>
-    <!-- Whether the achievement progress images are shown, see achievements/progress.js -->
+    <!-- Whether the achievement progress images are shown, see achievements/scripts/windows/progress.ps1 -->
     <include>./achievements/progress.xml</include>
 
     <!-- Paths are relative to the layout files, which is where every element is defined -->
@@ -35,26 +35,29 @@
         <!-- The system carousel's drawing: systems that share theirs with others get a
              copy naming the model, set by systems/eyebrow (see tools/build-model-tags.js) -->
         <systemArt>${artPath}</systemArt>
+        <!-- The Names variants: the drawings with the name of the system, the translated
+             collections set their own in systems/eyebrow (see tools/build-named-art.js) -->
+        <namedArt>./../systems/controllers-named/${system.theme}.svg</namedArt>
+        <namedArtFallback>./../systems/controllers-named/_fallback.svg</namedArtFallback>
         <!-- Swapped by systems/eyebrow/custom-collections.xml, see layout/collections.xml -->
         <regularHeaderVisible>true</regularHeaderVisible>
         <collectionHeaderVisible>false</collectionHeaderVisible>
-        <!-- Off for RetroAchievements, whose only entry opens the achievements app -->
+        <!-- Off for RetroAchievements and Catalogue, whose only entry opens the app -->
         <gameCountVisible>true</gameCountVisible>
-        <!-- Off in the Collections system, where the year list would play a random game -->
+        <!-- Off in the Collections system, where the list of collections would play a random game -->
         <videoAudio>true</videoAudio>
-        <!-- Grid and Gallery tiles. The Collections system shows the covers with a platform
-             banner first, which scripts/platform-banners.js stores as miximages -->
-        <tileImageType>cover</tileImageType>
-        <!-- Behind every grid tile: nothing, or in the Collections system the band in the
-             surface color that the platform name of those covers stands on -->
-        <gridBand>none</gridBand>
     </variables>
 
     <!-- Font sizes are em heights relative to the screen height. The narrow help size is
-         the one of 4:3 screens, whose footer has no room for larger prompts -->
+         the one of 4:3 screens, whose footer has no room for larger prompts, and the
+         narrow game title lets a long title take three lines in their narrower column
+         without being cut off. The status
+         size is the clock and the height of the system status icons, a little larger than
+         the small capitals so that they read at a glance -->
     <fontSize name="medium">
         <variables>
             <capsSize>0.019</capsSize>
+            <statusSize>0.024</statusSize>
             <helpSize>0.026</helpSize>
             <helpSizeNarrow>0.026</helpSizeNarrow>
             <sysTitleSize>0.085</sysTitleSize>
@@ -65,6 +68,7 @@
             <selectorH>0.0176</selectorH>
             <selectorY>0.0115</selectorY>
             <gameTitleSize>0.058</gameTitleSize>
+            <gameTitleSizeNarrow>0.05</gameTitleSizeNarrow>
             <typoTitleSize>0.085</typoTitleSize>
             <labelSize>0.0158</labelSize>
             <tagSize>0.0158</tagSize>
@@ -73,13 +77,14 @@
             <galleryTitleSize>0.058</galleryTitleSize>
             <coverTextSize>0.028</coverTextSize>
             <gridTextSize>0.016</gridTextSize>
-            <collectionGridTextSize>0.05</collectionGridTextSize>
+            <collectionGridTextSize>0.03</collectionGridTextSize>
             <collectionTitleSize>0.034</collectionTitleSize>
         </variables>
     </fontSize>
     <fontSize name="large">
         <variables>
             <capsSize>0.022</capsSize>
+            <statusSize>0.028</statusSize>
             <helpSize>0.03</helpSize>
             <helpSizeNarrow>0.03</helpSizeNarrow>
             <sysTitleSize>0.097</sysTitleSize>
@@ -90,6 +95,7 @@
             <selectorH>0.0208</selectorH>
             <selectorY>0.0136</selectorY>
             <gameTitleSize>0.066</gameTitleSize>
+            <gameTitleSizeNarrow>0.054</gameTitleSizeNarrow>
             <typoTitleSize>0.097</typoTitleSize>
             <labelSize>0.018</labelSize>
             <tagSize>0.018</tagSize>
@@ -98,13 +104,14 @@
             <galleryTitleSize>0.066</galleryTitleSize>
             <coverTextSize>0.032</coverTextSize>
             <gridTextSize>0.019</gridTextSize>
-            <collectionGridTextSize>0.058</collectionGridTextSize>
+            <collectionGridTextSize>0.034</collectionGridTextSize>
             <collectionTitleSize>0.04</collectionTitleSize>
         </variables>
     </fontSize>
     <fontSize name="small">
         <variables>
             <capsSize>0.0165</capsSize>
+            <statusSize>0.021</statusSize>
             <helpSize>0.023</helpSize>
             <helpSizeNarrow>0.023</helpSizeNarrow>
             <sysTitleSize>0.075</sysTitleSize>
@@ -115,6 +122,7 @@
             <selectorH>0.0153</selectorH>
             <selectorY>0.01</selectorY>
             <gameTitleSize>0.052</gameTitleSize>
+            <gameTitleSizeNarrow>0.046</gameTitleSizeNarrow>
             <typoTitleSize>0.075</typoTitleSize>
             <labelSize>0.0145</labelSize>
             <tagSize>0.0145</tagSize>
@@ -123,17 +131,18 @@
             <galleryTitleSize>0.052</galleryTitleSize>
             <coverTextSize>0.025</coverTextSize>
             <gridTextSize>0.014</gridTextSize>
-            <collectionGridTextSize>0.044</collectionGridTextSize>
+            <collectionGridTextSize>0.027</collectionGridTextSize>
             <collectionTitleSize>0.03</collectionTitleSize>
         </variables>
     </fontSize>
     <!-- For small screens held in the hand, such as a 4" handheld: the small capitals
-         (clock, system status, header, genre, game count), the file tags, the help
-         prompts and the list grow, everything else stays as in large. The fact labels
-         and values sit in narrow columns where larger text would be cut off -->
+         (header, genre, game count), the clock and system status, the file tags, the
+         help prompts and the list grow, everything else stays as in large. The fact
+         labels and values sit in narrow columns where larger text would be cut off -->
     <fontSize name="x-large">
         <variables>
             <capsSize>0.027</capsSize>
+            <statusSize>0.033</statusSize>
             <helpSize>0.034</helpSize>
             <helpSizeNarrow>0.03</helpSizeNarrow>
             <sysTitleSize>0.097</sysTitleSize>
@@ -144,6 +153,7 @@
             <selectorH>0.0228</selectorH>
             <selectorY>0.0149</selectorY>
             <gameTitleSize>0.066</gameTitleSize>
+            <gameTitleSizeNarrow>0.054</gameTitleSizeNarrow>
             <typoTitleSize>0.097</typoTitleSize>
             <labelSize>0.018</labelSize>
             <tagSize>0.022</tagSize>
@@ -152,7 +162,7 @@
             <galleryTitleSize>0.066</galleryTitleSize>
             <coverTextSize>0.032</coverTextSize>
             <gridTextSize>0.022</gridTextSize>
-            <collectionGridTextSize>0.058</collectionGridTextSize>
+            <collectionGridTextSize>0.036</collectionGridTextSize>
             <collectionTitleSize>0.04</collectionTitleSize>
         </variables>
     </fontSize>
@@ -163,25 +173,30 @@
         <include>./layout/sounds.xml</include>
         <include>./layout/collections.xml</include>
     </variant>
+    <!-- Every variant has a Names twin, the same layouts with the names of the neighboring
+         systems in the carousel: a theme has no other option ES-DE would show in its menu -->
+    <variant name="indexNames, indexStillNames, indexCompactNames, indexCompactStillNames, typographicNames, galleryNames, gridNames">
+        <include>./layout/system-names.xml</include>
+    </variant>
     <!-- The compact Index variants are the Index without the large title, see the
          aspect ratio files -->
-    <variant name="index, indexStill, indexCompact, indexCompactStill, typographic">
+    <variant name="index, indexStill, indexCompact, indexCompactStill, typographic, indexNames, indexStillNames, indexCompactNames, indexCompactStillNames, typographicNames">
         <include>./layout/gamelist-list.xml</include>
         <include>./layout/gamelist-details.xml</include>
     </variant>
-    <variant name="index, indexCompact">
+    <variant name="index, indexCompact, indexNames, indexCompactNames">
         <include>./layout/gamelist-media-video.xml</include>
     </variant>
-    <variant name="indexStill, indexCompactStill">
+    <variant name="indexStill, indexCompactStill, indexStillNames, indexCompactStillNames">
         <include>./layout/gamelist-media-still.xml</include>
     </variant>
-    <variant name="typographic">
+    <variant name="typographic, typographicNames">
         <include>./layout/gamelist-typographic.xml</include>
     </variant>
-    <variant name="gallery">
+    <variant name="gallery, galleryNames">
         <include>./layout/gamelist-gallery.xml</include>
     </variant>
-    <variant name="grid">
+    <variant name="grid, gridNames">
         <include>./layout/gamelist-details.xml</include>
         <include>./layout/gamelist-media-video.xml</include>
         <include>./layout/gamelist-grid.xml</include>
